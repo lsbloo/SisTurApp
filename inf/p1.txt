@@ -1,0 +1,15 @@
+# ------------------- Prototipo: Entrega: 07/05/18 ------------------- #
+
+# 1- Carregar informações online e trabalhar com ele, criar marcadores e descricao
+# 2- da a opcao de salvar o mapa da regiao LN - no aparelho e trabalhar com ele (carregar o mapa especificado) utilizar SQL ou sharedprerences; 
+# 3- mapa dinamico zoom in/out
+# 4- possiveis dados são publicos qualqur um pode cadastrar
+# 5- serviços de backend firebase; retrofit(consumo)
+# 6- opcoes de navegacao dentro do "mapa"
+# 7- salvar rotas do usuario
+# 8- utilizar a posicao local
+# 9- usar act/fragment - navIew
+# 10 - FRAMELAYOUT PARA MAPS
+
+
+
