@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -24,9 +25,9 @@ public class MapGoogleActivity extends FragmentActivity implements GoogleApiClie
 
     public static final int REQUEST_ERROR_PLAY_ = 1;
 
-    private GoogleMap mMap;
-    private GoogleApiClient mGoogleApiCliente;
-    private LatLng mOrigem;
+    private static GoogleMap mMap;
+    private static GoogleApiClient mGoogleApiCliente;
+    private static LatLng mOrigem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class MapGoogleActivity extends FragmentActivity implements GoogleApiClie
                 Os rótulos de vias e recursos também são visíveis.
                  //Metódo setMapType
          */
-        // mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
         mMap.setMyLocationEnabled(true);
         mGoogleApiCliente = new GoogleApiClient.Builder(this).addConnectionCallbacks(this)
