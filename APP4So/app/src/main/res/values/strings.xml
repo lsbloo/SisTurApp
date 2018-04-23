@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">APP4So</string>
+    <string name="app_name">App4Society-Turismo</string>
     <string name="title_activity_map_google">Map</string>
+
+    <string name="Abr">Abrir Navegação</string>
+    <string name="Fec">Fechar Navegação</string>
 </resources>
