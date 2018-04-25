@@ -5,6 +5,7 @@ import java.util.UUID;
 
 public class Coordenadas implements Serializable{
     private String nomeCidade;
+    private String nomePontoTuristico;
     private double latitude;
     private double longitude;
     private double altitude;
@@ -12,6 +13,12 @@ public class Coordenadas implements Serializable{
     private String id;
 
 
+    public void setNomePontoTuristico(String pontoTuristico){
+        this.nomePontoTuristico=pontoTuristico;
+    }
+    public String getNomePontoTuristico(){
+        return nomePontoTuristico;
+    }
     public void setDescricao(String descricao){
         this.descricao=descricao;
     }

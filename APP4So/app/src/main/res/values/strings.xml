@@ -4,4 +4,6 @@
 
     <string name="Abr">Abrir Navegação</string>
     <string name="Fec">Fechar Navegação</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

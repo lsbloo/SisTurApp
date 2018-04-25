@@ -38,6 +38,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,12 +70,14 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
     private static ArrayList<Coordenadas> list_recover;
+    private static ArrayList<Coordenadas> list_recover_point;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         list_recover = new ArrayList<Coordenadas>();
+        list_recover_point = new ArrayList<Coordenadas>();
         iniciarFirebaseDatabase();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         getMapAsync(this);
@@ -84,6 +87,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         askPermissions();
         conectAPICLIENTE();
         //addCoordenadasCidadesDefinidas();
+        //addPontosTuristicosValeDefinidos();
 
 
     }
@@ -144,7 +148,6 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
     @SuppressLint("MissingPermission")
     public int lastLocation(final GoogleMap map) {
-        Toast.makeText(getActivity(), "ahsuahsuh", Toast.LENGTH_SHORT).show();
 
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
@@ -157,6 +160,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                         localizacaoAtual = new LatLng(location.getLatitude(),location.getLongitude());
                         updateMap(map,localizacaoAtual);
                         recuperarDadosCidades(map);
+                        recuperarDadosPontos(map);
                     } else if (tentativas < 10) {
                         tentativas++;
                         handler.postDelayed(new Runnable() {
@@ -308,6 +312,87 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         });
 
     }
+    public void recuperarDadosPontos(final GoogleMap map){
+        databaseReference.child("Coordenadas-PontoTuristico").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot objTurismo: dataSnapshot.getChildren()){
+                    Coordenadas coordenadasTurismo = (Coordenadas)objTurismo.getValue(Coordenadas.class);
+                    list_recover_point.add(coordenadasTurismo);
+                }
+                for(int i = 0 ; i<list_recover_point.size(); i++){
+                    double latitude = list_recover_point.get(i).getLatitude();
+                    double longitude = list_recover_point.get(i).getLongitude();
+                    LatLng locatePoint = new LatLng(latitude,longitude);
+                    map.addMarker(new MarkerOptions().title(list_recover_point.get(i).getNomePontoTuristico()).snippet(list_recover_point.get(i).getDescricao()).position(locatePoint).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    public void addPontosTuristicosValeDefinidos(){
+        Coordenadas coordenadasReservaGuaribas = new Coordenadas();
+        coordenadasReservaGuaribas.setNomePontoTuristico("Reserva Biologica Guaribas");
+        coordenadasReservaGuaribas.setLatitude(-6.721389);
+        coordenadasReservaGuaribas.setLongitude(-35.180278);
+        coordenadasReservaGuaribas.setDescricao("localizada nos municípios paraibanos de Mamanguape (91,59%) e Rio Tinto (8,41%).");
+        coordenadasReservaGuaribas.setId(UUID.randomUUID().toString());
+
+
+        Coordenadas coordenadasMaracuja = new Coordenadas();
+        coordenadasMaracuja.setNomePontoTuristico("Sítio Maracujá");
+        coordenadasMaracuja.setLatitude(-6.81694487);
+        coordenadasMaracuja.setLongitude(-35.10588752);
+        coordenadasMaracuja.setDescricao("É um pequeno vilarejo localizado próximo a Rio Tinto");
+        coordenadasMaracuja.setId(UUID.randomUUID().toString());
+
+        Coordenadas coordenadasLungden = new Coordenadas();
+        coordenadasLungden.setNomePontoTuristico("Casarão dos Lungdren");
+        coordenadasLungden.setLatitude(-6.79652163);
+        coordenadasLungden.setLongitude(-35.06456633);
+        coordenadasLungden.setDescricao("O palacete tem três andares e abrigava um rico mobiliário, tapetes italianos, lustres e azulejos decorados.");
+        coordenadasLungden.setId(UUID.randomUUID().toString());
+
+
+        Coordenadas coordenadasAldeiaTramatia = new Coordenadas();
+        coordenadasAldeiaTramatia.setNomePontoTuristico("Aldeia Tramataia");
+        coordenadasAldeiaTramatia.setLatitude(-6.7415743);
+        coordenadasAldeiaTramatia.setLongitude(-34.943477);
+        coordenadasAldeiaTramatia.setDescricao("Tramataia é uma povoação indígena do município de Marcação, no estado brasileiro da Paraíba.");
+        coordenadasAldeiaTramatia.setId(UUID.randomUUID().toString());
+
+        Coordenadas coordenadasPraiaCoqueirinho = new Coordenadas();
+        coordenadasPraiaCoqueirinho.setNomePontoTuristico("Praia Coqueirinho Marcação");
+        coordenadasPraiaCoqueirinho.setLatitude(-6.74076476);
+        coordenadasPraiaCoqueirinho.setLongitude(-34.92794121);
+        coordenadasPraiaCoqueirinho.setDescricao("Praia localizada na regiao de Marcação");
+        coordenadasPraiaCoqueirinho.setId(UUID.randomUUID().toString());
+
+        Coordenadas coordenadasUsina = new Coordenadas();
+        coordenadasUsina.setNomePontoTuristico("Usina Monte Alegre");
+        coordenadasUsina.setLatitude(-6.8597843);
+        coordenadasUsina.setLongitude(-35.1308254);
+        coordenadasUsina.setDescricao("Uma das usinas da empresa 'AÇUCAR ALEGRE'");
+        coordenadasUsina.setId(UUID.randomUUID().toString());
+
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasReservaGuaribas.getId()).setValue(coordenadasReservaGuaribas);
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasMaracuja.getId()).setValue(coordenadasMaracuja);
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasLungden.getId()).setValue(coordenadasLungden);
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasAldeiaTramatia.getId()).setValue(coordenadasAldeiaTramatia);
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasPraiaCoqueirinho.getId()).setValue(coordenadasPraiaCoqueirinho);
+        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasUsina.getId()).setValue(coordenadasUsina);
+
+
+
+
+    }
 
 
     public void addCoordenadasCidadesDefinidas(){
@@ -356,12 +441,20 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasBaia.setDescricao("Baía da Traição é um município do estado da Paraíba, no Brasil. De acordo com o Instituto Brasileiro de Geografia e Estatística, no ano de 2016 sua população era estimada em 8.951 habitantes. Cerca de 90% do município está dentro de reservas indígenas dos Potiguaras.");
         coordenadasBaia.setId(UUID.randomUUID().toString());
 
+        Coordenadas coordenadasCurraldeCima = new Coordenadas();
+        coordenadasCurraldeCima.setNomeCidade("Curral de Cima");
+        coordenadasCurraldeCima.setLatitude(-6.7347555);
+        coordenadasCurraldeCima.setLongitude(-35.2917432);
+        coordenadasCurraldeCima.setDescricao("Curral de Cima, município no estado da Paraíba (Brasil), localizado na Região Geográfica Imediata de Mamanguape-Rio Tinto.");
+        coordenadasCurraldeCima.setId(UUID.randomUUID().toString());
+
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasMamanguape.getId()).setValue(coordenadasMamanguape);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasBaia.getId()).setValue(coordenadasBaia);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasCuiteMamanguape.getId()).setValue(coordenadasCuiteMamanguape);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasJacarau.getId()).setValue(coordenadasJacarau);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasItaporoca.getId()).setValue(coordenadasItaporoca);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasMataraca.getId()).setValue(coordenadasMataraca);
+        databaseReference.child("Coordenadas-CidadesVale").child(coordenadasCurraldeCima.getId()).setValue(coordenadasCurraldeCima);
     }
 
 

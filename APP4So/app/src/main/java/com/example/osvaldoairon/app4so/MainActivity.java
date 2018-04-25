@@ -1,6 +1,7 @@
 package com.example.osvaldoairon.app4so;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         actionBarDrawerToggler = new ActionBarDrawerToggle(this,drawerLayout,R.string.Abr,R.string.Fec);
         actionBarDrawerToggler.setDrawerIndicatorEnabled(true);
@@ -56,12 +59,35 @@ public class MainActivity extends AppCompatActivity{
 
                 if(id == R.id.config){
                     Toast.makeText(MainActivity.this, "OKS", Toast.LENGTH_SHORT).show();
+                }else if(id == R.id.exibir_inf){
+                    /*
+                    exibir informações;
+                     */
+                    Intent at = new Intent(MainActivity.this, ActivityInf.class);
+                    Toast.makeText(MainActivity.this, "Dados Armazenados", Toast.LENGTH_SHORT).show();
+                    startActivity(at);
+                }else{
+                    /*
+                    botao rotas;
+                     */
                 }
+
 
                 return true;
             }
         });
 
+        /*
+        Gerenciador de fragmentos fragmentManager
+
+        FragmentTransaction = inicia uma transacao de fragmento podendo iniciar ou parar uma "transaction"
+
+        é necessario dizer o layout que o fragmento vai ser carregado , e uma nova instanciacao do objeto fragmento
+        pelo meotodo fragmentTransaction.add(layout,fragmento.obj, "string");
+
+        iniciar o fragmento chamando o
+        fragmentTransaction.commit() ou comit()AllowingStateLoss();
+         */
         fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fg = fragmentManager.beginTransaction();
