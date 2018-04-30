@@ -51,7 +51,9 @@
             android:name=".Fragments.MapGoogleActivity"
             android:label="@string/title_activity_map_google"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivitysSecond.ActivityInf"></activity>
+        <activity android:name=".ActivitysSecond.ActivityInf" />
+        <activity android:name=".Fragments.FragmentInfCidade" />
+        <activity android:name=".Fragments.FragmentInfTurismo"></activity>
     </application>
 
 </manifest>

@@ -58,13 +58,12 @@ public class MainActivity extends AppCompatActivity{
                 int id = item.getItemId();
 
                 if(id == R.id.config){
-                    Toast.makeText(MainActivity.this, "OKS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
                 }else if(id == R.id.exibir_inf){
                     /*
                     exibir informações;
                      */
                     Intent at = new Intent(MainActivity.this, ActivityInf.class);
-                    Toast.makeText(MainActivity.this, "Dados Armazenados", Toast.LENGTH_SHORT).show();
                     startActivity(at);
                 }else{
                     /*

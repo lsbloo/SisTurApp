@@ -6,4 +6,10 @@
     <string name="Fec">Fechar Navegação</string>
     <string name="title_activity_map">Map</string>
     <string name="title_activity_maps">Map</string>
+
+
+    <string-array name="secoes">
+        <item> Pontos Turisticos </item>
+        <item> Cidades do Vale</item>
+    </string-array>
 </resources>
