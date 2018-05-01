@@ -19,8 +19,11 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
+import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -49,10 +52,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.UUID;
 
-public class MapGoogleActivity extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback {
+public class MapGoogleActivity extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback , Serializable{
 
     public static final int REQUEST_ERROR_PLAY_ = 1;
     public static final int REQUEST_CHECAR_GPS = 2;
@@ -302,7 +307,13 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                     LatLng locate = new LatLng(latitude,longitude);
                     map.addMarker(new MarkerOptions().title(list_recover.get(i).getNomeCidade()).snippet(list_recover.get(i).getDescricao()).position(locate));
 
+
                 }
+                Intent at = new Intent(getContext(), ActivityInf.class);
+                at.putExtra("arrayCidades",list_recover);
+                startActivity(at);
+
+
             }
 
             @Override
@@ -455,6 +466,9 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasItaporoca.getId()).setValue(coordenadasItaporoca);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasMataraca.getId()).setValue(coordenadasMataraca);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasCurraldeCima.getId()).setValue(coordenadasCurraldeCima);
+
+
+
     }
 
 
