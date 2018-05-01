@@ -414,14 +414,16 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasMamanguape.setLongitude(-35.13653453);
         coordenadasMamanguape.setDescricao("Mamanguape é um município do estado da Paraíba, no Brasil. É sede da Região Metropolitana do Vale do Mamanguape. Sua população em 2016 foi estimada pelo Instituto Brasileiro de Geografia e Estatística em 44.694 habitantes,[3] distribuídos em 340.482 quilômetros quadrados de área.É considerada uma cidade histórica devido à sua importância na colonização da capitania da Paraíba,marcada pela exploração do Pau-Brasil e anos depois plantio da cana-de-açúcar em seu vasto território que inicialmente compreendia todo o Vale do Mamanguape.");
         coordenadasMamanguape.setId(UUID.randomUUID().toString());
+        coordenadasMamanguape.setUrlfotoCidade("fotosCidades/mamanguapedois.jpg");
 
 
         Coordenadas coordenadasCuiteMamanguape = new Coordenadas();
         coordenadasCuiteMamanguape.setNomeCidade("Cuité de Mamanguape");
         coordenadasCuiteMamanguape.setLatitude(-6.9145768);
         coordenadasCuiteMamanguape.setLongitude(-35.25024273);
-        coordenadasMamanguape.setDescricao("Cuité de Mamanguape, município no estado da Paraíba (Brasil), localizado na Região Geográfica Imediata de João Pessoa. De acordo com o IBGE (Instituto Brasileiro de Geografia e Estatística), no ano de 2016 sua população era estimada em 6.349 habitantes. Área territorial de 110 km².");
+        coordenadasCuiteMamanguape.setDescricao("Cuité de Mamanguape, município no estado da Paraíba (Brasil), localizado na Região Geográfica Imediata de João Pessoa. De acordo com o IBGE (Instituto Brasileiro de Geografia e Estatística), no ano de 2016 sua população era estimada em 6.349 habitantes. Área territorial de 110 km².");
         coordenadasCuiteMamanguape.setId(UUID.randomUUID().toString());
+        coordenadasCuiteMamanguape.setUrlfotoCidade("fotosCidades/cuitemamanguape.jpeg");
 
         Coordenadas coordenadasItaporoca = new Coordenadas();
         coordenadasItaporoca.setNomeCidade("Itapororoca");
@@ -429,6 +431,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasItaporoca.setLongitude(-35.2457153);
         coordenadasItaporoca.setDescricao("Itapororoca é um município da Região Geográfica Imediata de Mamanguape-Rio Tinto, no estado da Paraíba, no Nordeste do Brasil. De acordo com o Instituto Brasileiro de Geografia e Estatística, no ano de 2016 sua população era de 16.997 hab. Sua área é de 146 km², sendo seus biomas predominantes o cerrado que devido a exploração da monocultura da cana-de-açucar está quase todo devastado e a mata atlântica.");
         coordenadasItaporoca.setId(UUID.randomUUID().toString());
+        coordenadasItaporoca.setUrlfotoCidade("fotosCidades/itapororoca.jpeg");
 
         Coordenadas coordenadasJacarau = new Coordenadas();
         coordenadasJacarau.setNomeCidade("Jacarau");
@@ -437,6 +440,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasJacarau.setDescricao("Jacaraú do Estado do Paraíba. Os habitantes se chamam jacarauenses.\n" +
                 "O município se estende por 253 km² e contava com 13 952 habitantes no último censo. A densidade demográfica é de 55,1 habitantes por km² no território do município.");
         coordenadasJacarau.setId(UUID.randomUUID().toString());
+        coordenadasJacarau.setUrlfotoCidade("fotosCidades/jacarau.jpeg");
 
         Coordenadas coordenadasMataraca = new Coordenadas();
         coordenadasMataraca.setNomeCidade("Mataraca");
@@ -444,6 +448,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasMataraca.setLongitude(-35.0576436);
         coordenadasMataraca.setDescricao("Mataraca é um município brasileiro do estado da Paraíba localizado na Região Geográfica Imediata de Mamanguape-Rio Tinto. De acordo com o IBGE (Instituto Brasileiro de Geografia e Estatística), no ano de 2016 sua população era estimada em 8.345 habitantes. Área territorial de 174 km².");
         coordenadasMataraca.setId(UUID.randomUUID().toString());
+        coordenadasMataraca.setUrlfotoCidade("fotosCidades/mataraca.jpg");
 
         Coordenadas coordenadasBaia = new Coordenadas();
         coordenadasBaia.setNomeCidade("Baia da traição");
@@ -451,6 +456,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasBaia.setLongitude(-34.93421);
         coordenadasBaia.setDescricao("Baía da Traição é um município do estado da Paraíba, no Brasil. De acordo com o Instituto Brasileiro de Geografia e Estatística, no ano de 2016 sua população era estimada em 8.951 habitantes. Cerca de 90% do município está dentro de reservas indígenas dos Potiguaras.");
         coordenadasBaia.setId(UUID.randomUUID().toString());
+        coordenadasBaia.setUrlfotoCidade("fotosCidades/baiadatraicao.jpg");
 
         Coordenadas coordenadasCurraldeCima = new Coordenadas();
         coordenadasCurraldeCima.setNomeCidade("Curral de Cima");
@@ -458,6 +464,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasCurraldeCima.setLongitude(-35.2917432);
         coordenadasCurraldeCima.setDescricao("Curral de Cima, município no estado da Paraíba (Brasil), localizado na Região Geográfica Imediata de Mamanguape-Rio Tinto.");
         coordenadasCurraldeCima.setId(UUID.randomUUID().toString());
+        coordenadasCurraldeCima.setUrlfotoCidade("fotosCidades/curraldecima.jpeg");
 
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasMamanguape.getId()).setValue(coordenadasMamanguape);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasBaia.getId()).setValue(coordenadasBaia);

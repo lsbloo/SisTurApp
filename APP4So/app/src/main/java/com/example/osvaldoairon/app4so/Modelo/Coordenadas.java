@@ -6,6 +6,8 @@ import java.util.UUID;
 public class Coordenadas implements Serializable{
     private String nomeCidade;
     private String nomePontoTuristico;
+    private String urlfotoCidade;
+    private String urlfotoPonto;
     private double latitude;
     private double longitude;
     private double altitude;
@@ -13,6 +15,18 @@ public class Coordenadas implements Serializable{
     private String id;
 
 
+    public String getUrlfotoCidade(){
+        return urlfotoCidade;
+    }
+    public void setUrlfotoCidade(String urlfoto){
+        this.urlfotoCidade=urlfoto;
+    }
+    public String getUrlfotoPonto(){
+        return urlfotoPonto;
+    }
+    public void setUrlfotoPonto(String urlponto){
+        this.urlfotoPonto=urlponto;
+    }
     public void setNomePontoTuristico(String pontoTuristico){
         this.nomePontoTuristico=pontoTuristico;
     }

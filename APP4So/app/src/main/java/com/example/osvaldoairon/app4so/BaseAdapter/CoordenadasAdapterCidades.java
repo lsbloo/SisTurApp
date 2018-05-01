@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +41,13 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     private StorageReference fotoRef;
     private static Uri urlUri;
     private FirebaseDatabase firebaseDatabase;
+    private static ArrayList<String> urls_list;
 
 
     public CoordenadasAdapterCidades(ArrayList<Coordenadas> arrayList, Context contexto){
         this.list=arrayList;
         this.ctx=contexto;
+        urls_list = new ArrayList<String>();
 
     }
     @Override
@@ -64,8 +67,9 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     public void init_firebase(){
         FirebaseApp.initializeApp(ctx);
         firebaseDatabase = firebaseDatabase.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-        fotoRef = storageReference.child("fotosCidades/mamanguapedois.jpg");
+        storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://apps4societyprotipo.appspot.com");
+
+
     }
 
     @Override
@@ -79,57 +83,23 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
 
         TextView descricaoCidade = (TextView)view.findViewById(R.id.descricaoCidade);
+        //final ImageView imgCidade=(ImageView)view.findViewById(R.id.imgsrcc);
 
         nomeCidade.setText("Cidade: " + coordenadasCidade.getNomeCidade());
-        descricaoCidade.setText(" " + coordenadasCidade.getDescricao());
+        descricaoCidade.setText(coordenadasCidade.getDescricao());
 
-        slideImgCidade(view);
-
-
-        return view;
-    }
-
-    public void slideImgCidade(View view){
-        sliderLayout=(SliderLayout)view.findViewById(R.id.slidercidade);
-
+       sliderLayout=(SliderLayout)view.findViewById(R.id.slidercidade);
+       Log.w("URL FOTO", coordenadasCidade.getUrlfotoCidade());
+        fotoRef = storageReference.child(coordenadasCidade.getUrlfotoCidade());
         fotoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                // Got the download URL for 'users/me/profile.png'
-                Log.d("LOG" , "SUCESSO");
-                urlUri=uri;
-
-                //Toast.makeText(getActivity(), ""+urlUri.toString(), Toast.LENGTH_SHORT).show();
-                imagens = new String[]{uri.toString(), "https://www.google.com.br/search?hl=pt-BR&authuser=0&tbm=isch&source=hp&biw=1299&bih=627&ei=s87nWpn6JMKBwgTaiLXgBg&q=bolas&oq=bolas&gs_l=img.3..0l10.2278.3424.0.3578.6.6.0.0.0.0.358.614.2-1j1.2.0....0...1ac.1.64.img..4.2.610.0...0.0MxFIzd0mSM#imgrc=-F9n4Sm57vxZ-M:"};
-
-                //if(sliderLayout != null){
-                 //   Toast.makeText(ctx, "oks", Toast.LENGTH_SHORT).show();
-                //}else{
-                 //   Toast.makeText(ctx, "N oks", Toast.LENGTH_SHORT).show();
-               // }
-
-
                 TextSliderView aux = new TextSliderView(ctx);
                 //aux.description("imagem1");
-                aux.image(imagens[0]);
-                aux.setOnImageLoadListener(CoordenadasAdapterCidades.this);
-                aux.setOnSliderClickListener(CoordenadasAdapterCidades.this);
-
-
+                aux.image(uri.toString());
+                //aux.setOnImageLoadListener(CoordenadasAdapterCidades.this);
+                //aux.setOnSliderClickListener(CoordenadasAdapterCidades.this);
                 sliderLayout.addSlider(aux);
-
-                /*
-                TextSliderView aux1 = new TextSliderView(ctx);
-                //aux1.description("imagem2");
-                aux1.image(imagens[1]);
-                aux1.setOnImageLoadListener(CoordenadasAdapterCidades.this);
-                aux1.setOnSliderClickListener(CoordenadasAdapterCidades.this);
-
-                sliderLayout.addSlider(aux1);
-                 */
-
-
-
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -138,7 +108,11 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
             }
         });
 
+
+        return view;
     }
+
+
 
     @Override
     public void onStart(BaseSliderView target) {
