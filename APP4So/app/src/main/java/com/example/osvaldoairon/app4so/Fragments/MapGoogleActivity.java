@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
+import com.example.osvaldoairon.app4so.MainActivity;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -309,9 +310,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
                 }
-                Intent at = new Intent(getContext(), ActivityInf.class);
-                at.putExtra("arrayCidades",list_recover);
-                startActivity(at);
+                MainActivity main = new MainActivity();
+                main.recebeArraymain(list_recover);
 
 
             }
@@ -464,7 +464,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         coordenadasCurraldeCima.setLongitude(-35.2917432);
         coordenadasCurraldeCima.setDescricao("Curral de Cima, município no estado da Paraíba (Brasil), localizado na Região Geográfica Imediata de Mamanguape-Rio Tinto.");
         coordenadasCurraldeCima.setId(UUID.randomUUID().toString());
-        coordenadasCurraldeCima.setUrlfotoCidade("fotosCidades/curraldecima.jpeg");
+        coordenadasCurraldeCima.setUrlfotoCidade("fotosCidades/ curraldecima.jpeg");
 
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasMamanguape.getId()).setValue(coordenadasMamanguape);
         databaseReference.child("Coordenadas-CidadesVale").child(coordenadasBaia.getId()).setValue(coordenadasBaia);

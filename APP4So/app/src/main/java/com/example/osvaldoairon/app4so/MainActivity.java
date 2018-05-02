@@ -19,11 +19,14 @@ import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
+import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
     private ActionBarDrawerToggle actionBarDrawerToggler;
     private MapGoogleActivity mapFragmento;
     private FragmentManager fragmentManager;
+    private static ArrayList<Coordenadas> list_main;
 
 
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        list_main = new ArrayList<Coordenadas>();
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         actionBarDrawerToggler = new ActionBarDrawerToggle(this,drawerLayout,R.string.Abr,R.string.Fec);
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity{
                     exibir informações;
                      */
                     Intent at = new Intent(MainActivity.this, ActivityInf.class);
+                    at.putExtra("arrayCidades",list_main);
                     startActivity(at);
                 }else{
                     /*
@@ -99,4 +105,16 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         return  actionBarDrawerToggler.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
     }
+
+    public ArrayList<Coordenadas> recebeArraymain(ArrayList<Coordenadas> list){
+
+        if(list!=null){
+//            Toast.makeText(MainActivity.this, "DOIDERA", Toast.LENGTH_SHORT).show();
+            list_main = list;
+            return list_main;
+        }
+        return null;
+    }
+
+    public MainActivity(){}
 }
