@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
 
         FragmentTransaction fg = fragmentManager.beginTransaction();
 
-        fg.add(R.id.frameLayout,new MapGoogleActivity(), "MapGOOGLE");
+        fg.add(R.id.relativeLayoutx,new MapGoogleActivity(), "MapGOOGLE");
         fg.commitAllowingStateLoss();
     }
 

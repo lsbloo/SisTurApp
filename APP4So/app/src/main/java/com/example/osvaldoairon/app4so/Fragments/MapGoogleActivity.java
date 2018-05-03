@@ -19,6 +19,9 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -97,7 +100,6 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
     }
-
 
     /**
      * Manipulates the map once available.
@@ -308,6 +310,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                     LatLng locate = new LatLng(latitude,longitude);
                     map.addMarker(new MarkerOptions().title(list_recover.get(i).getNomeCidade()).snippet(list_recover.get(i).getDescricao()).position(locate));
 
+                    //double latitude2 = -8.4176445;
+                    //double longitude2 = -37.0585205;
+                    //LatLng locat = new LatLng(latitude2,longitude2);
+
+                    //map.addMarker(new MarkerOptions().position(locat));
 
                 }
                 MainActivity main = new MainActivity();
