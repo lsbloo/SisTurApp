@@ -40,8 +40,10 @@
         <RelativeLayout
             android:id="@+id/relativeLayoutx"
             android:layout_width="match_parent"
-            android:layout_height="459dp"
-            android:layout_below="@+id/imgBuscar">
+            android:layout_height="464dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="0dp">
 
 
         </RelativeLayout>
