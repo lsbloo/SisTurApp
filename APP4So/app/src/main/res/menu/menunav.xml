@@ -20,5 +20,12 @@
         android:title="Suas rotas salvas"
         android:icon="@drawable/ic_map_black_24dp"
         ></item>
+    <item
+        android:id="@+id/pequisas"
+        android:title="Suas Pesquisas"
+        android:icon="@drawable/ic_pin_drop_black_24dp"
+        >
+
+    </item>
 
 </menu>

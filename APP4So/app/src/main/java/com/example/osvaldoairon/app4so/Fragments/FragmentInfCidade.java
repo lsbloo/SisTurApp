@@ -52,7 +52,7 @@ public class FragmentInfCidade extends Fragment implements BaseSliderView.OnSlid
 
         if(list_cidades!=null){
             View  view = inflater.inflate(R.layout.layout_listcity,container,false);
-            Toast.makeText(getContext(), ""+list_cidades.size(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), ""+list_cidades.size(), Toast.LENGTH_SHORT).show();
             ListView l1 =view.findViewById(R.id.list_city);
             CoordenadasAdapterCidades adapterCidades = new CoordenadasAdapterCidades(list_cidades,getContext());
             if(l1!=null){

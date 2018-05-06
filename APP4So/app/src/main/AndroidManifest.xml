@@ -35,6 +35,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.LocalizacaoIntentService"
+            android:exported="false" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -53,7 +58,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ActivitysSecond.ActivityInf" />
         <activity android:name=".Fragments.FragmentInfCidade" />
-        <activity android:name=".Fragments.FragmentInfTurismo"></activity>
+        <activity android:name=".Fragments.FragmentInfTurismo" />
+        <activity android:name=".ActivitysSecond.ActivityPesquisa"></activity>
     </application>
 
 </manifest>

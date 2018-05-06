@@ -30,6 +30,7 @@ import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.MainActivity;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.R;
+import com.example.osvaldoairon.app4so.service.LocalizacaoIntentService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -57,14 +58,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
 public class MapGoogleActivity extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback , Serializable{
 
+
+
+
     public static final int REQUEST_ERROR_PLAY_ = 1;
     public static final int REQUEST_CHECAR_GPS = 2;
+
+    private LatLng coordenadasRequest;
 
     private static GoogleMap mMap;
     private static GoogleApiClient mGoogleApiCliente;
@@ -80,6 +87,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private FirebaseDatabase firebaseDatabase;
     private static ArrayList<Coordenadas> list_recover;
     private static ArrayList<Coordenadas> list_recover_point;
+    private Context ctx;
+    public static ArrayList<Coordenadas> list_buscaSql= new ArrayList<Coordenadas>();
 
 
     @Override
@@ -116,6 +125,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         lastLocation(googleMap);
     }
 
+
+
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         statusGPS();
@@ -128,6 +139,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         mGoogleApiCliente.disconnect();
 
     }
+
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
@@ -152,6 +164,12 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
     }
 
+    @SuppressLint("ValidFragment")
+    public MapGoogleActivity(Context ctx, ArrayList<Coordenadas> list){
+        this.ctx=ctx;
+        this.list_buscaSql=list;
+    }
+
 
 
     @SuppressLint("MissingPermission")
@@ -169,6 +187,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                         updateMap(map,localizacaoAtual);
                         recuperarDadosCidades(map);
                         recuperarDadosPontos(map);
+                        marcarPontosBusca(map);
                     } else if (tentativas < 10) {
                         tentativas++;
                         handler.postDelayed(new Runnable() {
@@ -209,6 +228,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
     }
+
+
 
     public void statusGPS() {
         Log.d("oks", "kPASKApskapskpaskapskpaks");
@@ -263,6 +284,9 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         //    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         //}
     }
+    public MapGoogleActivity() {
+    }
+
 
     private synchronized void conectAPICLIENTE() {
         mGoogleApiCliente = new GoogleApiClient.Builder(getActivity()).addConnectionCallbacks(this)
@@ -294,6 +318,26 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         databaseReference = firebaseDatabase.getReference();
 
     }
+    public void marcarPontosBusca(final GoogleMap map){
+
+        if(list_buscaSql.size()!=0){
+            for(int i =0 ; i < list_buscaSql.size();i++){
+                double latitude = list_buscaSql.get(i).getLatitude();
+                double longitude = list_buscaSql.get(i).getLongitude();
+                //Toast.makeText(getActivity(), "APSPASKAPSKPASK"+latitude, Toast.LENGTH_SHORT).show();
+
+                LatLng lat = new LatLng(latitude,longitude);
+                map.addMarker(new MarkerOptions().position(lat).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            }
+        }else{
+            Toast.makeText(getActivity(), "Armazenados: "+list_buscaSql.size(), Toast.LENGTH_SHORT).show();
+        }
+
+
+    }
+    public void actived(){
+        Log.d("ACT","act");
+    }
 
     public void recuperarDadosCidades(final GoogleMap map){
         databaseReference.child("Coordenadas-CidadesVale").addValueEventListener(new ValueEventListener() {
@@ -310,15 +354,14 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                     LatLng locate = new LatLng(latitude,longitude);
                     map.addMarker(new MarkerOptions().title(list_recover.get(i).getNomeCidade()).snippet(list_recover.get(i).getDescricao()).position(locate));
 
-                    //double latitude2 = -8.4176445;
-                    //double longitude2 = -37.0585205;
-                    //LatLng locat = new LatLng(latitude2,longitude2);
-
-                    //map.addMarker(new MarkerOptions().position(locat));
-
                 }
                 MainActivity main = new MainActivity();
                 main.recebeArraymain(list_recover);
+                if(localizacaoAtual!=null){
+                    main.recebeLocalizacao(localizacaoAtual);
+                }else{
+                    Log.d("LOCATION MAP","FAIL NULL LOCATION MAPGOOGLEACT");
+                }
 
 
             }
@@ -353,6 +396,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             }
         });
     }
+
 
 
     public void addPontosTuristicosValeDefinidos(){

@@ -13,7 +13,16 @@ public class Coordenadas implements Serializable{
     private double altitude;
     public String descricao;
     private String id;
+    private long id_sql;
 
+
+    public long getId_sql() {
+        return id_sql;
+    }
+
+    public void setId_sql(long id_sql) {
+        this.id_sql = id_sql;
+    }
 
     public String getUrlfotoCidade(){
         return urlfotoCidade;
