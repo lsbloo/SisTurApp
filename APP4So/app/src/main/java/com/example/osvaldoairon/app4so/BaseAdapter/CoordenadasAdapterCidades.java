@@ -76,7 +76,6 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     public View getView(int position, View convertView, ViewGroup parent) {
         init_firebase();
 
-
         Coordenadas coordenadasCidade = list.get(position);
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_cidade,parent,false);
 

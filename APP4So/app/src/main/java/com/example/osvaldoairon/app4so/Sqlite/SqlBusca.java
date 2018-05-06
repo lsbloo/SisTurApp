@@ -6,9 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SqlBusca extends SQLiteOpenHelper {
 
-    public static final String NOME_BANCO ="Apps4Society1";
+    public static final String NOME_BANCO ="Apps4Society4";
     public static final String NOME_TABELA = "buscas";
-    public static final int VERSAO_BANCO = 2;
+    public static final int VERSAO_BANCO = 5;
     public static final String COLUNA_LATITUDE = "latitudes";
     public static final String COLUNA_LONGITUDE = "longitudes";
     public static final String COLUNA_ID_BANCO = "_id";
@@ -25,7 +25,7 @@ public class SqlBusca extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + NOME_TABELA + " ( " + COLUNA_ID_BANCO + " INTEGER PRIMARY KEY AUTOINCREMENT , " + COLUNA_LATITUDE+ " REAL, " + COLUNA_LONGITUDE + " REAL, "+ COLUNA_NOME + " TEXT )");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + NOME_TABELA + " ( " + COLUNA_ID_BANCO + " INTEGER PRIMARY KEY AUTOINCREMENT , " + COLUNA_LATITUDE+ " REAL, " + COLUNA_LONGITUDE + " REAL, "+ COLUNA_NOME + " TEXT NOT NULL )");
 
 
     }

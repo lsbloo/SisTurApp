@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.google.android.gms.maps.model.LatLng;
@@ -15,7 +16,7 @@ public class HelperBuscas {
 
     private SqlBusca busca;
 
-    public ArrayList<Coordenadas> list_coordenadas = new ArrayList<Coordenadas>();
+    public static ArrayList<Coordenadas> list_coordenadas = new ArrayList<Coordenadas>();
 
 
     public HelperBuscas(Context ctx) {
@@ -32,6 +33,8 @@ public class HelperBuscas {
 
         cv.put(busca.COLUNA_LATITUDE, coordenadas.getLatitude());
         cv.put(busca.COLUNA_LONGITUDE, coordenadas.getLongitude());
+        cv.put(busca.COLUNA_NOME,coordenadas.getNomePontoTuristico());
+       Log.d("COOR", ""+coordenadas.getNomePontoTuristico());
 
 
         long id = db.insert(busca.NOME_TABELA, null, cv);
@@ -69,7 +72,7 @@ public class HelperBuscas {
 
             coordenadasdb.setLatitude(latitude);
             coordenadasdb.setLongitude(longitude);
-            coordenadasdb.setDescricao(descricao);
+            coordenadasdb.setNomePontoTuristico(descricao);
             coordenadasdb.setId_sql(idCoordenadas);
 
 
@@ -105,6 +108,7 @@ public class HelperBuscas {
     }
 
     public Coordenadas getPosition(int position){
+        Log.d("LEN", ""+list_coordenadas.size());
         return list_coordenadas.get(position);
     }
 }

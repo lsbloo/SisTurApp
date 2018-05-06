@@ -1,14 +1,18 @@
 package com.example.osvaldoairon.app4so.BaseAdapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.R;
+import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa;
 
 import org.w3c.dom.Text;
 
@@ -42,10 +46,21 @@ public class PesquisaAdapter extends BaseAdapter {
 
         Coordenadas cd = list.get(position);
 
-        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_pesquisa,parent,false);
+        Log.d("XDXDXDXD",""+cd.getLatitude());
+
+
+         View  view = LayoutInflater.from(ctx).inflate(R.layout.activity_pesquisa,parent,false);
+
 
         TextView nomePonto = (TextView)view.findViewById(R.id.nomePesquisatxt);
         TextView latitudePonto=(TextView)view.findViewById(R.id.latitudePesquisatxt);
         TextView longitudePonto=(TextView)view.findViewById(R.id.longitudePesquisatxt);
+
+
+        nomePonto.setText("Nome: " + cd.getNomePontoTuristico());
+        latitudePonto.setText("Latitude: " + cd.getLatitude());
+        longitudePonto.setText("Longitude: "+ cd.getLongitude());
+
+        return view;
     }
 }

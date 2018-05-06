@@ -45,9 +45,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements Serializable
 {
 
 
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity
     private MapGoogleActivity mapFragmento;
     private FragmentManager fragmentManager;
     private static ArrayList<Coordenadas> list_main;
-    private EditText edtbusca;
+    private static EditText edtbusca;
     private ImageButton imgBusca;
     private LatLng location;
     private ArrayList<LatLng> list_buscas;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity
                     Pesquisas SAlvas;
                      */
                     Intent at = new Intent(MainActivity.this,ActivityPesquisa.class);
+                    at.putExtra("list_pequisa",helper.getReturnList());
                     startActivity(at);
 
                 }
@@ -212,13 +214,20 @@ public class MainActivity extends AppCompatActivity
                     double longitude = Double.parseDouble(saida[1]);
                     if(latitude != 0 && longitude != 0){
                         //Toast.makeText(MainActivity.this,""+latitude,Toast.LENGTH_SHORT).show();
-                        Coordenadas coordenadasb = new Coordenadas();
-                        coordenadasb.setLatitude(latitude);
-                        coordenadasb.setLongitude(longitude);
-                        coordenadasb.setNomePontoTuristico(edtbusca.getText().toString());
-                        helper.inserir(coordenadasb);
 
-                        updateSearch();
+                        if(edtbusca.getText().toString().isEmpty()){
+                            Toast.makeText(MainActivity.this, "Campo vazio!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Coordenadas coordenadasb = new Coordenadas();
+                            coordenadasb.setLatitude(latitude);
+                            coordenadasb.setLongitude(longitude);
+                            coordenadasb.setNomePontoTuristico(edtbusca.getText().toString());
+                            helper.inserir(coordenadasb);
+
+                            updateSearch();
+
+                        }
+
 
                     }
                 }
