@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityConf;
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa;
 import com.example.osvaldoairon.app4so.EventBus.MessageEvent;
@@ -112,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements Serializable
                 int id = item.getItemId();
 
                 if(id == R.id.config){
-                    Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
+                    Intent at = new Intent(MainActivity.this, ActivityConf.class);
+                    startActivity(at);
                 }else if(id == R.id.exibir_inf){
                     /*
                     exibir informações;
@@ -124,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     /*
                     botao rotas;
                      */
+                    Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
                 }else{
                     /*
                     Pesquisas SAlvas;
@@ -165,16 +169,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
         iniciar o fragmento chamando o
         fragmentTransaction.commit() ou comit()AllowingStateLoss();
          */
-        helper.recoverDataSQL();
-        MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
-        act.actived();
-
-        fragmentManager = getSupportFragmentManager();
-
-        FragmentTransaction fg = fragmentManager.beginTransaction();
-
-        fg.add(R.id.relativeLayoutx,new MapGoogleActivity(), "MapGOOGLE");
-        fg.commitAllowingStateLoss();
+       updateSearch();
     }
 
     public void callIntentService(int tipo , String endereco){
@@ -263,14 +258,49 @@ public class MainActivity extends AppCompatActivity implements Serializable
     public MainActivity(){}
 
     public void updateSearch(){
-        helper.recoverDataSQL();
-        MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
-        act.actived();
-        FragmentTransaction fg = fragmentManager.beginTransaction();
-        fg.add(R.id.relativeLayoutx,new MapGoogleActivity(), "MapGOOGLE");
-        fg.commitAllowingStateLoss();
+        fragmentManager = getSupportFragmentManager();
+        if (recoverType()!=0){
+           // Toast.makeText(this, ""+recoverType(), Toast.LENGTH_SHORT).show();
+                MapGoogleActivity change = new MapGoogleActivity();
+                //change.changeMAP(recoverType());
+                change.actived();
+                change.changeMAP(recoverType());
+            helper.recoverDataSQL();
+            MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
+            act.actived();
+            FragmentTransaction fg = fragmentManager.beginTransaction();
+            fg.add(R.id.relativeLayoutx,change.startActivite(), "MapGOOGLE");
+            fg.commitAllowingStateLoss();
+        }else{
+            helper.recoverDataSQL();
+            MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
+            act.actived();
+            FragmentTransaction fg = fragmentManager.beginTransaction();
+            fg.add(R.id.relativeLayoutx,new MapGoogleActivity(), "MapGOOGLE");
+            fg.commitAllowingStateLoss();
+        }
+
 
     }
 
 
+    public int recoverType(){
+        Intent number = getIntent();
+        int type = number.getIntExtra("mapa",4);
+        //Toast.makeText(this, ""+type, Toast.LENGTH_SHORT).show();
+        return type;
+    }
+
+
+    @Override
+    protected void onPause() {
+        Log.d("PauseMain","PauseMain");
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("onResume","onResume");
+        super.onResume();
+    }
 }

@@ -59,11 +59,13 @@
         <activity android:name=".ActivitysSecond.ActivityInf" />
         <activity android:name=".Fragments.FragmentInfCidade" />
         <activity android:name=".Fragments.FragmentInfTurismo" />
-        <activity android:name=".ActivitysSecond.ActivityPesquisa"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait"
-            ></activity>
+        <activity
+            android:name=".ActivitysSecond.ActivityPesquisa"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ActivitysSecond.ActivityConf"></activity>
     </application>
 
 </manifest>

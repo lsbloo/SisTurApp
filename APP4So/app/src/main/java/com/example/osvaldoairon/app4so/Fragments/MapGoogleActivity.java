@@ -89,6 +89,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private static ArrayList<Coordenadas> list_recover_point;
     private Context ctx;
     public static ArrayList<Coordenadas> list_buscaSql= new ArrayList<Coordenadas>();
+    private static int tipo_mapa=0;
 
 
     @Override
@@ -96,6 +97,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         super.onCreate(savedInstanceState);
         list_recover = new ArrayList<Coordenadas>();
         list_recover_point = new ArrayList<Coordenadas>();
+
         iniciarFirebaseDatabase();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         getMapAsync(this);
@@ -125,6 +127,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         lastLocation(googleMap);
     }
 
+    public int changeMAP(int type){
+        tipo_mapa=type;
+        Log.v("TIPOMAPA", "TIPOMAPA"+type);
+        return tipo_mapa;
+    }
 
 
     @Override
@@ -164,6 +171,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
     }
 
+
     @SuppressLint("ValidFragment")
     public MapGoogleActivity(Context ctx, ArrayList<Coordenadas> list){
         this.ctx=ctx;
@@ -184,7 +192,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                         Log.d("LATITUDE", "ALTITUDE" + location.getLongitude());
                         Log.d("LONGITUDE", "LONGITUDE" + location.getLatitude());
                         localizacaoAtual = new LatLng(location.getLatitude(),location.getLongitude());
-                        updateMap(map,localizacaoAtual);
+                        //Toast.makeText(getActivity(), ""+tipo_mapa, Toast.LENGTH_SHORT).show();
+                        updateMap(map,localizacaoAtual,tipo_mapa);
                         recuperarDadosCidades(map);
                         recuperarDadosPontos(map);
                         marcarPontosBusca(map);
@@ -207,7 +216,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
     @SuppressLint("MissingPermission")
-    public void updateMap(GoogleMap map, LatLng localizacaoAtual) {
+    public void updateMap(GoogleMap map, LatLng localizacaoAtual,int type) {
         // mMap = mapFragment.getMap(); // metodo depreciado api google 8.1.0 \ ATUAL 12.1.0
         // mMap.getUiSettings().setMapToolbarEnabled(true);
 
@@ -218,15 +227,39 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 Os rótulos de vias e recursos também são visíveis.
                  //Metódo setMapType
          */
-        //mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-
-        // mMap.setMyLocationEnabled(true);
+        if(type == 1){
+            map.setMyLocationEnabled(true);
+            map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
+            map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
+        }else if (type == 2){
+            map.setMyLocationEnabled(true);
+            map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
+            map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
+        }else if(type == 3){
+            map.setMyLocationEnabled(true);
+            map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
+            map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
+        }else if(type==4){
             map.setMyLocationEnabled(true);
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
-            map.addMarker(new MarkerOptions().title("Localização Atual").snippet("Rio Tinto é um município brasileiro localizado na Região Metropolitana de João Pessoa").position(localizacaoAtual));
+            map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
+        }else{
+            map.setMyLocationEnabled(true);
+            map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
+            map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
+        }
 
 
+
+    }
+
+    public Fragment startActivite(){
+        return new MapGoogleActivity();
     }
 
 

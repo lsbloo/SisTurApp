@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitysSecond.ActivityConf">
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+       <TextView
+           android:id="@+id/chose"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="48dp"
+           android:text="Escolha o tipo de Mapa"
+           android:textSize="18sp"
+           android:textStyle="bold" />
+
+       <RadioGroup
+           android:id="@+id/radio"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_marginTop="85dp">
+
+           <RadioButton
+               android:id="@+id/msimples"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Mapa Simples" />
+
+           <RadioButton
+               android:id="@+id/mapah"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Mapa Hibrido" />
+
+           <RadioButton
+               android:id="@+id/mapat"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Mapa Terreno" />
+
+           <RadioButton
+               android:id="@+id/mapaS"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Mapa Satelite" />
+
+
+       </RadioGroup>
+
+       <TextView
+           android:id="@+id/textView2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:text="Tela base de configurações do app TESTE"
+           android:textColor="@android:color/holo_red_dark"
+           android:textSize="18sp" />
+
+       <TextView
+           android:id="@+id/textView3"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerInParent="true"
+           android:textColor="@android:color/holo_red_dark"
+           android:textSize="18sp"
+           tools:text="Implementando a funcionalidade de escolha do mapa. Design nao implementado" />
+
+   </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
