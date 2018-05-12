@@ -1,6 +1,8 @@
 package com.example.osvaldoairon.app4so.ActivitysSecond;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 public class ActivityPesquisa extends AppCompatActivity {
     private ArrayList<Coordenadas> list_pesquisas;
     private HelperBuscas helperBuscas;
-
+    private int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,26 +32,41 @@ public class ActivityPesquisa extends AppCompatActivity {
         helperBuscas = new HelperBuscas(this);
 
         final PesquisaAdapter adapter = new PesquisaAdapter(this,list_pesquisas);
+
+       // Toast.makeText(this, "Pesquisa"+list_pesquisas.size(), Toast.LENGTH_SHORT).show();
         if(list_pesquisas != null){
             final ListView listView = new ListView(ActivityPesquisa.this);
             listView.setAdapter(adapter);
             setContentView(listView);
 
-
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                     i = position;
 
                     try{
-                        int i = position;
 
-                        Coordenadas cdPosition = helperBuscas.getPosition(i);
-                        helperBuscas.deleteUser(cdPosition);
-                        helperBuscas.list_coordenadas.remove(i);
-                        list_pesquisas.remove(i);
-                        listView.setAdapter(adapter);
+                        new AlertDialog.Builder(ActivityPesquisa.this).setTitle("Deletar Pesquisa").setMessage("Tem certeza que quer deletar a pesquisa?").setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Coordenadas cdPosition = helperBuscas.getPosition(i);
+                                helperBuscas.deleteUser(cdPosition);
+                                helperBuscas.list_coordenadas.remove(i);
+                                list_pesquisas.remove(i);
+                                listView.setAdapter(adapter);
 
-                        Toast.makeText(ActivityPesquisa.this, "Pesquisa Removida!", Toast.LENGTH_SHORT).show();
+
+
+                                Toast.makeText(ActivityPesquisa.this, "Pesquisa Removida!", Toast.LENGTH_SHORT).show();
+                            }
+                        }).setNegativeButton("não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(ActivityPesquisa.this, "Operação Cancelada!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }).show();
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -62,7 +79,6 @@ public class ActivityPesquisa extends AppCompatActivity {
         }
 
 
-
-
     }
+
 }

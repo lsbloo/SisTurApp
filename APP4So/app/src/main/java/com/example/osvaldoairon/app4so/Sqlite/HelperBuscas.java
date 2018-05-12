@@ -111,4 +111,7 @@ public class HelperBuscas {
         Log.d("LEN", ""+list_coordenadas.size());
         return list_coordenadas.get(position);
     }
+    public  void limparArray(){
+        list_coordenadas.clear();
+    }
 }

@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     //Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
                     Intent at = new Intent(MainActivity.this, ActivityConf.class);
                     startActivity(at);
+                    finish();
                 }else if(id == R.id.exibir_inf){
                     /*
                     exibir informações;
@@ -133,7 +134,9 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     Pesquisas SAlvas;
                      */
                     Intent at = new Intent(MainActivity.this,ActivityPesquisa.class);
+
                     at.putExtra("list_pequisa",helper.getReturnList());
+                    //Toast.makeText(MainActivity.this, "Pesquisa SQL"+helper.getReturnList().size(), Toast.LENGTH_SHORT).show();
                     startActivity(at);
 
                 }
@@ -218,7 +221,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
                             coordenadasb.setLongitude(longitude);
                             coordenadasb.setNomePontoTuristico(edtbusca.getText().toString());
                             helper.inserir(coordenadasb);
-
                             updateSearch();
 
                         }
@@ -259,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
     public void updateSearch(){
         fragmentManager = getSupportFragmentManager();
+        helper.limparArray();
         if (recoverType()!=0){
            // Toast.makeText(this, ""+recoverType(), Toast.LENGTH_SHORT).show();
                 MapGoogleActivity change = new MapGoogleActivity();
