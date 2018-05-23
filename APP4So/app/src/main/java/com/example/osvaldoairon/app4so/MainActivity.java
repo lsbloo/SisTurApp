@@ -1,14 +1,9 @@
 package com.example.osvaldoairon.app4so;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Parcelable;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -28,17 +23,12 @@ import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa;
 import com.example.osvaldoairon.app4so.EventBus.MessageEvent;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
+import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.Sqlite.HelperBuscas;
+import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
 import com.example.osvaldoairon.app4so.service.LocalizacaoIntentService;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -51,6 +41,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements Serializable
 {
+
+    private static ArrayList<Municipios> lista_municipios_rest = new ArrayList<Municipios>();
 
 
     public static final String LOCATION = "location";
@@ -81,7 +73,11 @@ public class MainActivity extends AppCompatActivity implements Serializable
         setContentView(R.layout.activity_main);
         list_main = new ArrayList<Coordenadas>();
 
+        GetJsonMunicipios download = new GetJsonMunicipios();
+        download.execute();
+
         list_buscas = new ArrayList<LatLng>();
+
 
         iniciarFirebaseDatabase();
         helper = new HelperBuscas(MainActivity.this);
@@ -284,6 +280,22 @@ public class MainActivity extends AppCompatActivity implements Serializable
         }
 
 
+    }
+
+    private class GetJsonMunicipios extends AsyncTask<Void, Void, ArrayList<Municipios>> {
+        @Override
+        protected ArrayList<Municipios> doInBackground(Void... voids) {
+            CriarConexaoMunicipios util = new CriarConexaoMunicipios();
+
+
+            lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
+            return lista_municipios_rest;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Municipios> municipios) {
+            super.onPostExecute(municipios);
+        }
     }
 
 

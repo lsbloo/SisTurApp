@@ -1,6 +1,7 @@
 package com.example.osvaldoairon.app4so.ActivitysSecond;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,10 @@ import android.widget.Toast;
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Fragments.FragmentInfCidade;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
+import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
 import com.example.osvaldoairon.app4so.adapterF.FragePageAdapterF;
+import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -30,9 +33,9 @@ public class ActivityInf extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf);
 
-        list_cidades= (ArrayList<Coordenadas>) getIntent().getSerializableExtra("arrayCidades");
+        list_cidades = (ArrayList<Coordenadas>) getIntent().getSerializableExtra("arrayCidades");
 
-        if(list_cidades!=null) {
+        if (list_cidades != null) {
 
             FragmentInfCidade f1 = new FragmentInfCidade();
             f1.recebeArray(list_cidades);
@@ -42,12 +45,19 @@ public class ActivityInf extends AppCompatActivity {
 
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        tabLayout=(TabLayout)findViewById(R.id.tab_layout);
-        viewPager=(ViewPager)findViewById(R.id.view_pager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.view_pager);
 
         viewPager.setAdapter(new FragePageAdapterF(getSupportFragmentManager(), getResources().getStringArray(R.array.secoes)));
 
         tabLayout.setupWithViewPager(viewPager);
-    }
+
+
+
+
 
     }
+
+
+
+}
