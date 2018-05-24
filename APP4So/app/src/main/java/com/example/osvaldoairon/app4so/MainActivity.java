@@ -22,9 +22,11 @@ import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa;
 import com.example.osvaldoairon.app4so.EventBus.MessageEvent;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
+import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.Sqlite.HelperBuscas;
+import com.example.osvaldoairon.app4so.rest.CriarConexaoAtrativoTuristico;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
 import com.example.osvaldoairon.app4so.service.LocalizacaoIntentService;
 import com.google.android.gms.maps.GoogleMap;
@@ -42,7 +44,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements Serializable
 {
 
-    private static ArrayList<Municipios> lista_municipios_rest = new ArrayList<Municipios>();
+
 
 
     public static final String LOCATION = "location";
@@ -73,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
         setContentView(R.layout.activity_main);
         list_main = new ArrayList<Coordenadas>();
 
-        GetJsonMunicipios download = new GetJsonMunicipios();
-        download.execute();
 
         list_buscas = new ArrayList<LatLng>();
 
@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
         actionBarDrawerToggler = new ActionBarDrawerToggle(this,drawerLayout,R.string.Abr,R.string.Fec);
         actionBarDrawerToggler.setDrawerIndicatorEnabled(true);
-
-
 
         drawerLayout.addDrawerListener(actionBarDrawerToggler);
         actionBarDrawerToggler.syncState();
@@ -282,21 +280,9 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
     }
 
-    private class GetJsonMunicipios extends AsyncTask<Void, Void, ArrayList<Municipios>> {
-        @Override
-        protected ArrayList<Municipios> doInBackground(Void... voids) {
-            CriarConexaoMunicipios util = new CriarConexaoMunicipios();
 
 
-            lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
-            return lista_municipios_rest;
-        }
 
-        @Override
-        protected void onPostExecute(ArrayList<Municipios> municipios) {
-            super.onPostExecute(municipios);
-        }
-    }
 
 
     public int recoverType(){

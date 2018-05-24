@@ -1,8 +1,18 @@
 package com.example.osvaldoairon.app4so.Modelo;
 
-public class Municipios {
+import java.io.Serializable;
+
+public class Municipios implements Serializable{
 
     private long id;
+    private long id_sql;
+
+    public void setId_sql(long id ){
+        this.id_sql=id;
+    }
+    public long getId_sql(){
+        return id_sql;
+    }
 
     public void setId(long id) {
         this.id=id;

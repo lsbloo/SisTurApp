@@ -32,9 +32,8 @@ public class CriarConexaoMunicipios {
 
     private ArrayList<Municipios> modificaJson(String json){
 
-
         try {
-            Municipios municipios = new Municipios();
+
 
             JSONArray jsonObj = new JSONArray(json);
 
@@ -51,6 +50,7 @@ public class CriarConexaoMunicipios {
                 double longitude = objArray.getDouble("longitude");
 
                 //Atribui os objetos que estão nas camadas mais baixas
+                Municipios municipios = new Municipios();
                 municipios.setNome(nome);
                 municipios.setId(id);
                 municipios.setAreaTerritorial(areaTerritorial);
@@ -61,14 +61,14 @@ public class CriarConexaoMunicipios {
                 municipios.setEstado(estado);
                 municipios.setSite(site);
 
+                Log.v("NOMES",""+nome);
+                Log.v("CEPS", ""+cep);
 
                 lista_municipios.add(municipios);
+
             }
-
-
-            Log.d("INFIFNFIFNFI", "" + lista_municipios.size());
-
             return lista_municipios;
+
         }catch (JSONException e){
             e.printStackTrace();
 
