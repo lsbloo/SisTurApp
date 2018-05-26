@@ -102,6 +102,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private static ArrayList<AtrativosTuristicos> lista_atrativos_rest = new ArrayList<AtrativosTuristicos>();
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,24 +132,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
 
-    }
 
 
-    public class GetJsonMunicipios extends AsyncTask<Void, Void, ArrayList<Municipios>> {
-        @Override
-        protected ArrayList<Municipios> doInBackground(Void... voids) {
-            CriarConexaoMunicipios util = new CriarConexaoMunicipios();
-
-
-            lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
-            salvarDadosRest_city();
-            return lista_municipios_rest;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Municipios> municipios) {
-            super.onPostExecute(municipios);
-        }
     }
 
     private class GetJsonAtrativos extends AsyncTask<Void,Void,ArrayList<AtrativosTuristicos>> {
@@ -161,7 +146,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         protected ArrayList<AtrativosTuristicos> doInBackground(Void... voids) {
             CriarConexaoAtrativoTuristico utilat = new CriarConexaoAtrativoTuristico();
 
-            lista_atrativos_rest = utilat.getInformacao("http://localhost:8080/atrativosTuristicos");
+            lista_atrativos_rest = utilat.getInformacao("http://192.168.31.143:8080/atrativosTuristicos");
             return lista_atrativos_rest;
 
         }
@@ -173,6 +158,25 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
 
+    public class GetJsonMunicipios extends AsyncTask<Void, Void, ArrayList<Municipios>> {
+        @Override
+        protected ArrayList<Municipios> doInBackground(Void... voids) {
+            CriarConexaoMunicipios util = new CriarConexaoMunicipios();
+
+
+            lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
+            helper.recoverDataSQL();
+            salvarDadosRest_city();
+            return lista_municipios_rest;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Municipios> municipios) {
+            super.onPostExecute(municipios);
+        }
+    }
+
+
     public void salvarDadosRest_city(){
         if(lista_municipios_rest!=null){
             for(int i = 0 ; i<lista_municipios_rest.size();i++){
@@ -180,7 +184,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 helper.inserir(lista_municipios_rest.get(i));
             }
         }else{
-            Log.d("LENLENLEN", "LENELENE" + lista_municipios_rest.size());
+            Log.d("Lista Municipios", "Lista municipios Vazia REST");
         }
     }
 
@@ -447,7 +451,6 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     public void recuperarDadosCidades(final GoogleMap map) {
         helper.recoverDataSQL();
         if(helper.getReturnList().size()!=0){
-            Toast.makeText(getActivity(), ""+helper.getReturnList().size(), Toast.LENGTH_SHORT).show();
             for (int i = 0; i < helper.getReturnList().size(); i++) {
                 double latitude = helper.getReturnList().get(i).getLatitude();
                 double longitude = helper.getReturnList().get(i).getLongitude();

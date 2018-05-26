@@ -29,35 +29,13 @@ public class HelperSQLMunicipios {
         /*
         ERROR NA SAIDA DO DADO SO TA IMPRIMINDO O PRIMEIRO PORRA
          */
-        SQLiteDatabase db = municipiossql.getWritableDatabase();
-        String sql = "SELECT municipio_nome,estado FROM " + municipiossql.NOME_TABELA;
-
-        Cursor cursor1 = db.rawQuery(sql, null);
-
-        cursor1.moveToFirst();
-        while(cursor1.moveToNext()) {
-
-
-            int indexColunaNome = cursor1.getColumnIndex(municipiossql.NOME_MUNICIPIO);
-            int indexColunaEstado = cursor1.getColumnIndex(municipiossql.ESTADO);
-
-            String nome = cursor1.getString(indexColunaNome);
-            String estado = cursor1.getString(indexColunaEstado);
-
-            Log.d("NOME-FDP", ""+nome);
-            Log.d("Estado-FDP", ""+estado);
-
-
-            if(city.getNome().equals(nome) && city.getEstado().equals(estado)){
-                Log.v("CITY NOME", ""+city.getNome());
-                Log.v("NOME DO BANCO", ""+nome);
-                return true;
-            }else{
-                return false;
+        if(list_municipios!=null){
+            for(int i = 0 ; i<list_municipios.size();i++){
+                if(city.getNome().equals(list_municipios.get(i).getNome()) && city.getEstado().equals(list_municipios.get(i).getEstado())){
+                    return true;
+                }
             }
         }
-        db.close();
-        cursor1.close();
         return false;
     }
 
@@ -111,7 +89,6 @@ public class HelperSQLMunicipios {
             int inddexColunaPopulacao = cursor.getColumnIndex(municipiossql.POPULACAO);
             int indexColunaSite = cursor.getColumnIndex(municipiossql.SITE);
             int indexColunaAreaTerritorial = cursor.getColumnIndex(municipiossql.AREA_TERRITORIAL);
-
 
             Double latitude = cursor.getDouble(indexColunaLatitude);
             Double longitude = cursor.getDouble(indexColunaLongitude);

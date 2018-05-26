@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
         EventBus.getDefault().register(this);
+
+
 
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);
@@ -279,8 +282,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
     }
-
-
 
 
 
