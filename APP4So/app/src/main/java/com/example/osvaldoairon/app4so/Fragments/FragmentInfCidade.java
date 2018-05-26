@@ -19,6 +19,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
+import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,7 +43,7 @@ public class FragmentInfCidade extends Fragment implements BaseSliderView.OnSlid
     private StorageReference storageReference;
     private StorageReference fotoRef;
     private static Uri urlUri;
-    private static ArrayList<Coordenadas> list_cidades = new ArrayList<Coordenadas>();
+    private static ArrayList<Municipios> list_cidades = new ArrayList<Municipios>();
 
 
     @Nullable
@@ -101,7 +102,7 @@ public class FragmentInfCidade extends Fragment implements BaseSliderView.OnSlid
     public FragmentInfCidade(){
         }
 
-    public ArrayList<Coordenadas> recebeArray(ArrayList<Coordenadas> list){
+    public ArrayList<Municipios> recebeArray(ArrayList<Municipios> list){
         list_cidades=list;
 
         if(list_cidades.size() > 0){

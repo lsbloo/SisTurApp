@@ -17,10 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/edtLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:completionThreshold="2"
+            android:hint="@string/search_city"
             android:layout_alignBottom="@+id/imgBuscar"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

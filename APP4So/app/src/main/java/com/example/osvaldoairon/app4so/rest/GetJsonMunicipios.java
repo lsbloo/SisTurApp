@@ -2,6 +2,7 @@ package com.example.osvaldoairon.app4so.rest;
 
 import android.os.AsyncTask;
 
+import com.example.osvaldoairon.app4so.Exceptions.ErrosDeConnexao;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 
 import java.util.ArrayList;
@@ -12,7 +13,11 @@ public class GetJsonMunicipios extends AsyncTask<Void, Void, ArrayList<Municipio
         CriarConexaoMunicipios  util = new CriarConexaoMunicipios();
 
 
-
-        return util.getInformacao("http://192.168.31.143:8080/municipios");
+        try {
+            return util.getInformacao("http://192.168.31.143:8080/municipios");
+        } catch (ErrosDeConnexao errosDeConnexao) {
+            errosDeConnexao.printStackTrace();
+        }
+        return null;
     }
 }

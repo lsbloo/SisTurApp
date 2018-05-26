@@ -20,6 +20,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.osvaldoairon.app4so.Fragments.FragmentInfCidade;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
+import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +34,7 @@ import java.util.zip.Inflater;
 
 public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSliderView.OnSliderClickListener,BaseSliderView.ImageLoadListener{
 
-    private ArrayList<Coordenadas> list;
+    private ArrayList<Municipios> list;
     private Context ctx;
     private SliderLayout sliderLayout;
     private static String[] imagens;
@@ -44,7 +45,7 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     private static ArrayList<String> urls_list;
 
 
-    public CoordenadasAdapterCidades(ArrayList<Coordenadas> arrayList, Context contexto){
+    public CoordenadasAdapterCidades(ArrayList<Municipios> arrayList, Context contexto){
         this.list=arrayList;
         this.ctx=contexto;
         urls_list = new ArrayList<String>();
@@ -76,21 +77,27 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     public View getView(int position, View convertView, ViewGroup parent) {
         init_firebase();
 
-        Coordenadas coordenadasCidade = list.get(position);
+        Municipios municipios = list.get(position);
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_cidade,parent,false);
 
         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
 
         TextView descricaoCidade = (TextView)view.findViewById(R.id.descricaoCidade);
+
+        TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
+        TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
         //final ImageView imgCidade=(ImageView)view.findViewById(R.id.imgsrcc);
 
-        nomeCidade.setText("Cidade: " + coordenadasCidade.getNomeCidade());
-        descricaoCidade.setText(coordenadasCidade.getDescricao());
+        nomeCidade.setText("Cidade: " + municipios.getNome());
+        descricaoCidade.setText("Estado: " + municipios.getEstado());
+        populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"habitantes");
+        areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial());
 
        sliderLayout=(SliderLayout)view.findViewById(R.id.slidercidade);
-       Log.w("URL FOTO", coordenadasCidade.getUrlfotoCidade());
-        fotoRef = storageReference.child(coordenadasCidade.getUrlfotoCidade());
-        fotoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+       /*
+
+       fotoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 TextSliderView aux = new TextSliderView(ctx);
@@ -106,6 +113,9 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
                 Log.w("LOGFAIL", "FAIL");
             }
         });
+
+        */
+
 
 
         return view;

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="370dp"
+    android:layout_height="wrap_content"
     tools:context=".Fragments.FragmentInfCidade">
 
 
@@ -11,9 +11,10 @@
             android:id="@+id/card"
             android:layout_width="300dp"
             android:layout_height="165dp"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="51dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="39dp"
             android:background="#ffffff"
             android:shape="ring"
             app:cardCornerRadius="27dp">
@@ -21,11 +22,10 @@
 
                 <com.daimajia.slider.library.SliderLayout
                     android:id="@+id/slidercidade"
-                    android:layout_width="wrap_content"
-                    android:layout_height="165dp"
-                    android:layout_alignParentStart="true"
+                    android:layout_width="288dp"
+                    android:layout_height="144dp"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="52dp"
+                    android:layout_marginTop="10dp"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="46dp">
 
@@ -43,16 +43,31 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
         <TextView
             android:id="@+id/descricaoCidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
             android:layout_below="@id/nomeCidade"
-            android:layout_marginBottom="208dp"
             android:textSize="14sp"
-            android:textStyle="italic"
+            android:textStyle="bold|italic"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/populacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descricaoCidade"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/areaTerritorial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/populacao"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
             android:typeface="sans" />
 
 

@@ -19,7 +19,7 @@ public class ConnectREST {
      */
 
 
-    public static String createConnection(String url){
+    public static String createConnection(String url) throws ErrosDeConnexao {
 
         String saida="";
 
@@ -62,6 +62,7 @@ public class ConnectREST {
     }
 
     private static String converterInputStreamToString(InputStream is){
+
         StringBuffer buffer = new StringBuffer();
         try{
             BufferedReader br;
@@ -77,5 +78,6 @@ public class ConnectREST {
         }
 
         return buffer.toString();
+
     }
 }

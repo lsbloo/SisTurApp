@@ -3,6 +3,7 @@ package com.example.osvaldoairon.app4so.rest;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.osvaldoairon.app4so.Exceptions.ErrosDeConnexao;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 
 import org.json.JSONArray;
@@ -17,7 +18,7 @@ public class CriarConexaoMunicipios {
     private ArrayList<Municipios> lista_municipios = new ArrayList<Municipios>();
     private ArrayList<Municipios> retorno = new ArrayList<Municipios>();
 
-    public ArrayList<Municipios> getInformacao(String end) {
+    public ArrayList<Municipios> getInformacao(String end) throws ErrosDeConnexao {
         /*
 
          */

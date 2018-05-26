@@ -6,6 +6,14 @@ public class Municipios implements Serializable{
 
     private long id;
     private long id_sql;
+    private String cep;
+    private String areaTerritorial;
+    private String nome;
+    private int populacao;
+    private double latitude;
+    private double longitude;
+    private String estado;
+    private String site;
 
     public void setId_sql(long id ){
         this.id_sql=id;
@@ -21,14 +29,7 @@ public class Municipios implements Serializable{
         return id;
     }
 
-    private String cep;
-    private String areaTerritorial;
-    private String nome;
-    private int populacao;
-    private double latitude;
-    private double longitude;
-    private String estado;
-    private String site;
+
     public String getNome() {
         return nome;
     }

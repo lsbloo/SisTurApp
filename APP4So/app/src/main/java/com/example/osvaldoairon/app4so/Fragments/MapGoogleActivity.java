@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
+import com.example.osvaldoairon.app4so.Exceptions.ErrosDeConnexao;
 import com.example.osvaldoairon.app4so.MainActivity;
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
@@ -146,7 +147,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         protected ArrayList<AtrativosTuristicos> doInBackground(Void... voids) {
             CriarConexaoAtrativoTuristico utilat = new CriarConexaoAtrativoTuristico();
 
-            lista_atrativos_rest = utilat.getInformacao("http://192.168.31.143:8080/atrativosTuristicos");
+            try {
+                lista_atrativos_rest = utilat.getInformacao("http://192.168.31.143:8080/atrativosTuristicos");
+            } catch (ErrosDeConnexao errosDeConnexao) {
+                errosDeConnexao.printStackTrace();
+            }
             return lista_atrativos_rest;
 
         }
@@ -164,7 +169,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             CriarConexaoMunicipios util = new CriarConexaoMunicipios();
 
 
-            lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
+            try {
+                lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
+            } catch (ErrosDeConnexao errosDeConnexao) {
+                errosDeConnexao.printStackTrace();
+            }
             helper.recoverDataSQL();
             salvarDadosRest_city();
             return lista_municipios_rest;
@@ -439,7 +448,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 map.addMarker(new MarkerOptions().position(lat).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
         }else{
-            Toast.makeText(getActivity(), "Armazenados: "+list_buscaSql.size(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Pontos de buscas Armazenados: " +list_buscaSql.size(), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -449,6 +458,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
     public void recuperarDadosCidades(final GoogleMap map) {
+        helper.limparArray();
         helper.recoverDataSQL();
         if(helper.getReturnList().size()!=0){
             for (int i = 0; i < helper.getReturnList().size(); i++) {
@@ -458,9 +468,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 map.addMarker(new MarkerOptions().title(helper.getReturnList().get(i).getNome()).snippet(helper.getReturnList().get(i).getAreaTerritorial()).position(locate));
 
             }
-            helper.limparArray();
+
             MainActivity main = new MainActivity();
-            main.recebeArraymain(list_recover);
+            //Toast.makeText(getActivity(), "LEN:>" + helper.getReturnList().size(), Toast.LENGTH_SHORT).show();
+
+            main.recebeArraymain(helper.getReturnList());
             if (localizacaoAtual != null) {
                 main.recebeLocalizacao(localizacaoAtual);
             } else {
@@ -494,63 +506,5 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         });
     }
 
-
-
-    public void addPontosTuristicosValeDefinidos(){
-        Coordenadas coordenadasReservaGuaribas = new Coordenadas();
-        coordenadasReservaGuaribas.setNomePontoTuristico("Reserva Biologica Guaribas");
-        coordenadasReservaGuaribas.setLatitude(-6.721389);
-        coordenadasReservaGuaribas.setLongitude(-35.180278);
-        coordenadasReservaGuaribas.setDescricao("localizada nos municípios paraibanos de Mamanguape (91,59%) e Rio Tinto (8,41%).");
-        coordenadasReservaGuaribas.setId(UUID.randomUUID().toString());
-
-
-        Coordenadas coordenadasMaracuja = new Coordenadas();
-        coordenadasMaracuja.setNomePontoTuristico("Sítio Maracujá");
-        coordenadasMaracuja.setLatitude(-6.81694487);
-        coordenadasMaracuja.setLongitude(-35.10588752);
-        coordenadasMaracuja.setDescricao("É um pequeno vilarejo localizado próximo a Rio Tinto");
-        coordenadasMaracuja.setId(UUID.randomUUID().toString());
-
-        Coordenadas coordenadasLungden = new Coordenadas();
-        coordenadasLungden.setNomePontoTuristico("Casarão dos Lungdren");
-        coordenadasLungden.setLatitude(-6.79652163);
-        coordenadasLungden.setLongitude(-35.06456633);
-        coordenadasLungden.setDescricao("O palacete tem três andares e abrigava um rico mobiliário, tapetes italianos, lustres e azulejos decorados.");
-        coordenadasLungden.setId(UUID.randomUUID().toString());
-
-
-        Coordenadas coordenadasAldeiaTramatia = new Coordenadas();
-        coordenadasAldeiaTramatia.setNomePontoTuristico("Aldeia Tramataia");
-        coordenadasAldeiaTramatia.setLatitude(-6.7415743);
-        coordenadasAldeiaTramatia.setLongitude(-34.943477);
-        coordenadasAldeiaTramatia.setDescricao("Tramataia é uma povoação indígena do município de Marcação, no estado brasileiro da Paraíba.");
-        coordenadasAldeiaTramatia.setId(UUID.randomUUID().toString());
-
-        Coordenadas coordenadasPraiaCoqueirinho = new Coordenadas();
-        coordenadasPraiaCoqueirinho.setNomePontoTuristico("Praia Coqueirinho Marcação");
-        coordenadasPraiaCoqueirinho.setLatitude(-6.74076476);
-        coordenadasPraiaCoqueirinho.setLongitude(-34.92794121);
-        coordenadasPraiaCoqueirinho.setDescricao("Praia localizada na regiao de Marcação");
-        coordenadasPraiaCoqueirinho.setId(UUID.randomUUID().toString());
-
-        Coordenadas coordenadasUsina = new Coordenadas();
-        coordenadasUsina.setNomePontoTuristico("Usina Monte Alegre");
-        coordenadasUsina.setLatitude(-6.8597843);
-        coordenadasUsina.setLongitude(-35.1308254);
-        coordenadasUsina.setDescricao("Uma das usinas da empresa 'AÇUCAR ALEGRE'");
-        coordenadasUsina.setId(UUID.randomUUID().toString());
-
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasReservaGuaribas.getId()).setValue(coordenadasReservaGuaribas);
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasMaracuja.getId()).setValue(coordenadasMaracuja);
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasLungden.getId()).setValue(coordenadasLungden);
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasAldeiaTramatia.getId()).setValue(coordenadasAldeiaTramatia);
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasPraiaCoqueirinho.getId()).setValue(coordenadasPraiaCoqueirinho);
-        databaseReference.child("Coordenadas-PontoTuristico").child(coordenadasUsina.getId()).setValue(coordenadasUsina);
-
-
-
-
-    }
 
 }

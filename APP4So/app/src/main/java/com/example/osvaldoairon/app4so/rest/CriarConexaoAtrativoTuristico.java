@@ -2,6 +2,7 @@ package com.example.osvaldoairon.app4so.rest;
 
 import android.util.Log;
 
+import com.example.osvaldoairon.app4so.Exceptions.ErrosDeConnexao;
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 
@@ -17,7 +18,7 @@ public class CriarConexaoAtrativoTuristico {
     private ArrayList<AtrativosTuristicos> retorno = new ArrayList<AtrativosTuristicos>();
 
 
-    public ArrayList<AtrativosTuristicos> getInformacao(String end) {
+    public ArrayList<AtrativosTuristicos> getInformacao(String end) throws ErrosDeConnexao {
         /*
 
          */

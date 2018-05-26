@@ -26,14 +26,14 @@ public class ActivityInf extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private ArrayList<Coordenadas> list_cidades;
+    private ArrayList<Municipios> list_cidades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inf);
 
-        list_cidades = (ArrayList<Coordenadas>) getIntent().getSerializableExtra("arrayCidades");
+        list_cidades = (ArrayList<Municipios>) getIntent().getSerializableExtra("arrayCidades");
 
         if (list_cidades != null) {
 

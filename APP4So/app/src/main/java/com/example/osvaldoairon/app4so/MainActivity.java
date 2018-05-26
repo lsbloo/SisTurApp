@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.Sqlite.HelperBuscas;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoAtrativoTuristico;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
 import com.example.osvaldoairon.app4so.service.LocalizacaoIntentService;
@@ -40,6 +43,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable
 {
@@ -55,8 +59,8 @@ public class MainActivity extends AppCompatActivity implements Serializable
     private ActionBarDrawerToggle actionBarDrawerToggler;
     private MapGoogleActivity mapFragmento;
     private FragmentManager fragmentManager;
-    private static ArrayList<Coordenadas> list_main;
-    private static EditText edtbusca;
+    private static ArrayList<Municipios> list_main;
+    private static AutoCompleteTextView edtbusca;
     private ImageButton imgBusca;
     private LatLng location;
     private ArrayList<LatLng> list_buscas;
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements Serializable
     private LatLng coordenadasBuscadas;
 
     private HelperBuscas helper;
+    private HelperSQLMunicipios helperSQLMunicipios;
+    private static List<String> list_nome_municipios;
 
 
 
@@ -74,17 +80,34 @@ public class MainActivity extends AppCompatActivity implements Serializable
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        list_main = new ArrayList<Coordenadas>();
+        list_main = new ArrayList<Municipios>();
 
 
         list_buscas = new ArrayList<LatLng>();
+        list_nome_municipios = new ArrayList<String>();
 
 
         iniciarFirebaseDatabase();
         helper = new HelperBuscas(MainActivity.this);
+        helperSQLMunicipios = new HelperSQLMunicipios(MainActivity.this);
+        helperSQLMunicipios.recoverDataSQL();
+        for(int i = 0;i<helperSQLMunicipios.getReturnList().size();i++){
+            list_nome_municipios.add(helperSQLMunicipios.getReturnList().get(i).getNome());
+        }
+        edtbusca=(AutoCompleteTextView)findViewById(R.id.edtLocal);
+
+        if(list_nome_municipios.size()!=0){
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line,list_nome_municipios);
+            edtbusca.setAdapter(adapter);
+            helperSQLMunicipios.limparArray();
+
+        }else{
+            Toast.makeText(this, "Não tem dados no banco!", Toast.LENGTH_SHORT).show();
+        }
 
 
-        edtbusca=(EditText)findViewById(R.id.edtLocal);
+
+
         imgBusca=(ImageButton)findViewById(R.id.imgBuscar);
 
 
@@ -157,6 +180,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
             }
         });
+
 
         /*
         Gerenciador de fragmentos fragmentManager
@@ -243,11 +267,12 @@ public class MainActivity extends AppCompatActivity implements Serializable
         return  actionBarDrawerToggler.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<Coordenadas> recebeArraymain(ArrayList<Coordenadas> list){
+    public ArrayList<Municipios> recebeArraymain(ArrayList<Municipios> list){
 
         if(list!=null){
-//            Toast.makeText(MainActivity.this, "DOIDERA", Toast.LENGTH_SHORT).show();
             list_main = list;
+            Log.d("ZINZINZIZN", "zinzinzin"+list_main.size());
+
             return list_main;
         }
         return null;
@@ -282,7 +307,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
     }
-
 
 
 
