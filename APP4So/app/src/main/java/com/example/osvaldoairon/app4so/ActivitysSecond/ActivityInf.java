@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Fragments.FragmentInfCidade;
+import com.example.osvaldoairon.app4so.Fragments.FragmentInfTurismo;
+import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
@@ -27,6 +29,7 @@ public class ActivityInf extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ArrayList<Municipios> list_cidades;
+    private ArrayList<AtrativosTuristicos> list_pontos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,13 @@ public class ActivityInf extends AppCompatActivity {
         setContentView(R.layout.activity_inf);
 
         list_cidades = (ArrayList<Municipios>) getIntent().getSerializableExtra("arrayCidades");
+        list_pontos = (ArrayList<AtrativosTuristicos>) getIntent().getSerializableExtra("arrayPontos");
 
+        if(list_pontos!=null){
+            FragmentInfTurismo f2 = new FragmentInfTurismo();
+            f2.recebeArray(list_pontos);
+
+        }
         if (list_cidades != null) {
 
             FragmentInfCidade f1 = new FragmentInfCidade();
@@ -58,6 +67,9 @@ public class ActivityInf extends AppCompatActivity {
 
     }
 
-
-
+    @Override
+    protected void onPause() {
+        finish();
+        super.onPause();
+    }
 }

@@ -128,6 +128,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         helperAtratativos = new HelperSQLAtrativos(getActivity());
 
         //helper.reset();
+        //helperAtratativos.reset();
 
         GetJsonMunicipios download = new GetJsonMunicipios();
         download.execute();
@@ -508,6 +509,9 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 LatLng locate = new LatLng(latitude,longitude);
                 map.addMarker(new MarkerOptions().title(helperAtratativos.getReturnList().get(i).getNome()).snippet(helperAtratativos.getReturnList().get(i).getDescricao()).position(locate).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             }
+
+            MainActivity m = new MainActivity();
+            m.recebeArrayAtrativo(helperAtratativos.getReturnList());
         }
 
 

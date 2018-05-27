@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
     private HelperBuscas helper;
     private HelperSQLMunicipios helperSQLMunicipios;
     private static List<String> list_nome_municipios;
+    private static ArrayList<AtrativosTuristicos> list_atrativos_main;
 
 
 
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         list_main = new ArrayList<Municipios>();
+        list_atrativos_main = new ArrayList<AtrativosTuristicos>();
 
 
         list_buscas = new ArrayList<LatLng>();
@@ -143,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
                      */
                     Intent at = new Intent(MainActivity.this, ActivityInf.class);
                     at.putExtra("arrayCidades",list_main);
+                    at.putExtra("arrayPontos", list_atrativos_main);
                     startActivity(at);
                 }else if(id == R.id.rotas){
                     /*
@@ -274,6 +277,15 @@ public class MainActivity extends AppCompatActivity implements Serializable
             Log.d("ZINZINZIZN", "zinzinzin"+list_main.size());
 
             return list_main;
+        }
+        return null;
+    }
+
+    public ArrayList<AtrativosTuristicos> recebeArrayAtrativo(ArrayList<AtrativosTuristicos> list){
+        if(list!=null){
+            list_atrativos_main = list;
+            Log.d("ZYZYZYZY", "zzzzz" + list_atrativos_main.size());
+            return list_atrativos_main;
         }
         return null;
     }
