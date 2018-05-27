@@ -26,9 +26,7 @@ public class HelperSQLMunicipios {
     }
 
     public boolean verificaDado(Municipios city) {
-        /*
-        ERROR NA SAIDA DO DADO SO TA IMPRIMINDO O PRIMEIRO PORRA
-         */
+
         if(list_municipios!=null){
             for(int i = 0 ; i<list_municipios.size();i++){
                 if(city.getNome().equals(list_municipios.get(i).getNome()) && city.getEstado().equals(list_municipios.get(i).getEstado())){

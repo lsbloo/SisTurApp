@@ -34,6 +34,7 @@ import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLAtrativos;
 import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoAtrativoTuristico;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
@@ -99,6 +100,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private static int tipo_mapa=0;
 
     private static HelperSQLMunicipios helper;
+    private static HelperSQLAtrativos helperAtratativos;
+
     private static ArrayList<Municipios> lista_municipios_rest = new ArrayList<Municipios>();
     private static ArrayList<AtrativosTuristicos> lista_atrativos_rest = new ArrayList<AtrativosTuristicos>();
 
@@ -122,6 +125,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         //addPontosTuristicosValeDefinidos();
 
         helper = new HelperSQLMunicipios(getActivity());
+        helperAtratativos = new HelperSQLAtrativos(getActivity());
 
         //helper.reset();
 
@@ -152,6 +156,8 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
+            helperAtratativos.recoverDataSQLAtrativos();
+            salvarDadosRest_atrativos();
             return lista_atrativos_rest;
 
         }
@@ -186,6 +192,13 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
 
+    public void salvarDadosRest_atrativos(){
+        if(lista_atrativos_rest!=null){
+            for(int i = 0 ; i <lista_atrativos_rest.size();i++){
+                helperAtratativos.inserirAtrativo(lista_atrativos_rest.get(i));
+            }
+        }
+    }
     public void salvarDadosRest_city(){
         if(lista_municipios_rest!=null){
             for(int i = 0 ; i<lista_municipios_rest.size();i++){
@@ -483,28 +496,24 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
     }
     public void recuperarDadosPontos(final GoogleMap map){
-        databaseReference.child("Coordenadas-PontoTuristico").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        helperAtratativos.limparArray();
+        helperAtratativos.recoverDataSQLAtrativos();
+        if(helperAtratativos.getReturnList().size()!=0){
 
-                for(DataSnapshot objTurismo: dataSnapshot.getChildren()){
-                    Coordenadas coordenadasTurismo = (Coordenadas)objTurismo.getValue(Coordenadas.class);
-                    list_recover_point.add(coordenadasTurismo);
-                }
-                for(int i = 0 ; i<list_recover_point.size(); i++){
-                    double latitude = list_recover_point.get(i).getLatitude();
-                    double longitude = list_recover_point.get(i).getLongitude();
-                    LatLng locatePoint = new LatLng(latitude,longitude);
-                    map.addMarker(new MarkerOptions().title(list_recover_point.get(i).getNomePontoTuristico()).snippet(list_recover_point.get(i).getDescricao()).position(locatePoint).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-                }
+            for(int i = 0 ; i <helperAtratativos.getReturnList().size();i++){
+
+                double latitude = helperAtratativos.getReturnList().get(i).getLatitude();
+                //Log.v("xdxdxd", "kakakakak"+latitude);
+                double longitude = helperAtratativos.getReturnList().get(i).getLongitude();
+                LatLng locate = new LatLng(latitude,longitude);
+                map.addMarker(new MarkerOptions().title(helperAtratativos.getReturnList().get(i).getNome()).snippet(helperAtratativos.getReturnList().get(i).getDescricao()).position(locate).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             }
+        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+
+
     }
 
-
 }
+

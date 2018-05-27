@@ -1,8 +1,11 @@
 package com.example.osvaldoairon.app4so.Modelo;
 
-public class AtrativosTuristicos {
+import java.io.Serializable;
+
+public class AtrativosTuristicos implements Serializable{
 
     private long id;
+    private long id_sql;
 
 
     public void setId(long id) {
@@ -19,6 +22,15 @@ public class AtrativosTuristicos {
     private String site; // 4
     private String infoContato; // 5
     private String descricao; // 6
+
+
+    public void setId_sql(Long id){
+        this.id_sql = id;
+    }
+
+    public long getId_sql() {
+        return id_sql;
+    }
 
     public String getNome() {
         return nome;

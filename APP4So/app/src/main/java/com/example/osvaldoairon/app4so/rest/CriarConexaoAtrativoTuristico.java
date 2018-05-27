@@ -35,7 +35,7 @@ public class CriarConexaoAtrativoTuristico {
 
 
         try {
-            AtrativosTuristicos atrativos = new AtrativosTuristicos();
+
 
             JSONArray jsonObj = new JSONArray(json);
 
@@ -51,6 +51,9 @@ public class CriarConexaoAtrativoTuristico {
                 double longitude = objArray.getDouble("longitude");
 
                 //Atribui os objetos que estão nas camadas mais baixas
+
+                AtrativosTuristicos atrativos = new AtrativosTuristicos();
+
                 atrativos.setNome(nome);
                 atrativos.setId(id);
                 atrativos.setLatitude(latitude);
