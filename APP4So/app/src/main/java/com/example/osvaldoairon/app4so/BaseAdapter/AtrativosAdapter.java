@@ -57,7 +57,7 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
         TextView site = (TextView)view.findViewById(R.id.site);
 
 
-        nomePonto.setText("Nome: "+at.getNome());
+        nomePonto.setText(at.getNome());
         descricaoPonto.setText(at.getDescricao());
         comochegar.setText("Como chegar?: " +at.getComoChegar());
         info.setText("Informação contato: " +at.getInfoContato());

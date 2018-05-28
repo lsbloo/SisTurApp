@@ -76,21 +76,25 @@ public class ActivityConf extends AppCompatActivity {
                 Intent et = new Intent(ActivityConf.this,MainActivity.class);
                 et.putExtra("mapa",4);
                 startActivity(et);
+                finish();
                 break;
             case 3:
                 Intent at = new Intent(ActivityConf.this,MainActivity.class);
                 at.putExtra("mapa",3);
                 startActivity(at);
+                finish();
                 break;
             case 2:
                 Intent it = new Intent(ActivityConf.this,MainActivity.class);
                 it.putExtra("mapa",2);
                 startActivity(it);
+                finish();
                 break;
             case 1:
                 Intent ot = new Intent(ActivityConf.this,MainActivity.class);
                 ot.putExtra("mapa",1);
                 startActivity(ot);
+                finish();
                 break;
 
 

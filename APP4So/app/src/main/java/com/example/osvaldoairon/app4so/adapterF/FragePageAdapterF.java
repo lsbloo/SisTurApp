@@ -21,7 +21,6 @@ public class FragePageAdapterF extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                Log.d("akpsakps" , "oks");
                 return new FragmentInfTurismo();
 
             case 1:

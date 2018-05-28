@@ -28,6 +28,7 @@ import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.Sqlite.HelperBuscas;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLAtrativos;
 import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoAtrativoTuristico;
 import com.example.osvaldoairon.app4so.rest.CriarConexaoMunicipios;
@@ -71,8 +72,10 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
     private HelperBuscas helper;
     private HelperSQLMunicipios helperSQLMunicipios;
-    private static List<String> list_nome_municipios;
+    private HelperSQLAtrativos helperSQLAtrativos;
+    private static List<String> list_nome;
     private static ArrayList<AtrativosTuristicos> list_atrativos_main;
+
 
 
 
@@ -86,22 +89,26 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
         list_buscas = new ArrayList<LatLng>();
-        list_nome_municipios = new ArrayList<String>();
+        list_nome = new ArrayList<String>();
 
 
         iniciarFirebaseDatabase();
         helper = new HelperBuscas(MainActivity.this);
         helperSQLMunicipios = new HelperSQLMunicipios(MainActivity.this);
+        helperSQLAtrativos = new HelperSQLAtrativos(MainActivity.this);
         helperSQLMunicipios.recoverDataSQL();
+        helperSQLAtrativos.recoverDataSQLAtrativos();
         for(int i = 0;i<helperSQLMunicipios.getReturnList().size();i++){
-            list_nome_municipios.add(helperSQLMunicipios.getReturnList().get(i).getNome());
+            list_nome.add(helperSQLMunicipios.getReturnList().get(i).getNome());
+            list_nome.add(helperSQLAtrativos.getReturnList().get(i).getNome());
         }
         edtbusca=(AutoCompleteTextView)findViewById(R.id.edtLocal);
 
-        if(list_nome_municipios.size()!=0){
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line,list_nome_municipios);
+        if(list_nome.size()!=0){
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_dropdown_item_1line,list_nome);
             edtbusca.setAdapter(adapter);
             helperSQLMunicipios.limparArray();
+            helperSQLAtrativos.limparArray();
 
         }else{
             Toast.makeText(this, "Não tem dados no banco!", Toast.LENGTH_SHORT).show();
@@ -147,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     at.putExtra("arrayCidades",list_main);
                     at.putExtra("arrayPontos", list_atrativos_main);
                     startActivity(at);
+
                 }else if(id == R.id.rotas){
                     /*
                     botao rotas;
@@ -270,7 +278,8 @@ public class MainActivity extends AppCompatActivity implements Serializable
         return  actionBarDrawerToggler.onOptionsItemSelected(item)||super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<Municipios> recebeArraymain(ArrayList<Municipios> list){
+    /*
+     public ArrayList<Municipios> recebeArraymain(ArrayList<Municipios> list){
 
         if(list!=null){
             list_main = list;
@@ -289,6 +298,8 @@ public class MainActivity extends AppCompatActivity implements Serializable
         }
         return null;
     }
+     */
+
 
 
     public MainActivity(){}
@@ -306,13 +317,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
             MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
             act.actived();
             FragmentTransaction fg = fragmentManager.beginTransaction();
-            fg.add(R.id.relativeLayoutx,change.startActivite(), "MapGOOGLE");
-            fg.commitAllowingStateLoss();
-        }else{
-            helper.recoverDataSQL();
-            MapGoogleActivity act = new MapGoogleActivity(MainActivity.this,helper.getReturnList());
-            act.actived();
-            FragmentTransaction fg = fragmentManager.beginTransaction();
             fg.add(R.id.relativeLayoutx,new MapGoogleActivity(), "MapGOOGLE");
             fg.commitAllowingStateLoss();
         }
@@ -320,7 +324,11 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        Log.v("Main Destruida", "Main destruida");
+        super.onDestroy();
+    }
 
     public int recoverType(){
         Intent number = getIntent();
@@ -333,6 +341,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
     @Override
     protected void onPause() {
         Log.d("PauseMain","PauseMain");
+
         super.onPause();
     }
 

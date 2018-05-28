@@ -10,12 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.BaseAdapter.AtrativosAdapter;
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLAtrativos;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 
 import java.util.ArrayList;
 
@@ -23,31 +26,38 @@ public class FragmentInfTurismo extends Fragment {
 
 
     private static View view;
+    private static HelperSQLAtrativos helperSQLAtrativos;
 
     private static ArrayList<AtrativosTuristicos> list_pontos = new ArrayList<AtrativosTuristicos>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        helperSQLAtrativos = new HelperSQLAtrativos(getActivity());
+        helperSQLAtrativos.recoverDataSQLAtrativos();
+
+        Toast.makeText(getActivity(), "Quantidade de AtrativosTuristicos: "+helperSQLAtrativos.getReturnList().size(), Toast.LENGTH_SHORT).show();
+
+
         if(list_pontos!=null){
-
-
                 View  view = inflater.inflate(R.layout.layout_listpontos,container,false);
-                //Toast.makeText(getContext(), ""+list_cidades.size(), Toast.LENGTH_SHORT).show();
                 ListView l1 =view.findViewById(R.id.list_pontos);
-                AtrativosAdapter adapterPontos = new AtrativosAdapter(getContext(),list_pontos);
+                AtrativosAdapter adapterPontos = new AtrativosAdapter(getContext(),helperSQLAtrativos.getReturnList());
                 if(l1!=null){
                     l1.setAdapter(adapterPontos);
+                    try {
+                        finalize();
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
                 }
                 return view;
-            }
+        }
 
-
-
-        view = inflater.inflate(R.layout.activity_fragment_inf_turismo,container,false);
-
-        return view;
+        return null;
     }
+
+
 
     @Nullable
     @Override
@@ -63,6 +73,13 @@ public class FragmentInfTurismo extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        helperSQLAtrativos.limparArray();
+        Log.v("KAPSAKPSKS", "kkkkkkk");
+        super.onDestroy();
     }
 
     public ArrayList<AtrativosTuristicos> recebeArray(ArrayList<AtrativosTuristicos> list){

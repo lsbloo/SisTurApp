@@ -21,6 +21,7 @@ import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
+import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
@@ -44,20 +45,28 @@ public class FragmentInfCidade extends Fragment implements BaseSliderView.OnSlid
     private StorageReference fotoRef;
     private static Uri urlUri;
     private static ArrayList<Municipios> list_cidades = new ArrayList<Municipios>();
+    private static HelperSQLMunicipios helperSQLMunicipios;
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            helperSQLMunicipios = new HelperSQLMunicipios(getActivity());
+            helperSQLMunicipios.recoverDataSQL();
 
-
+        Toast.makeText(getActivity(), "Quantidade de Municipios: "+helperSQLMunicipios.getReturnList().size(), Toast.LENGTH_SHORT).show();
         if(list_cidades!=null){
             View  view = inflater.inflate(R.layout.layout_listcity,container,false);
-            //Toast.makeText(getContext(), ""+list_cidades.size(), Toast.LENGTH_SHORT).show();
             ListView l1 =view.findViewById(R.id.list_city);
-            CoordenadasAdapterCidades adapterCidades = new CoordenadasAdapterCidades(list_cidades,getContext());
+            CoordenadasAdapterCidades adapterCidades = new CoordenadasAdapterCidades(helperSQLMunicipios.getReturnList(),getContext());
             if(l1!=null){
                 l1.setAdapter(adapterCidades);
+                try {
+                    finalize();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
             }
             return view;
         }
@@ -111,6 +120,7 @@ public class FragmentInfCidade extends Fragment implements BaseSliderView.OnSlid
         }
         return list;
     }
+
 
 
 

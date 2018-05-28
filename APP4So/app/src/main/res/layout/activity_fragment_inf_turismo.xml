@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="400dp"
     tools:context=".Fragments.FragmentInfTurismo">
 
 
@@ -11,10 +11,9 @@
         android:id="@+id/card"
         android:layout_width="300dp"
         android:layout_height="165dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="39dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="82dp"
         android:background="#ffffff"
         android:shape="ring"
         app:cardCornerRadius="27dp">
@@ -39,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_below="@id/card"
-        android:layout_marginTop="214dp"
+        android:layout_marginTop="300dp"
         android:textSize="18sp"
         android:textStyle="bold" />
 
