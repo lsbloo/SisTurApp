@@ -14,6 +14,53 @@ public class Municipios implements Serializable{
     private double longitude;
     private String estado;
     private String site;
+    private String descricao;
+
+
+    private String informacoesRelevantes;
+    private String email_responsavel_pelo_preenchimento;
+    private String nome_responsavel_pelo_preenchimento;
+    private String contato_responsavel_pelo_preenchimento;
+    private String fontes_informacoes;
+
+
+    public void setInformacoesRelevantes(String inf){
+        this.informacoesRelevantes=inf;
+    }
+    public String getInformacoesRelevantes(){
+        return informacoesRelevantes;
+    }
+    public void setDescricao(String descricao){
+        this.descricao=descricao;
+    }
+    public String getDescricao(){
+        return descricao;
+    }
+    public void setEmail_responsavel_pelo_preenchimento(String email_responsavel){
+        this.email_responsavel_pelo_preenchimento=email_responsavel;
+    }
+    public String getEmail_responsavel_pelo_preenchimento(){
+        return email_responsavel_pelo_preenchimento;
+    }
+
+    public void setNome_responsavel_pelo_preenchimento(String nome_responsavel){
+        this.nome_responsavel_pelo_preenchimento=nome_responsavel;
+    }
+    public String getNome_responsavel_pelo_preenchimento(){
+        return nome_responsavel_pelo_preenchimento;
+    }
+    public void setContato_responsavel_pelo_preenchimento(String contato_responsavel){
+        this.contato_responsavel_pelo_preenchimento=contato_responsavel;
+    }
+    public String getContato_responsavel_pelo_preenchimento(){
+        return contato_responsavel_pelo_preenchimento;
+    }
+    public void setFontes_informacoes(String inf){
+        this.fontes_informacoes=inf;
+    }
+    public String getFontes_informacoes(){
+        return fontes_informacoes;
+    }
 
     public void setId_sql(long id ){
         this.id_sql=id;

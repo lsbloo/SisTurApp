@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
         helperSQLAtrativos.recoverDataSQLAtrativos();
         for(int i = 0;i<helperSQLMunicipios.getReturnList().size();i++){
             list_nome.add(helperSQLMunicipios.getReturnList().get(i).getNome());
-            list_nome.add(helperSQLAtrativos.getReturnList().get(i).getNome());
+            //list_nome.add(helperSQLAtrativos.getReturnList().get(i).getNome());
         }
         edtbusca=(AutoCompleteTextView)findViewById(R.id.edtLocal);
 
@@ -121,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
 
         EventBus.getDefault().register(this);
-
-
 
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawerLayout);

@@ -53,6 +53,13 @@ public class HelperSQLMunicipios {
             cv.put(municipiossql.SITE, municipios.getSite());
             cv.put(municipiossql.POPULACAO, municipios.getPopulacao());
 
+            cv.put(municipiossql.FONTE_INFORMACOES,municipios.getFontes_informacoes());
+            cv.put(municipiossql.EMAIL_RESPONSAVEL,municipios.getEmail_responsavel_pelo_preenchimento());
+            cv.put(municipiossql.NOME_RESPONSAVEL,municipios.getNome_responsavel_pelo_preenchimento());
+            cv.put(municipiossql.INFORMACOES_RELEVANTES,municipios.getInformacoesRelevantes());
+            cv.put(municipiossql.CONTATO_RESPONSAVEL,municipios.getContato_responsavel_pelo_preenchimento());
+
+
 
             long id = db.insert(municipiossql.NOME_TABELA, null, cv);
 
@@ -87,6 +94,11 @@ public class HelperSQLMunicipios {
             int inddexColunaPopulacao = cursor.getColumnIndex(municipiossql.POPULACAO);
             int indexColunaSite = cursor.getColumnIndex(municipiossql.SITE);
             int indexColunaAreaTerritorial = cursor.getColumnIndex(municipiossql.AREA_TERRITORIAL);
+            int indexColunaFonteInformacoes = cursor.getColumnIndex(municipiossql.FONTE_INFORMACOES);
+            int indexEmailResponsavel = cursor.getColumnIndex(municipiossql.EMAIL_RESPONSAVEL);
+            int indexNomeResponsavel = cursor.getColumnIndex(municipiossql.NOME_RESPONSAVEL);
+            int indexInformacoesRelevantes = cursor.getColumnIndex(municipiossql.INFORMACOES_RELEVANTES);
+            int indexContatoResponsavel = cursor.getColumnIndex(municipiossql.CONTATO_RESPONSAVEL);
 
             Double latitude = cursor.getDouble(indexColunaLatitude);
             Double longitude = cursor.getDouble(indexColunaLongitude);
@@ -96,6 +108,12 @@ public class HelperSQLMunicipios {
             int populacao = cursor.getInt(inddexColunaPopulacao);
             String site = cursor.getString(indexColunaSite);
             String area = cursor.getString(indexColunaAreaTerritorial);
+            String fonteInf = cursor.getString(indexColunaFonteInformacoes);
+            String emailResponsavel = cursor.getString(indexEmailResponsavel);
+            String nomeResponsavel = cursor.getString(indexNomeResponsavel);
+            String informacoesRelevantes =cursor.getString(indexInformacoesRelevantes);
+            String contato_responsavel = cursor.getString(indexContatoResponsavel);
+
 
             long municipiosid = cursor.getLong(indexID);
 
@@ -110,6 +128,11 @@ public class HelperSQLMunicipios {
             municipiosdb.setSite(site);
             municipiosdb.setAreaTerritorial(area);
             municipiosdb.setId_sql(municipiosid);
+            municipiosdb.setFontes_informacoes(fonteInf);
+            municipiosdb.setEmail_responsavel_pelo_preenchimento(emailResponsavel);
+            municipiosdb.setNome_responsavel_pelo_preenchimento(nomeResponsavel);
+            municipiosdb.setInformacoesRelevantes(informacoesRelevantes);
+            municipiosdb.setContato_responsavel_pelo_preenchimento(contato_responsavel);
 
 
 

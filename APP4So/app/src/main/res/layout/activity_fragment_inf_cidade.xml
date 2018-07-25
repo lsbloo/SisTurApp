@@ -70,5 +70,42 @@
             android:textStyle="bold|italic"
             android:typeface="sans" />
 
+        <TextView
+            android:id="@+id/informacoesRelevante"
+            android:layout_below="@+id/areaTerritorial"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:typeface="sans"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nome_responsavel"
+            android:layout_below="@+id/informacoesRelevante"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:typeface="sans"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/contato_responsavel"
+            android:layout_below="@+id/nome_responsavel"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:typeface="sans"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email_responsavel"
+            android:layout_below="@+id/contato_responsavel"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:typeface="sans"
+            />
+
 
 </RelativeLayout>

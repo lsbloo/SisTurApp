@@ -153,7 +153,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             CriarConexaoAtrativoTuristico utilat = new CriarConexaoAtrativoTuristico();
 
             try {
-                lista_atrativos_rest = utilat.getInformacao("http://192.168.31.143:8080/atrativosTuristicos");
+                lista_atrativos_rest = utilat.getInformacao("http://192.168.0.104:8080/atrativosTuristicos");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
@@ -178,7 +178,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
             try {
-                lista_municipios_rest=util.getInformacao("http://192.168.31.143:8080/municipios");
+                lista_municipios_rest=util.getInformacao("http://192.168.0.104:8080/municipios");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }

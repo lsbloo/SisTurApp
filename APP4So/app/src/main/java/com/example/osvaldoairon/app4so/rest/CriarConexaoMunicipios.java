@@ -40,7 +40,7 @@ public class CriarConexaoMunicipios {
 
             for(int i = 0 ; i<jsonObj.length();i++){
                 JSONObject objArray = jsonObj.getJSONObject(i);
-                String nome = objArray.getString("nome");
+                String nome = objArray.getString("nomecidade");
                 Long id = objArray.getLong("id");
                 String areaTerritorial = objArray.getString("areaTerritorial");
                 String cep = objArray.getString("cep");
@@ -49,11 +49,17 @@ public class CriarConexaoMunicipios {
                 int populacao = objArray.getInt("populacao");
                 double latitude = objArray.getDouble("latitude");
                 double longitude = objArray.getDouble("longitude");
+                String informacoes_relevantes = objArray.getString("informacoesRelevantes");
+                String email_responsavel = objArray.getString("email_responsavel");
+                String nome_responsavel = objArray.getString("nome_responsavel");
+                String contato_responsavel = objArray.getString("contatos_responsavel");
+                String fonte_inf = objArray.getString("fonte_informacoes");
 
                 //Atribui os objetos que estão nas camadas mais baixas
                 Municipios municipios = new Municipios();
                 municipios.setNome(nome);
                 municipios.setId(id);
+
                 municipios.setAreaTerritorial(areaTerritorial);
                 municipios.setCep(cep);
                 municipios.setPopulacao(populacao);
@@ -61,9 +67,14 @@ public class CriarConexaoMunicipios {
                 municipios.setLongitude(longitude);
                 municipios.setEstado(estado);
                 municipios.setSite(site);
+                municipios.setInformacoesRelevantes(informacoes_relevantes);
+                municipios.setEmail_responsavel_pelo_preenchimento(email_responsavel);
+                municipios.setNome_responsavel_pelo_preenchimento(nome_responsavel);
+                municipios.setContato_responsavel_pelo_preenchimento(contato_responsavel);
+                municipios.setFontes_informacoes(fonte_inf);
 
-                Log.v("NOMES",""+nome);
-                Log.v("CEPS", ""+cep);
+                //Log.v("NOMES",""+nome);
+                //Log.v("CEPS", ""+cep);
 
                 lista_municipios.add(municipios);
 

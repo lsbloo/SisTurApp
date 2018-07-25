@@ -55,13 +55,22 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
         TextView comochegar = (TextView)view.findViewById(R.id.comoChegar);
         TextView info = (TextView)view.findViewById(R.id.infocontato);
         TextView site = (TextView)view.findViewById(R.id.site);
-
+        TextView informacoesRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
+        TextView nome_responsavel_at = (TextView)view.findViewById(R.id.nome_responsavel_atrativo);
+        TextView email_responsavel_atrativo = (TextView)view.findViewById(R.id.email_responsavel_atrativo);
+        TextView contato_responsavel_atrativo = (TextView)view.findViewById(R.id.contato_responsavel_atrativo);
+        TextView fonte_inf = (TextView)view.findViewById(R.id.fonte_inf);
 
         nomePonto.setText(at.getNome());
         descricaoPonto.setText(at.getDescricao());
         comochegar.setText("Como chegar?: " +at.getComoChegar());
         info.setText("Informação contato: " +at.getInfoContato());
         site.setText("Site: " +at.getSite());
+        informacoesRelevante.setText("Informações Relevantes: "+at.getInformacoesRelevantes());
+        nome_responsavel_at.setText("Responsavel Atrativo: "+at.getNome_responsavel_atrativo());
+        email_responsavel_atrativo.setText("Email Responsavel do Atrativo: "+at.getEmail_responsavel_atrativo());
+        contato_responsavel_atrativo.setText("Contato Responsavel Atrativo: "+at.getContato_responsavel_atrativo());
+        fonte_inf.setText("Fonte de Informações: "+at.getFonteInformacoes());
 
         return view;
     }

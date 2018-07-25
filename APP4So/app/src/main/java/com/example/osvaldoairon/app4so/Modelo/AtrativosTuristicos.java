@@ -23,6 +23,66 @@ public class AtrativosTuristicos implements Serializable{
     private String infoContato; // 5
     private String descricao; // 6
 
+    private String informacoesRelevantes;
+    private String nome_responsavel_preenchimento;
+    private String contato_responsavel_preenchimento;
+    private String fonteInformacoes;
+    private String nome_responsavel_atrativo;
+    private String contato_responsavel_atrativo;
+    private String email_responsavel_preenchimento;
+    private String email_responsavel_atrativo;
+
+
+    public void setInformacoesRelevantes(String informacoesRelevantes1){
+        this.informacoesRelevantes=informacoesRelevantes1;
+    }
+    public String getInformacoesRelevantes(){
+        return informacoesRelevantes;
+    }
+    public void setNome_responsavel_preenchimento(String nome_responsavel){
+        this.nome_responsavel_preenchimento=nome_responsavel;
+    }
+
+    public String getNome_responsavel_preenchimento(){
+        return nome_responsavel_preenchimento;
+    }
+    public void setContato_responsavel_preenchimento(String contato_responsavel_preenchimento1){
+        this.contato_responsavel_preenchimento=contato_responsavel_preenchimento1;
+    }
+    public String getContato_responsavel_preenchimento(){
+        return contato_responsavel_preenchimento;
+    }
+    public void setFonteInformacoes(String fonteInformacoes1){
+        this.fonteInformacoes=fonteInformacoes1;
+    }
+    public String getFonteInformacoes(){
+        return fonteInformacoes;
+    }
+    public void setNome_responsavel_atrativo(String nome_responsavel_atrativo){
+        this.nome_responsavel_atrativo=nome_responsavel_atrativo;
+    }
+    public String getNome_responsavel_atrativo(){
+        return nome_responsavel_atrativo;
+    }
+    public void setContato_responsavel_atrativo(String contato_responsavel_atrativo1){
+        this.contato_responsavel_atrativo=contato_responsavel_atrativo1;
+    }
+    public String getContato_responsavel_atrativo(){
+        return contato_responsavel_atrativo;
+    }
+    public void setEmail_responsavel_preenchimento(String email_responsavel_preenchimento){
+        this.email_responsavel_preenchimento=email_responsavel_preenchimento;
+    }
+    public String getEmail_responsavel_preenchimento(){
+        return email_responsavel_preenchimento;
+    }
+    public void setEmail_responsavel_atrativo(String email_responsavel_atrativo1){
+        this.email_responsavel_atrativo=email_responsavel_atrativo1;
+    }
+    public String getEmail_responsavel_atrativo(){
+        return email_responsavel_atrativo;
+    }
+
 
     public void setId_sql(Long id){
         this.id_sql = id;
@@ -86,7 +146,6 @@ public class AtrativosTuristicos implements Serializable{
         setLatitude(latitude);
         setLongitude(longitude);
         setSite(site);
-
     }
     public String getDescricao() {
         return descricao;

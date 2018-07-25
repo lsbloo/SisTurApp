@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">App4Society-Turismo</string>
     <string name="title_activity_map_google">Map</string>
-    <string name="search_city">Pesquisar Municipios?</string>
+    <string name="search_city">Pesquisar locais de Municipios?free </string>
 
     <string name="Abr">Abrir Navegação</string>
     <string name="Fec">Fechar Navegação</string>

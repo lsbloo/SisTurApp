@@ -78,5 +78,51 @@
         android:textStyle="bold|italic"
         android:typeface="sans" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inf_relevante"
+        android:layout_below="@+id/site"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nome_responsavel_atrativo"
+        android:layout_below="@+id/inf_relevante"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_responsavel_atrativo"
+        android:layout_below="@+id/nome_responsavel_atrativo"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contato_responsavel_atrativo"
+        android:layout_below="@+id/email_responsavel_atrativo"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fonte_inf"
+        android:layout_below="@+id/contato_responsavel_atrativo"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        android:typeface="sans"
+        />
+
 
 </RelativeLayout>

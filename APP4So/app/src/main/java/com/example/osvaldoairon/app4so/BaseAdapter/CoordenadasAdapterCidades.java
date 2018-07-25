@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -86,12 +88,25 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
 
         TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
         TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
-        //final ImageView imgCidade=(ImageView)view.findViewById(R.id.imgsrcc);
+
+        TextView infRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
+        TextView nomeResponsavel = (TextView)view.findViewById(R.id.nome_responsavel);
+        TextView emailResponsavel = (TextView)view.findViewById(R.id.email_responsavel);
+        TextView contatoResponsavel = (TextView)view.findViewById(R.id.contato_responsavel);
+
+
+        //final ImageView imgCidade=(ImageView)view.findViewById(R.id.imgsrcc)
 
         nomeCidade.setText("Cidade: " + municipios.getNome());
         descricaoCidade.setText("Estado: " + municipios.getEstado());
         populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"habitantes");
         areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial());
+        infRelevante.setText("Informações Relevantes: " +municipios.getInformacoesRelevantes());
+        nomeResponsavel.setText("Nome do Responsavel pelo preenchimento: " +municipios.getNome_responsavel_pelo_preenchimento());
+        emailResponsavel.setText("Email do Responsavel pelo preenchimento: " +municipios.getEmail_responsavel_pelo_preenchimento());
+        contatoResponsavel.setText("Contato do Responsavel: " +municipios.getContato_responsavel_pelo_preenchimento());
+
+
 
        sliderLayout=(SliderLayout)view.findViewById(R.id.slidercidade);
 
