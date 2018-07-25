@@ -5,10 +5,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 public class SqlAtrativosTuristicos extends SQLiteOpenHelper{
 
-    public static final String NOME_BANCO = "atrativosTuristicos";
-    public static final int VERSAO_BANCO = 10;
+    public static final String NOME_BANCO = "atrativosTuristicosData";
+    public static final int VERSAO_BANCO = 14;
     public static final String ID_ = "_id";
-    public static final String NOME_TABELA = "atrativosTuristicos";
+    public static final String NOME_TABELA = "atrativosTuristicos1";
     public static final String NOME_ATRATIVOS = "nomeAtratativo";
     public static final String COMO_CHEGAR = "comoChegar";
     public static final String DESCRICAO = "descricao";
@@ -36,7 +36,7 @@ public class SqlAtrativosTuristicos extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + NOME_TABELA + " ( " + ID_ + " INTEGER PRIMARY KEY AUTOINCREMENT , " + LATITUDE+ " REAL, " + LONGITUDE + " REAL, "+ NOME_ATRATIVOS + " TEXT NOT NULL, " + COMO_CHEGAR + " TEXT NOT NULL, " + DESCRICAO + " TEXT NOT NULL, "
-                + INFO_CONTATO + " TEXT NOT NULL, " + SITE + " TEXT NOT NULL , "+INFORMACOES_RELEVANTES+ "TEXT NOT NULL, "+NOME_RESPONSAVEL_PREENCHIMENTO+"TEXT NOT NULL, "+CONTATO_RESPONSAVEL_PREENCHIMENTO+"TEXT NOT NULL, "+FONTE_INFORMACOES+"TEXT NOT NULL, "+NOME_RESPONSAVEL_ATRATIVO+" TEXT NOT NULL ,"+CONTATO_RESPONSAVEL_ATRATIVO+"TEXT NOT NULL , "+EMAIL_RESPONSAVEL_PREENCHIMENTO+" TEXT NOT NULL , "+EMAIL_RESPONSAVEL_ATRATIVO+" TEXT NOT NULL)");
+                + INFO_CONTATO + " TEXT NOT NULL, " + SITE + " TEXT NOT NULL , "+ INFORMACOES_RELEVANTES + " TEXT NOT NULL, "+ NOME_RESPONSAVEL_PREENCHIMENTO + " TEXT NOT NULL, "+ CONTATO_RESPONSAVEL_PREENCHIMENTO +" TEXT NOT NULL, "+ FONTE_INFORMACOES +" TEXT NOT NULL, "+ NOME_RESPONSAVEL_ATRATIVO +" TEXT NOT NULL , "+ CONTATO_RESPONSAVEL_ATRATIVO +" TEXT NOT NULL , "+ EMAIL_RESPONSAVEL_PREENCHIMENTO +" TEXT NOT NULL , "+ EMAIL_RESPONSAVEL_ATRATIVO +" TEXT NOT NULL )");
 
     }
 

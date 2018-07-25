@@ -49,6 +49,14 @@ public class CriarConexaoAtrativoTuristico {
                 String site = objArray.getString("site");
                 double latitude = objArray.getDouble("latitude");
                 double longitude = objArray.getDouble("longitude");
+                String nome_responsavel_preenchimento=objArray.getString("nome_responsavel_preenchimento");
+                String inf_relevante = objArray.getString("informacoes_relevantes");
+                String contato_r_preenchimento = objArray.getString("contato_responsavel_preenchimento");
+                String fonte_inf = objArray.getString("fonte_informacoes");
+                String nome_r_atrativo = objArray.getString("nome_responsavel_atrativo");
+                String contato_r_atrativo = objArray.getString("contato_responsavel_atrativo");
+                String email_r_atrativo = objArray.getString("email_reponsavel_atrativo");
+                String email_responsavel_preenchimento = objArray.getString("email_responsavel");
 
                 //Atribui os objetos que estão nas camadas mais baixas
 
@@ -62,6 +70,14 @@ public class CriarConexaoAtrativoTuristico {
                 atrativos.setComoChegar(comoChegar);
                 atrativos.setDescricao(descricao);
                 atrativos.setInfoContato(infoContato);
+                atrativos.setNome_responsavel_preenchimento(nome_responsavel_preenchimento);
+                atrativos.setInformacoesRelevantes(inf_relevante);
+                atrativos.setContato_responsavel_preenchimento(contato_r_preenchimento);
+                atrativos.setFonteInformacoes(fonte_inf);
+                atrativos.setNome_responsavel_atrativo(nome_r_atrativo);
+                atrativos.setContato_responsavel_atrativo(contato_r_atrativo);
+                atrativos.setEmail_responsavel_atrativo(email_r_atrativo);
+                atrativos.setEmail_responsavel_preenchimento(email_responsavel_preenchimento);
 
 
                 lista_atrativos.add(atrativos);

@@ -50,7 +50,6 @@ public class HelperSQLAtrativos {
             cv.put(sqlAtrativosTuristicos.LONGITUDE, atrativosTuristicos.getLongitude());
             cv.put(sqlAtrativosTuristicos.SITE, atrativosTuristicos.getSite());
             cv.put(sqlAtrativosTuristicos.COMO_CHEGAR,atrativosTuristicos.getComoChegar());
-
             cv.put(sqlAtrativosTuristicos.INFORMACOES_RELEVANTES,atrativosTuristicos.getInformacoesRelevantes());
             cv.put(sqlAtrativosTuristicos.NOME_RESPONSAVEL_PREENCHIMENTO,atrativosTuristicos.getNome_responsavel_preenchimento());
             cv.put(sqlAtrativosTuristicos.CONTATO_RESPONSAVEL_PREENCHIMENTO,atrativosTuristicos.getContato_responsavel_preenchimento());
