@@ -11,7 +11,7 @@
 
     <string-array name="secoes">
         <item> Pontos Turisticos </item>
-        <item>Cidades</item>
+        <item>Municipios</item>
     </string-array>
 
     <string-array name="mapasarray">

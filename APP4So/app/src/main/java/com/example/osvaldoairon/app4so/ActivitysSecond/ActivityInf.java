@@ -1,11 +1,13 @@
 package com.example.osvaldoairon.app4so.ActivitysSecond;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ public class ActivityInf extends AppCompatActivity {
     private static ArrayList<Municipios> list_cidades ;
     private static ArrayList<AtrativosTuristicos> list_pontos ;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,22 +66,25 @@ public class ActivityInf extends AppCompatActivity {
             Toast.makeText(this, "Nenhuma informação disponivel", Toast.LENGTH_SHORT).show();
         }
          */
+        setupViewPager();
 
 
+    }
+
+    private  void setupViewPager(){
 
 
+       // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setHomeButtonEnabled(true);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+
+
 
         viewPager.setAdapter(new FragePageAdapterF(getSupportFragmentManager(), getResources().getStringArray(R.array.secoes)));
 
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-
 
     }
 
