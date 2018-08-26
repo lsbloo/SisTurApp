@@ -153,7 +153,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             CriarConexaoAtrativoTuristico utilat = new CriarConexaoAtrativoTuristico();
 
             try {
-                lista_atrativos_rest = utilat.getInformacao("http://192.168.0.104:8080/atrativosTuristicos");
+                lista_atrativos_rest = utilat.getInformacao("https://apps4society.herokuapp.com/rest_atrativosTuristicos");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
@@ -178,7 +178,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
             try {
-                lista_municipios_rest=util.getInformacao("http://192.168.0.104:8080/municipios");
+                lista_municipios_rest=util.getInformacao("https://apps4society.herokuapp.com/rest_municipios");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
@@ -468,11 +468,24 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         Log.d("ACT","act");
     }
 
+    public void eventListener(final GoogleMap map){
+        map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+
+
+            }
+        });
+    }
+
+
+
     public void recuperarDadosCidades(final GoogleMap map) {
         helper.limparArray();
         helper.recoverDataSQL();
         if(helper.getReturnList().size()!=0){
             for (int i = 0; i < helper.getReturnList().size(); i++) {
+                Toast.makeText(getActivity(), "Oii "+helper.getReturnList().get(i).getFotosBit(), Toast.LENGTH_SHORT).show();
                 double latitude = helper.getReturnList().get(i).getLatitude();
                 double longitude = helper.getReturnList().get(i).getLongitude();
                 LatLng locate = new LatLng(latitude, longitude);
@@ -501,7 +514,6 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             for(int i = 0 ; i <helperAtratativos.getReturnList().size();i++){
 
                 double latitude = helperAtratativos.getReturnList().get(i).getLatitude();
-                //Log.v("xdxdxd", "kakakakak"+latitude);
                 double longitude = helperAtratativos.getReturnList().get(i).getLongitude();
                 LatLng locate = new LatLng(latitude,longitude);
                 map.addMarker(new MarkerOptions().title(helperAtratativos.getReturnList().get(i).getNome()).snippet(helperAtratativos.getReturnList().get(i).getDescricao()).position(locate).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));

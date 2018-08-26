@@ -6,10 +6,11 @@ import android.content.Context;
 
 public class SqlMunicipios extends SQLiteOpenHelper {
 
-    public static final String NOME_BANCO="municipiosApp4Society";
-    public static final int VERSAO_BANCO = 10;
+    public static final String NOME_BANCO="municipiosSisTUr";
+    public static final int VERSAO_BANCO = 15;
     public static final String NOME_TABELA = "municipios";
     public static final String NOME_MUNICIPIO = "municipio_nome";
+    public static final String IMAGEM_CTY = "imagens_municipio";
     public static final String ESTADO = "estado";
     public static final String AREA_TERRITORIAL = "area_territorial";
     public static final String CEP = "cep";
@@ -30,7 +31,7 @@ public class SqlMunicipios extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("CREATE TABLE IF NOT EXISTS " + NOME_TABELA + " ( " + COLUNA_ID_BANCO + " INTEGER PRIMARY KEY AUTOINCREMENT , " + LATITUDE+ " REAL, " + LONGITUDE + " REAL, "+ NOME_MUNICIPIO + " TEXT NOT NULL, " + ESTADO + " TEXT NOT NULL, " + AREA_TERRITORIAL + " TEXT NOT NULL, "
-                + CEP + " TEXT NOT NULL, " + SITE + " TEXT NOT NULL, " + POPULACAO + " INTEGER , " + INFORMACOES_RELEVANTES+" TEXT , "+NOME_RESPONSAVEL+" TEXT ,"+CONTATO_RESPONSAVEL+" TEXT , "+EMAIL_RESPONSAVEL+" TEXT ,"+FONTE_INFORMACOES+" TEXT )");
+                + CEP + " TEXT NOT NULL, "+IMAGEM_CTY+" BLOB ," + SITE + " TEXT NOT NULL, " + POPULACAO + " INTEGER , " + INFORMACOES_RELEVANTES+" TEXT , "+NOME_RESPONSAVEL+" TEXT ,"+CONTATO_RESPONSAVEL+" TEXT , "+EMAIL_RESPONSAVEL+" TEXT ,"+FONTE_INFORMACOES+" TEXT )");
     }
 
     public SqlMunicipios(Context context){

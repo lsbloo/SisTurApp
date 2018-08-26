@@ -33,7 +33,7 @@ public class ConnectREST {
             conexao = (HttpURLConnection) apiurl.openConnection(); // faz a chamada da conexao
             conexao.setRequestMethod("GET"); // define o parametro dela como "GET"
             conexao.setReadTimeout(30000);
-            conexao.setConnectTimeout(30000);
+            conexao.setConnectTimeout(200000);
             conexao.connect(); // conexao
 
             codigo = conexao.getResponseCode();

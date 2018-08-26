@@ -5,11 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.example.osvaldoairon.app4so.Util.TransformadorImg;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -17,12 +21,40 @@ import java.util.ArrayList;
 public class HelperSQLMunicipios {
 
     private SqlMunicipios municipiossql;
+    private static TransformadorImg transformadorImg;
 
     private ArrayList<Municipios> list_municipios = new ArrayList<Municipios>();
 
 
     public HelperSQLMunicipios(Context ctx){
         municipiossql = new SqlMunicipios(ctx);
+
+
+    }
+
+    public byte[] transformBityMap(String url){
+        /*
+        Reponsavel por pegar uma imagem Bitmap gerada na classe Transformador
+        e transformar ela em um byte[] array;
+        é necessario para o armazenamento no sqlite;
+        tipo de dado da imagem {blob};
+        é interessante recuperar essas imagens do bd uma vez que se o dado
+        do municipio ja tiver sido inserido, nao fazer uma nova requisição de imagem;
+
+         */
+        transformadorImg = new TransformadorImg();
+
+        Bitmap img = transformadorImg.doInBackground(url);
+
+
+        ByteArrayOutputStream s = new ByteArrayOutputStream();
+
+        img.compress(Bitmap.CompressFormat.JPEG,100,s);
+
+        byte[] imagemByte = s.toByteArray();
+
+        return imagemByte;
+
     }
 
     public boolean verificaDado(Municipios city) {
@@ -44,6 +76,8 @@ public class HelperSQLMunicipios {
             SQLiteDatabase db = municipiossql.getWritableDatabase();
             ContentValues cv = new ContentValues();
 
+            byte[] saida_ = transformBityMap(municipios.getImgUrl());
+
             cv.put(municipiossql.LATITUDE, municipios.getLatitude());
             cv.put(municipiossql.LONGITUDE, municipios.getLongitude());
             cv.put(municipiossql.NOME_MUNICIPIO,municipios.getNome());
@@ -52,6 +86,8 @@ public class HelperSQLMunicipios {
             cv.put(municipiossql.AREA_TERRITORIAL, municipios.getAreaTerritorial());
             cv.put(municipiossql.SITE, municipios.getSite());
             cv.put(municipiossql.POPULACAO, municipios.getPopulacao());
+
+            cv.put(municipiossql.IMAGEM_CTY,saida_);
 
             cv.put(municipiossql.FONTE_INFORMACOES,municipios.getFontes_informacoes());
             cv.put(municipiossql.EMAIL_RESPONSAVEL,municipios.getEmail_responsavel_pelo_preenchimento());
@@ -99,6 +135,7 @@ public class HelperSQLMunicipios {
             int indexNomeResponsavel = cursor.getColumnIndex(municipiossql.NOME_RESPONSAVEL);
             int indexInformacoesRelevantes = cursor.getColumnIndex(municipiossql.INFORMACOES_RELEVANTES);
             int indexContatoResponsavel = cursor.getColumnIndex(municipiossql.CONTATO_RESPONSAVEL);
+            int indexFotos_city = cursor.getColumnIndex(municipiossql.IMAGEM_CTY);
 
             Double latitude = cursor.getDouble(indexColunaLatitude);
             Double longitude = cursor.getDouble(indexColunaLongitude);
@@ -113,12 +150,18 @@ public class HelperSQLMunicipios {
             String nomeResponsavel = cursor.getString(indexNomeResponsavel);
             String informacoesRelevantes =cursor.getString(indexInformacoesRelevantes);
             String contato_responsavel = cursor.getString(indexContatoResponsavel);
+            byte[] fotos = cursor.getBlob(indexFotos_city);
 
 
             long municipiosid = cursor.getLong(indexID);
 
             Municipios municipiosdb = new Municipios();
 
+
+            Bitmap bit = convertImgDBtoBitmap(fotos);
+            if(bit!=null){
+                municipiosdb.setFotosBit(bit);
+            }
             municipiosdb.setLatitude(latitude);
             municipiosdb.setLongitude(longitude);
             municipiosdb.setNome(nome);
@@ -146,7 +189,9 @@ public class HelperSQLMunicipios {
 
     }
 
+
     public ArrayList<Municipios> getReturnList(){
+
         return list_municipios;
     }
 
@@ -174,4 +219,14 @@ public class HelperSQLMunicipios {
     public  void limparArray(){
         list_municipios.clear();
     }
+
+
+    public Bitmap convertImgDBtoBitmap(byte[] img){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
+        if(bitmap!=null){
+            Log.d("BITMAP","O bitmap ta ok!");
+        }
+        return bitmap;
+    }
+
 }

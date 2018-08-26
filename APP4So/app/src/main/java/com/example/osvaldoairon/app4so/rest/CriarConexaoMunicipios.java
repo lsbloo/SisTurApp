@@ -1,5 +1,7 @@
 package com.example.osvaldoairon.app4so.rest;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -42,6 +44,7 @@ public class CriarConexaoMunicipios {
                 JSONObject objArray = jsonObj.getJSONObject(i);
                 String nome = objArray.getString("nomecidade");
                 Long id = objArray.getLong("id");
+                String imgUrl = objArray.getString("imgUrl");
                 String areaTerritorial = objArray.getString("areaTerritorial");
                 String cep = objArray.getString("cep");
                 String estado = objArray.getString("estado");
@@ -60,6 +63,7 @@ public class CriarConexaoMunicipios {
                 municipios.setNome(nome);
                 municipios.setId(id);
 
+                municipios.setImgUrl(imgUrl);
                 municipios.setAreaTerritorial(areaTerritorial);
                 municipios.setCep(cep);
                 municipios.setPopulacao(populacao);
@@ -88,6 +92,8 @@ public class CriarConexaoMunicipios {
         return null;
 
     }
+
+
 
 
 }

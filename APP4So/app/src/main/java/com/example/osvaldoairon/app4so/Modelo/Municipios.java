@@ -1,11 +1,19 @@
 package com.example.osvaldoairon.app4so.Modelo;
 
+import android.graphics.Bitmap;
+import android.content.Context;
+import android.provider.MediaStore;
+
 import java.io.Serializable;
+import com.squareup.picasso.Picasso;
 
 public class Municipios implements Serializable{
 
     private long id;
     private long id_sql;
+    private String imgUrl;
+    private byte[] fotos_city;
+    private Bitmap fotosBit;
     private String cep;
     private String areaTerritorial;
     private String nome;
@@ -23,6 +31,29 @@ public class Municipios implements Serializable{
     private String contato_responsavel_pelo_preenchimento;
     private String fontes_informacoes;
 
+
+    public void setFotosBit(Bitmap f){
+        this.fotosBit=fotosBit;
+    }
+
+    public Bitmap getFotosBit() {
+        return fotosBit;
+    }
+
+    public void setFotos(byte[] fotos1){
+        this.fotos_city=fotos1;
+    }
+
+    public byte[] getFotos() {
+        return fotos_city;
+    }
+
+    public void setImgUrl(String url){
+        this.imgUrl= url;
+    }
+    public String getImgUrl(){
+        return imgUrl;
+    }
 
     public void setInformacoesRelevantes(String inf){
         this.informacoesRelevantes=inf;
@@ -139,5 +170,6 @@ public class Municipios implements Serializable{
     public void setAreaTerritorial(String areaTerritorial) {
         this.areaTerritorial = areaTerritorial;
     }
+
 }
 
