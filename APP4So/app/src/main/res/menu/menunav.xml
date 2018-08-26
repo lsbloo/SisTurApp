@@ -10,14 +10,14 @@
 
     <item
         android:id="@+id/exibir_inf"
-        android:title="Exibir informações"
+        android:title="Municipios"
         android:icon="@drawable/ic_info_black_24dp"
         >
     </item>
 
     <item
-        android:id="@+id/rotas"
-        android:title="Suas rotas salvas"
+        android:id="@+id/atrativos"
+        android:title="Atrativos Turisticos"
         android:icon="@drawable/ic_map_black_24dp"
         ></item>
     <item

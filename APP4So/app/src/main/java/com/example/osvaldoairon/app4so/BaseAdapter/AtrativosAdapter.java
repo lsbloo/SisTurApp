@@ -48,10 +48,10 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
 
         AtrativosTuristicos at = list.get(position);
 
-        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_turismo,parent,false);
+       // View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_turismo,parent,false);
 
-
-        TextView nomePonto = (TextView)view.findViewById(R.id.nomePonto);
+    /*
+    TextView nomePonto = (TextView)view.findViewById(R.id.nomePonto);
         TextView descricaoPonto = (TextView)view.findViewById(R.id.descricaoPonto);
         TextView comochegar = (TextView)view.findViewById(R.id.comoChegar);
         TextView info = (TextView)view.findViewById(R.id.infocontato);
@@ -75,6 +75,9 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
 
 
         return view;
+     */
+    return null;
+
     }
 
     @Override

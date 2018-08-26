@@ -37,9 +37,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/iconeum"
+        android:icon="@mipmap/iconedois"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/iconeum"
+        android:roundIcon="@mipmap/iconedois"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -73,8 +73,6 @@
             android:label="@string/title_activity_map_google"
             android:screenOrientation="portrait" />
         <activity android:name=".ActivitysSecond.ActivityInf" />
-        <activity android:name=".Fragments.FragmentInfCidade" />
-        <activity android:name=".Fragments.FragmentInfTurismo" />
         <activity
             android:name=".ActivitysSecond.ActivityPesquisa"
             android:screenOrientation="portrait" />

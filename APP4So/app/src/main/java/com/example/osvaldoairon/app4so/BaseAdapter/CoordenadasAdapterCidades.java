@@ -1,10 +1,10 @@
 package com.example.osvaldoairon.app4so.BaseAdapter;
 
-import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,27 +12,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
-import com.example.osvaldoairon.app4so.Fragments.FragmentInfCidade;
-import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
-import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSliderView.OnSliderClickListener,BaseSliderView.ImageLoadListener{
 
@@ -80,56 +70,37 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
         init_firebase();
 
         Municipios municipios = list.get(position);
-        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_cidade,parent,false);
+
+        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_inf,parent,false);
 
         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
 
-        TextView descricaoCidade = (TextView)view.findViewById(R.id.descricaoCidade);
+       TextView descricaoCidade = (TextView)view.findViewById(R.id.descricaoCidade);
 
-        TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
-        TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
+      TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
+       //TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
 
-        TextView infRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
-        TextView nomeResponsavel = (TextView)view.findViewById(R.id.nome_responsavel);
-        TextView emailResponsavel = (TextView)view.findViewById(R.id.email_responsavel);
-        TextView contatoResponsavel = (TextView)view.findViewById(R.id.contato_responsavel);
+         TextView infRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
+        // TextView nomeResponsavel = (TextView)view.findViewById(R.id.nome_responsavel);
+        // TextView emailResponsavel = (TextView)view.findViewById(R.id.email_responsavel);
+        // TextView contatoResponsavel = (TextView)view.findViewById(R.id.contato_responsavel);
 
 
-        //final ImageView imgCidade=(ImageView)view.findViewById(R.id.imgsrcc)
+        final ImageView imgCidade=(ImageView)view.findViewById(R.id.fotocidade);
+        Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(municipios.getFotos()),120,80);
 
-        nomeCidade.setText("Cidade: " + municipios.getNome());
-        descricaoCidade.setText("Estado: " + municipios.getEstado());
+       nomeCidade.setText("Cidade: " + municipios.getNome());
+       descricaoCidade.setText("Descrição: " + municipios.getDescricao());
         populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"habitantes");
-        areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial());
+        //areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial());
         infRelevante.setText("Informações Relevantes: " +municipios.getInformacoesRelevantes());
-        nomeResponsavel.setText("Nome do Responsavel pelo preenchimento: " +municipios.getNome_responsavel_pelo_preenchimento());
-        emailResponsavel.setText("Email do Responsavel pelo preenchimento: " +municipios.getEmail_responsavel_pelo_preenchimento());
-        contatoResponsavel.setText("Contato do Responsavel: " +municipios.getContato_responsavel_pelo_preenchimento());
+       // nomeResponsavel.setText("Nome do Responsavel pelo preenchimento: " +municipios.getNome_responsavel_pelo_preenchimento());
+       // emailResponsavel.setText("Email do Responsavel pelo preenchimento: " +municipios.getEmail_responsavel_pelo_preenchimento());
+       // contatoResponsavel.setText("Contato do Responsavel: " +municipios.getContato_responsavel_pelo_preenchimento());
+        imgCidade.setImageBitmap(foto);
 
 
 
-       sliderLayout=(SliderLayout)view.findViewById(R.id.slidercidade);
-
-       /*
-
-       fotoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                TextSliderView aux = new TextSliderView(ctx);
-                //aux.description("imagem1");
-                aux.image(uri.toString());
-                //aux.setOnImageLoadListener(CoordenadasAdapterCidades.this);
-                //aux.setOnSliderClickListener(CoordenadasAdapterCidades.this);
-                sliderLayout.addSlider(aux);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.w("LOGFAIL", "FAIL");
-            }
-        });
-
-        */
 
 
 
@@ -152,5 +123,28 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
     public void onSliderClick(BaseSliderView slider) {
         sliderLayout.startAutoCycle();
 
+    }
+
+    public Bitmap convertImgDBtoBitmap(byte[] img){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
+        if(bitmap!=null){
+            Log.d("BITMAP","O bitmap ta ok!");
+        }
+        return bitmap;
+    }
+
+    public static Bitmap resizeImgBitmap(Context ctx,Bitmap original_bit ,float newWidth,float newHeight){
+        Bitmap novo=null;
+        int w = original_bit.getWidth();
+        int h = original_bit.getHeight();
+        float densityFactor = ctx.getResources().getDisplayMetrics().density;
+        float novoW = newWidth * densityFactor;
+        float novoH = newHeight * densityFactor;
+        float scalaW = novoW / w;
+        float scalaH = novoH / h;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scalaW, scalaH);
+        novo = Bitmap.createBitmap(original_bit, 0, 0, w, h, matrix, true);
+        return novo;
     }
 }

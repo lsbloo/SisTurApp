@@ -157,11 +157,8 @@ public class HelperSQLMunicipios {
 
             Municipios municipiosdb = new Municipios();
 
+            municipiosdb.setFotos(fotos);
 
-            Bitmap bit = convertImgDBtoBitmap(fotos);
-            if(bit!=null){
-                municipiosdb.setFotosBit(bit);
-            }
             municipiosdb.setLatitude(latitude);
             municipiosdb.setLongitude(longitude);
             municipiosdb.setNome(nome);
@@ -191,7 +188,6 @@ public class HelperSQLMunicipios {
 
 
     public ArrayList<Municipios> getReturnList(){
-
         return list_municipios;
     }
 
@@ -221,12 +217,6 @@ public class HelperSQLMunicipios {
     }
 
 
-    public Bitmap convertImgDBtoBitmap(byte[] img){
-        Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
-        if(bitmap!=null){
-            Log.d("BITMAP","O bitmap ta ok!");
-        }
-        return bitmap;
-    }
+
 
 }

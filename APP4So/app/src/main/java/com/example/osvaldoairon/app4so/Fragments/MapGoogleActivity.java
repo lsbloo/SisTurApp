@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
@@ -71,9 +74,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
-public class MapGoogleActivity extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback , Serializable{
-
-
+public class MapGoogleActivity extends SupportMapFragment implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback , Serializable {
 
 
     public static final int REQUEST_ERROR_PLAY_ = 1;
@@ -96,15 +97,14 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     private static ArrayList<Coordenadas> list_recover;
     private static ArrayList<Coordenadas> list_recover_point;
     private Context ctx;
-    public static ArrayList<Coordenadas> list_buscaSql= new ArrayList<Coordenadas>();
-    private static int tipo_mapa=0;
+    public static ArrayList<Coordenadas> list_buscaSql = new ArrayList<Coordenadas>();
+    private static int tipo_mapa = 0;
 
     private static HelperSQLMunicipios helper;
     private static HelperSQLAtrativos helperAtratativos;
 
     private static ArrayList<Municipios> lista_municipios_rest = new ArrayList<Municipios>();
     private static ArrayList<AtrativosTuristicos> lista_atrativos_rest = new ArrayList<AtrativosTuristicos>();
-
 
 
     @Override
@@ -137,12 +137,9 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         downloadAtrativos.execute();
 
 
-
-
-
     }
 
-    private class GetJsonAtrativos extends AsyncTask<Void,Void,ArrayList<AtrativosTuristicos>> {
+    private class GetJsonAtrativos extends AsyncTask<Void, Void, ArrayList<AtrativosTuristicos>> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -178,7 +175,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
             try {
-                lista_municipios_rest=util.getInformacao("https://apps4society.herokuapp.com/rest_municipios");
+                lista_municipios_rest = util.getInformacao("https://apps4society.herokuapp.com/rest_municipios");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
@@ -195,20 +192,21 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
 
-    public void salvarDadosRest_atrativos(){
-        if(lista_atrativos_rest!=null){
-            for(int i = 0 ; i <lista_atrativos_rest.size();i++){
+    public void salvarDadosRest_atrativos() {
+        if (lista_atrativos_rest != null) {
+            for (int i = 0; i < lista_atrativos_rest.size(); i++) {
                 helperAtratativos.inserirAtrativo(lista_atrativos_rest.get(i));
             }
         }
     }
-    public void salvarDadosRest_city(){
-        if(lista_municipios_rest!=null){
-            for(int i = 0 ; i<lista_municipios_rest.size();i++){
-                Log.v("LOOL", "lool"+lista_municipios_rest.size());
+
+    public void salvarDadosRest_city() {
+        if (lista_municipios_rest != null) {
+            for (int i = 0; i < lista_municipios_rest.size(); i++) {
+                Log.v("LOOL", "lool" + lista_municipios_rest.size());
                 helper.inserir(lista_municipios_rest.get(i));
             }
-        }else{
+        } else {
             Log.d("Lista Municipios", "Lista municipios Vazia REST");
         }
     }
@@ -228,9 +226,9 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         lastLocation(googleMap);
     }
 
-    public int changeMAP(int type){
-        tipo_mapa=type;
-        Log.v("TIPOMAPA", "TIPOMAPA"+type);
+    public int changeMAP(int type) {
+        tipo_mapa = type;
+        Log.v("TIPOMAPA", "TIPOMAPA" + type);
         return tipo_mapa;
     }
 
@@ -274,50 +272,49 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
     @SuppressLint("ValidFragment")
-    public MapGoogleActivity(Context ctx, ArrayList<Coordenadas> list){
-        this.ctx=ctx;
-        this.list_buscaSql=list;
+    public MapGoogleActivity(Context ctx, ArrayList<Coordenadas> list) {
+        this.ctx = ctx;
+        this.list_buscaSql = list;
     }
-
 
 
     @SuppressLint("MissingPermission")
     public int lastLocation(final GoogleMap map) {
 
-            fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    if (location != null) {
-                        tentativas = 0;
-                        mOrigem = new LatLng(location.getAltitude(), location.getLongitude());
-                        Log.d("LATITUDE", "ALTITUDE" + location.getLongitude());
-                        Log.d("LONGITUDE", "LONGITUDE" + location.getLatitude());
-                        localizacaoAtual = new LatLng(location.getLatitude(),location.getLongitude());
-                        //Toast.makeText(getActivity(), ""+tipo_mapa, Toast.LENGTH_SHORT).show();
-                        updateMap(map,localizacaoAtual,tipo_mapa);
-                        recuperarDadosCidades(map);
-                        recuperarDadosPontos(map);
-                        marcarPontosBusca(map);
-                    } else if (tentativas < 10) {
-                        tentativas++;
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                            }
-                        }, 1000); // a cada um segundo
-                    } else {
-                        Toast.makeText(getActivity(), "lastLocation fail", Toast.LENGTH_SHORT).show();
-                    }
-
+        fusedLocationProviderClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    tentativas = 0;
+                    mOrigem = new LatLng(location.getAltitude(), location.getLongitude());
+                    Log.d("LATITUDE", "ALTITUDE" + location.getLongitude());
+                    Log.d("LONGITUDE", "LONGITUDE" + location.getLatitude());
+                    localizacaoAtual = new LatLng(location.getLatitude(), location.getLongitude());
+                    //Toast.makeText(getActivity(), ""+tipo_mapa, Toast.LENGTH_SHORT).show();
+                    updateMap(map, localizacaoAtual, tipo_mapa);
+                    recuperarDadosCidades(map);
+                    recuperarDadosPontos(map);
+                    marcarPontosBusca(map);
+                } else if (tentativas < 10) {
+                    tentativas++;
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                        }
+                    }, 1000); // a cada um segundo
+                } else {
+                    Toast.makeText(getActivity(), "lastLocation fail", Toast.LENGTH_SHORT).show();
                 }
-            });
+
+            }
+        });
 
 
         return 0;
     }
 
     @SuppressLint("MissingPermission")
-    public void updateMap(GoogleMap map, LatLng localizacaoAtual,int type) {
+    public void updateMap(GoogleMap map, LatLng localizacaoAtual, int type) {
         // mMap = mapFragment.getMap(); // metodo depreciado api google 8.1.0 \ ATUAL 12.1.0
         // mMap.getUiSettings().setMapToolbarEnabled(true);
 
@@ -328,22 +325,22 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 Os rótulos de vias e recursos também são visíveis.
                  //Metódo setMapType
          */
-        if(type == 1){
+        if (type == 1) {
             map.setMyLocationEnabled(true);
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
             map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
-        }else if (type == 2){
+        } else if (type == 2) {
             map.setMyLocationEnabled(true);
             map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
             map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
-        }else if(type == 3){
+        } else if (type == 3) {
             map.setMyLocationEnabled(true);
             map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
             map.addMarker(new MarkerOptions().title("Localização Atual").position(localizacaoAtual));
-        }else if(type==4){
+        } else if (type == 4) {
             map.setMyLocationEnabled(true);
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(localizacaoAtual, 13));
@@ -351,13 +348,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         }
 
 
-
     }
 
-    public Fragment startActivite(){
+    public Fragment startActivite() {
         return new MapGoogleActivity();
     }
-
 
 
     public void statusGPS() {
@@ -406,13 +401,14 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         /*
         Location Manager é obsoleto a api Google Location é melhor pra fazer essas verificaçoes
          */
-       // LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-       // boolean GPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        // LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // boolean GPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-       // if (!GPSEnabled) {
+        // if (!GPSEnabled) {
         //    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         //}
     }
+
     public MapGoogleActivity() {
     }
 
@@ -424,51 +420,53 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         mGoogleApiCliente.connect();
     }
 
-    public void askPermissions(){
+    public void askPermissions() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
-                ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                ){//Can add more as per requirement
+                ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                ) {//Can add more as per requirement
 
             ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
                     123);
-        }else if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(getActivity(),Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                ){
+        } else if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                ) {
             boolean completed = true;
         }
 
     }
 
-    public void iniciarFirebaseDatabase(){
+    public void iniciarFirebaseDatabase() {
         FirebaseApp.initializeApp(getActivity());
         firebaseDatabase = firebaseDatabase.getInstance();
         //fireBaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
 
     }
-    public void marcarPontosBusca(final GoogleMap map){
 
-        if(list_buscaSql.size()!=0){
-            for(int i =0 ; i < list_buscaSql.size();i++){
+    public void marcarPontosBusca(final GoogleMap map) {
+
+        if (list_buscaSql.size() != 0) {
+            for (int i = 0; i < list_buscaSql.size(); i++) {
                 double latitude = list_buscaSql.get(i).getLatitude();
                 double longitude = list_buscaSql.get(i).getLongitude();
                 //Toast.makeText(getActivity(), "APSPASKAPSKPASK"+latitude, Toast.LENGTH_SHORT).show();
 
-                LatLng lat = new LatLng(latitude,longitude);
+                LatLng lat = new LatLng(latitude, longitude);
                 map.addMarker(new MarkerOptions().position(lat).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
-        }else{
-            Toast.makeText(getActivity(), "Pontos de buscas Armazenados: " +list_buscaSql.size(), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Pontos de buscas Armazenados: " + list_buscaSql.size(), Toast.LENGTH_SHORT).show();
         }
 
 
     }
-    public void actived(){
-        Log.d("ACT","act");
+
+    public void actived() {
+        Log.d("ACT", "act");
     }
 
-    public void eventListener(final GoogleMap map){
+    public void eventListener(final GoogleMap map) {
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -479,17 +477,16 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
 
-
     public void recuperarDadosCidades(final GoogleMap map) {
         helper.limparArray();
         helper.recoverDataSQL();
-        if(helper.getReturnList().size()!=0){
+        if (helper.getReturnList().size() != 0) {
             for (int i = 0; i < helper.getReturnList().size(); i++) {
-                Toast.makeText(getActivity(), "Oii "+helper.getReturnList().get(i).getFotosBit(), Toast.LENGTH_SHORT).show();
+
                 double latitude = helper.getReturnList().get(i).getLatitude();
                 double longitude = helper.getReturnList().get(i).getLongitude();
                 LatLng locate = new LatLng(latitude, longitude);
-                map.addMarker(new MarkerOptions().title(helper.getReturnList().get(i).getNome()).snippet(helper.getReturnList().get(i).getAreaTerritorial()).position(locate));
+                map.addMarker(new MarkerOptions().title(helper.getReturnList().get(i).getNome()).snippet(helper.getReturnList().get(i).getAreaTerritorial()).position(locate).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
             }
 
@@ -506,16 +503,17 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         }
 
     }
-    public void recuperarDadosPontos(final GoogleMap map){
+
+    public void recuperarDadosPontos(final GoogleMap map) {
         helperAtratativos.limparArray();
         helperAtratativos.recoverDataSQLAtrativos();
-        if(helperAtratativos.getReturnList().size()!=0){
+        if (helperAtratativos.getReturnList().size() != 0) {
 
-            for(int i = 0 ; i <helperAtratativos.getReturnList().size();i++){
+            for (int i = 0; i < helperAtratativos.getReturnList().size(); i++) {
 
                 double latitude = helperAtratativos.getReturnList().get(i).getLatitude();
                 double longitude = helperAtratativos.getReturnList().get(i).getLongitude();
-                LatLng locate = new LatLng(latitude,longitude);
+                LatLng locate = new LatLng(latitude, longitude);
                 map.addMarker(new MarkerOptions().title(helperAtratativos.getReturnList().get(i).getNome()).snippet(helperAtratativos.getReturnList().get(i).getDescricao()).position(locate).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             }
             helperAtratativos.limparArray();
@@ -524,9 +522,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         }
 
 
-
-
     }
-
 }
+
 
