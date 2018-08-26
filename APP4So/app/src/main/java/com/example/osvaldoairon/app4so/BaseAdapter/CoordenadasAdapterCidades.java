@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,9 +86,12 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
         // TextView emailResponsavel = (TextView)view.findViewById(R.id.email_responsavel);
         // TextView contatoResponsavel = (TextView)view.findViewById(R.id.contato_responsavel);
 
+        CardView card = (CardView)view.findViewById(R.id.card);
+
+
 
         final ImageView imgCidade=(ImageView)view.findViewById(R.id.fotocidade);
-        Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(municipios.getFotos()),120,80);
+        Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(municipios.getFotos()),200,87);
 
        nomeCidade.setText("Cidade: " + municipios.getNome());
        descricaoCidade.setText("Descrição: " + municipios.getDescricao());
@@ -98,7 +102,6 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
        // emailResponsavel.setText("Email do Responsavel pelo preenchimento: " +municipios.getEmail_responsavel_pelo_preenchimento());
        // contatoResponsavel.setText("Contato do Responsavel: " +municipios.getContato_responsavel_pelo_preenchimento());
         imgCidade.setImageBitmap(foto);
-
 
 
 

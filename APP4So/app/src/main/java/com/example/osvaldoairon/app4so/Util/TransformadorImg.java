@@ -3,7 +3,6 @@ package com.example.osvaldoairon.app4so.Util;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.service.autofill.Transformation;
 import android.util.Log;
 
 import java.io.IOException;
@@ -26,7 +25,7 @@ e transformar ela em Biptmap ; sua instancia esta sendo usada na classe HelpSQLm
         Log.d("ENDEREÇO IMG", "Endereço: "+url_img);
 
        try{
-           URL url  = new URL(url_img);
+           URL url  = new URL("http://pedra.pe.gov.br/zaap/kcfinder/upload/images/img_site/2018/13076834_943856129060253_8914598678967551039_n.jpg");
            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
            httpURLConnection.setRequestMethod("GET");
            httpURLConnection.setDoInput(true);

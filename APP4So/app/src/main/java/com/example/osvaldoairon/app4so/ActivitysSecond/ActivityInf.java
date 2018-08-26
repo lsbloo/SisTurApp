@@ -1,17 +1,22 @@
 package com.example.osvaldoairon.app4so.ActivitysSecond;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
+import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.R;
 import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
@@ -45,11 +50,44 @@ public class ActivityInf extends AppCompatActivity {
         if (l1 != null) {
             l1.setAdapter(adapterCidades);
             setContentView(l1);
-            try {
-                finalize();
-            } catch (Throwable throwable) {
-                throwable.printStackTrace();
-            }
+
+            l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    final int i = position;
+                    /*
+                    captura o evento e joga ele em uma webview do site do municipio correspondente;
+
+                     */
+                    new AlertDialog.Builder(ActivityInf.this).setTitle("Acessar WebSite").setMessage("Deseja entrar no site do municipio?").setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Intent at = new Intent(ActivityInf.this,TurismoView.class);
+                            if(helperSQLMunicipios.getReturnList().get(i).getSite() != null){
+                                /*
+                                Nao é possivel carregar webview em androiod 7.0
+                                mesmo usando um sdk inferior ao 27, vou desabilitar essa funcao;x
+                                 */
+                              //  at.putExtra("site",helperSQLMunicipios.getReturnList().get(i).getSite());
+                               // startActivity(at);
+                                Toast.makeText(ActivityInf.this, "Não implementado", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(ActivityInf.this, "Municipio cadastrado não possui site!", Toast.LENGTH_SHORT).show();
+                            }
+
+
+
+                        }
+                    }).setNegativeButton("não", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ActivityInf.this, "Cancelado!", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).show();
+                }
+            });
         }
 
 }
