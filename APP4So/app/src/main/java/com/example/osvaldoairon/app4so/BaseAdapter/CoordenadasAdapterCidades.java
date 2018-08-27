@@ -74,37 +74,22 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
 
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_inf,parent,false);
 
-        TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
-
-       TextView descricaoCidade = (TextView)view.findViewById(R.id.descricaoCidade);
-
-      TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
-       //TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
-
+         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
+         TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
          TextView infRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
-        // TextView nomeResponsavel = (TextView)view.findViewById(R.id.nome_responsavel);
-        // TextView emailResponsavel = (TextView)view.findViewById(R.id.email_responsavel);
-        // TextView contatoResponsavel = (TextView)view.findViewById(R.id.contato_responsavel);
-
-        CardView card = (CardView)view.findViewById(R.id.card);
-
+         CardView card = (CardView)view.findViewById(R.id.card);
+         TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
 
 
         final ImageView imgCidade=(ImageView)view.findViewById(R.id.fotocidade);
         Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(municipios.getFotos()),200,87);
 
-       nomeCidade.setText("Cidade: " + municipios.getNome());
-       descricaoCidade.setText("Descrição: " + municipios.getDescricao());
-        populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"habitantes");
-        //areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial());
-        infRelevante.setText("Informações Relevantes: " +municipios.getInformacoesRelevantes());
-       // nomeResponsavel.setText("Nome do Responsavel pelo preenchimento: " +municipios.getNome_responsavel_pelo_preenchimento());
-       // emailResponsavel.setText("Email do Responsavel pelo preenchimento: " +municipios.getEmail_responsavel_pelo_preenchimento());
-       // contatoResponsavel.setText("Contato do Responsavel: " +municipios.getContato_responsavel_pelo_preenchimento());
+        nomeCidade.setText(municipios.getNome());
+        populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"Habitantes");
+        areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial()+ " "+"quilômetros quadrados");
+        infRelevante.setText(municipios.getInformacoesRelevantes());
+
         imgCidade.setImageBitmap(foto);
-
-
-
 
 
         return view;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sistur</string>
+    <string name="app_name">SisTur</string>
     <string name="title_activity_map_google">Map</string>
     <string name="search_city">Pesquisar Atrativos ou Municipios? </string>
 

@@ -67,13 +67,24 @@
            android:textSize="18sp" />
 
        <TextView
-           android:id="@+id/textView3"
+           android:id="@+id/textView"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_centerInParent="true"
+           android:layout_centerVertical="true"
+           android:text="Resetar Base de dados local"
            android:textColor="@android:color/holo_red_dark"
            android:textSize="18sp"
-           tools:text="Implementando a funcionalidade de escolha do mapa. Design nao implementado" />
+           android:textStyle="italic" />
+
+       <Button
+           android:id="@+id/btn_resetdb"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true"
+           android:layout_marginBottom="164dp"
+           android:layout_toStartOf="@+id/chose"
+           android:text="Resetar" />
+
 
    </RelativeLayout>
 

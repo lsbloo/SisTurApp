@@ -80,6 +80,7 @@ public class HelperSQLMunicipios {
 
             cv.put(municipiossql.LATITUDE, municipios.getLatitude());
             cv.put(municipiossql.LONGITUDE, municipios.getLongitude());
+            cv.put(municipiossql.DESCRICAO,municipios.getDescricao());
             cv.put(municipiossql.NOME_MUNICIPIO,municipios.getNome());
             cv.put(municipiossql.ESTADO, municipios.getEstado());
             cv.put(municipiossql.CEP, municipios.getCep());
@@ -136,6 +137,7 @@ public class HelperSQLMunicipios {
             int indexInformacoesRelevantes = cursor.getColumnIndex(municipiossql.INFORMACOES_RELEVANTES);
             int indexContatoResponsavel = cursor.getColumnIndex(municipiossql.CONTATO_RESPONSAVEL);
             int indexFotos_city = cursor.getColumnIndex(municipiossql.IMAGEM_CTY);
+            int indexDescricao = cursor.getColumnIndex(municipiossql.DESCRICAO);
 
             Double latitude = cursor.getDouble(indexColunaLatitude);
             Double longitude = cursor.getDouble(indexColunaLongitude);
@@ -151,6 +153,7 @@ public class HelperSQLMunicipios {
             String informacoesRelevantes =cursor.getString(indexInformacoesRelevantes);
             String contato_responsavel = cursor.getString(indexContatoResponsavel);
             byte[] fotos = cursor.getBlob(indexFotos_city);
+            String descricao = cursor.getString(indexDescricao);
 
 
             long municipiosid = cursor.getLong(indexID);
@@ -158,6 +161,7 @@ public class HelperSQLMunicipios {
             Municipios municipiosdb = new Municipios();
 
             municipiosdb.setFotos(fotos);
+            municipiosdb.setDescricao(descricao);
 
             municipiosdb.setLatitude(latitude);
             municipiosdb.setLongitude(longitude);

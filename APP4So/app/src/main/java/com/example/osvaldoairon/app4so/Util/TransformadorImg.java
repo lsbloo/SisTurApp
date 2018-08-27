@@ -13,7 +13,11 @@ import com.squareup.picasso.Picasso;
 public class TransformadorImg extends AsyncTask<String,Void,Bitmap> {
 /*
 Essa classe herda do Async; responsavel por carregar uma imagem de um uRL
-e transformar ela em Biptmap ; sua instancia esta sendo usada na classe HelpSQLmUNICIPIOS();
+e transformar ela em Biptmap ; sua instancia esta sendo usada na classe HelpSQLmUNICIPIOS()
+e posteriormente no HelpersqlAtrativos;
+ OBS: os links dessas imagens "urls" devem ser publicas, pra que não dispare
+ nenhuma excessao;
+ copiar imagem do google nao vale ;(
 
  */
 
@@ -25,7 +29,7 @@ e transformar ela em Biptmap ; sua instancia esta sendo usada na classe HelpSQLm
         Log.d("ENDEREÇO IMG", "Endereço: "+url_img);
 
        try{
-           URL url  = new URL("http://pedra.pe.gov.br/zaap/kcfinder/upload/images/img_site/2018/13076834_943856129060253_8914598678967551039_n.jpg");
+           URL url  = new URL(url_img);
            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
            httpURLConnection.setRequestMethod("GET");
            httpURLConnection.setDoInput(true);

@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.BaseAdapter.CoordenadasAdapterCidades;
+import com.example.osvaldoairon.app4so.BaseAdapter.ExpanAdapter;
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
@@ -23,6 +25,9 @@ import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
 import com.example.osvaldoairon.app4so.adapterF.FragePageAdapterF;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActivityInf extends AppCompatActivity {
 
@@ -31,13 +36,13 @@ public class ActivityInf extends AppCompatActivity {
     private static ArrayList<Municipios> list_cidades;
     private static ArrayList<AtrativosTuristicos> list_pontos;
     private HelperSQLMunicipios helperSQLMunicipios;
+    private ExpandableListView expandableListView;
 
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_inf);
-
 
         helperSQLMunicipios = new HelperSQLMunicipios(this);
         helperSQLMunicipios.recoverDataSQL();
@@ -57,26 +62,12 @@ public class ActivityInf extends AppCompatActivity {
                     final int i = position;
                     /*
                     captura o evento e joga ele em uma webview do site do municipio correspondente;
-
                      */
-                    new AlertDialog.Builder(ActivityInf.this).setTitle("Acessar WebSite").setMessage("Deseja entrar no site do municipio?").setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                    new AlertDialog.Builder(ActivityInf.this).setTitle("Informações Detalhadas").setMessage("Deseja visualizar as informações do municipio?").setPositiveButton("sim", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
-                            Intent at = new Intent(ActivityInf.this,TurismoView.class);
-                            if(helperSQLMunicipios.getReturnList().get(i).getSite() != null){
-                                /*
-                                Nao é possivel carregar webview em androiod 7.0
-                                mesmo usando um sdk inferior ao 27, vou desabilitar essa funcao;x
-                                 */
-                              //  at.putExtra("site",helperSQLMunicipios.getReturnList().get(i).getSite());
-                               // startActivity(at);
-                                Toast.makeText(ActivityInf.this, "Não implementado", Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(ActivityInf.this, "Municipio cadastrado não possui site!", Toast.LENGTH_SHORT).show();
-                            }
-
-
+                        listenEvent(i);
 
                         }
                     }).setNegativeButton("não", new DialogInterface.OnClickListener() {
@@ -90,15 +81,40 @@ public class ActivityInf extends AppCompatActivity {
             });
         }
 
-}
+    }
+
+    public void listenEvent(int position){
+        /*
+                            caso sim ! entra uma new intenção com os dados
+                            do municipio correspondente;
+        */
+
+        if(position==0){
+            Intent at = new Intent(ActivityInf.this, InfDetailsMunicipio.class);
+            at.putExtra("position","ok");
+            startActivity(at);
+        }else{
+            Intent at = new Intent(ActivityInf.this, InfDetailsMunicipio.class);
+            at.putExtra("position","nao_ok");
+            at.putExtra("detailMunicipio", helperSQLMunicipios.getReturnList().get(position));
+            startActivity(at);
+        }
 
 
+
+    }
 
 
     private  void setupViewPager(){
 
+        /**
+         *
+         * 
+         */
 
-       // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
+
+        // setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 

@@ -57,6 +57,8 @@ public class CriarConexaoMunicipios {
                 String nome_responsavel = objArray.getString("nome_responsavel");
                 String contato_responsavel = objArray.getString("contatos_responsavel");
                 String fonte_inf = objArray.getString("fonte_informacoes");
+                String descricao = objArray.getString("descricao");
+
 
                 //Atribui os objetos que estão nas camadas mais baixas
                 Municipios municipios = new Municipios();
@@ -64,6 +66,7 @@ public class CriarConexaoMunicipios {
                 municipios.setId(id);
 
                 municipios.setImgUrl(imgUrl);
+                municipios.setDescricao(descricao);
                 municipios.setAreaTerritorial(areaTerritorial);
                 municipios.setCep(cep);
                 municipios.setPopulacao(populacao);
