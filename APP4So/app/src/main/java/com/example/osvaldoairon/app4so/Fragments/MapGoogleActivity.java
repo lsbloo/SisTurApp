@@ -456,7 +456,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 map.addMarker(new MarkerOptions().position(lat).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
         } else {
-            Toast.makeText(getActivity(), "Pontos de buscas Armazenados: " + list_buscaSql.size(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Pesquisas Armazenadas: " + list_buscaSql.size(), Toast.LENGTH_SHORT).show();
         }
 
 

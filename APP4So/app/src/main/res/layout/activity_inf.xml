@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
+    android:layout_height="wrap_content"
     tools:context=".ActivitysSecond.ActivityInf"
-    android:background="@drawable/gradiente1"
+
     >
 
 
@@ -40,21 +40,24 @@
                 android:layout_height="87dp"
                 >
 
+
             </ImageView>
+
+
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/linearprimeiro"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             >
 
@@ -63,40 +66,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="135dp"
+                android:layout_marginLeft="125dp"
                 android:textSize="20sp"
                 android:textColor="#000"
                 android:textStyle="bold|italic" />
 
-            <TextView
-                android:id="@+id/populacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/nomeCidade"
-                android:textSize="14sp"
 
-                android:textStyle="bold|italic"
-                android:typeface="sans" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/setadireitatwo"
+                android:layout_marginLeft="320dp"
 
-            <TextView
-                android:id="@+id/areaTerritorial"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/populacao"
-                android:layout_marginTop="12dp"
-                android:textSize="14sp"
-                android:textStyle="bold|italic"
-                android:typeface="sans" />
-
-            <TextView
-                android:id="@+id/informacoesRelevante"
-                android:layout_below="@+id/areaTerritorial"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="12sp"
-                android:textStyle="bold|italic"
-                android:typeface="sans"
                 />
 
         </LinearLayout>

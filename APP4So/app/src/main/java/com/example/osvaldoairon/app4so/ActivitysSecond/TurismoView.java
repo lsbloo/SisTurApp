@@ -15,6 +15,12 @@ import com.example.osvaldoairon.app4so.R;
 public class TurismoView extends AppCompatActivity {
 
     private WebView webView;
+    /*
+    Reponsavel por garantir a visualização dos Sites
+    utilizando o WebView();
+    ainda nao esta disponivel;
+
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
