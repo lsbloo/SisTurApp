@@ -72,16 +72,23 @@
             android:name=".Fragments.MapGoogleActivity"
             android:label="@string/title_activity_map_google"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivitysSecond.ActivityInf" />
+        <activity android:name=".ActivitysSecond.ActivityInf"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".ActivitysSecond.ActivityPesquisa"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivitysSecond.ActivityConf" />
-        <activity android:name=".ActivitysSecond.TurismoView" />
-        <activity android:name=".ActivitysSecond.InfDetailsMunicipio"></activity>
+        <activity android:name=".ActivitysSecond.ActivityConf"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ActivitysSecond.TurismoView"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ActivitysSecond.InfDetailsMunicipio"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-#Tue Aug 28 01:14:02 BRT 2018
-base.0=/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/transforms/dexMerger/debug/1
+#Tue Aug 28 19:38:28 BRT 2018
+base.0=/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/transforms/dexMerger/debug/86
 path.0=classes.dex
 renamed.0=classes.dex

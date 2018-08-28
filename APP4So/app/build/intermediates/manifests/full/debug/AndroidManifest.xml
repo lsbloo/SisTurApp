@@ -97,16 +97,24 @@
             android:name="com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity"
             android:label="@string/title_activity_map_google"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.example.osvaldoairon.app4so.MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityConf" />
-        <activity android:name="com.example.osvaldoairon.app4so.ActivitysSecond.TurismoView" />
-        <activity android:name="com.example.osvaldoairon.app4so.ActivitysSecond.InfDetailsMunicipio" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityConf"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.TurismoView"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.InfDetailsMunicipio"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.support.VERSION"

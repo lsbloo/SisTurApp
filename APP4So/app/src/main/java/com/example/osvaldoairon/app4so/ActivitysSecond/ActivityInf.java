@@ -61,7 +61,8 @@ public class ActivityInf extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     final int i = position;
                     /*
-                    captura o evento e joga ele em uma webview do site do municipio correspondente;
+                    captura o evento e joga ele em uma Activity do municipio correspondente
+                    ;
                      */
                     new AlertDialog.Builder(ActivityInf.this).setTitle("Informações Detalhadas").setMessage("Deseja visualizar as informações do municipio?").setPositiveButton("sim", new DialogInterface.OnClickListener() {
                         @Override
@@ -94,10 +95,12 @@ public class ActivityInf extends AppCompatActivity {
             at.putExtra("position","ok");
             startActivity(at);
         }else{
-            Intent at = new Intent(ActivityInf.this, InfDetailsMunicipio.class);
-            at.putExtra("position","nao_ok");
-            at.putExtra("detailMunicipio", helperSQLMunicipios.getReturnList().get(position));
-            startActivity(at);
+            Log.d("POSITION","POSITION"+position);
+            Intent et = new Intent(ActivityInf.this, InfDetailsMunicipio.class);
+            et.putExtra("position","nao_ok");
+            et.putExtra("detailMunicipio", String.valueOf(position));
+            startActivity(et);
+
         }
 
 

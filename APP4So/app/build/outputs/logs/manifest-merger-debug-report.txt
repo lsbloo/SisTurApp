@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
 MERGED from [com.android.support:design:26.1.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/582c1a259bcf91eee5391fe739a7dd63/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/3b492654e9d67572986ae9f802eb0056/AndroidManifest.xml:2:1-11:12
@@ -47,20 +47,20 @@ MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/osv
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/2a950d8a70229d1292cc4ab757b97414/AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/5dde139bbf4c4bbfd05572d42f40e6ff/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/578212086d2c9c8b6515c866e7d6de72/AndroidManifest.xml:2:1-6:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
-INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
+INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
 	package
 		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:3:5-46
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12
 		INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:11-69
@@ -141,7 +141,7 @@ ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidM
 	android:name
 		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:36:22-84
 application
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:38:5-85:19
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:38:5-92:19
 MERGED from [com.android.support:design:26.1.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/582c1a259bcf91eee5391fe739a7dd63/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/582c1a259bcf91eee5391fe739a7dd63/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/AndroidManifest.xml:25:5-29:19
@@ -267,33 +267,41 @@ ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidM
 	android:name
 		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:72:13-56
 activity#com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:75:9-65
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:75:9-77:15
+	android:screenOrientation
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:76:13-49
 	android:name
 		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:75:19-62
 activity#com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:76:9-78:52
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:78:9-80:52
 	android:screenOrientation
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:78:13-49
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:80:13-49
 	android:name
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:77:13-61
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:79:13-61
 activity#com.example.osvaldoairon.app4so.MainActivity
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:79:9-81:52
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:81:9-83:52
 	android:screenOrientation
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:81:13-49
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:83:13-49
 	android:name
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:80:13-41
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:82:13-41
 activity#com.example.osvaldoairon.app4so.ActivitysSecond.ActivityConf
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:82:9-66
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:84:9-85:51
+	android:screenOrientation
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:85:13-49
 	android:name
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:82:19-63
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:84:19-63
 activity#com.example.osvaldoairon.app4so.ActivitysSecond.TurismoView
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:83:9-65
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:86:9-88:15
+	android:screenOrientation
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:87:13-49
 	android:name
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:83:19-62
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:86:19-62
 activity#com.example.osvaldoairon.app4so.ActivitysSecond.InfDetailsMunicipio
-ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:84:9-82
+ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:89:9-91:25
+	android:screenOrientation
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:90:13-49
 	android:name
-		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:84:19-70
+		ADDED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:89:19-70
 uses-sdk
 INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml
@@ -443,7 +451,7 @@ ADDED from [com.google.android.gms:play-services-maps:11.8.0] /home/osvaldoairon
 	android:required
 		ADDED from [com.google.android.gms:play-services-maps:11.8.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-maps-11.8.0.aar/5f3ae2174dc5f90cf7c9a85b6871cc22/AndroidManifest.xml:28:9-32
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-87:12 reason: com.daimajia.slider.library requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/AndroidManifest.xml:2:1-94:12 reason: com.daimajia.slider.library requested WRITE_EXTERNAL_STORAGE
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-analytics:11.8.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/3ba42c0a2eb4470f6f67cbd7d0a9d6a3/AndroidManifest.xml:25:5-68
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/d43295b8c8a508a9e086619488190671/AndroidManifest.xml:25:5-68

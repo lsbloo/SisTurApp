@@ -14,6 +14,7 @@ import com.example.osvaldoairon.app4so.Modelo.Coordenadas;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class HelperSQLMunicipios {
 
     }
 
-    public byte[] transformBityMap(String url){
+    public byte[] transformBityMap(String url) throws IOException {
         /*
         Reponsavel por pegar uma imagem Bitmap gerada na classe Transformador
         e transformar ela em um byte[] array;
@@ -42,18 +43,29 @@ public class HelperSQLMunicipios {
         do municipio ja tiver sido inserido, nao fazer uma nova requisição de imagem;
 
          */
-        transformadorImg = new TransformadorImg();
 
-        Bitmap img = transformadorImg.doInBackground(url);
+        try{
+            transformadorImg = new TransformadorImg();
+
+            Bitmap img = transformadorImg.doInBackground(url);
 
 
-        ByteArrayOutputStream s = new ByteArrayOutputStream();
+            ByteArrayOutputStream s = new ByteArrayOutputStream();
 
-        img.compress(Bitmap.CompressFormat.JPEG,100,s);
+            img.compress(Bitmap.CompressFormat.JPEG,100,s);
 
-        byte[] imagemByte = s.toByteArray();
+            byte[] imagemByte = s.toByteArray();
 
-        return imagemByte;
+            return imagemByte;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.d("Problema na conexao IMG","Problema conexao IMG");
+        }
+
+        return null;
+
+
 
     }
 
@@ -69,7 +81,7 @@ public class HelperSQLMunicipios {
         return false;
     }
 
-    public long inserir(Municipios municipios) {
+    public long inserir(Municipios municipios) throws IOException {
         if(verificaDado(municipios)){
             Log.v("DADOS JA INSERIDOS", "Dados REST JA INSERIDO MUNICIPIO");
         }else{

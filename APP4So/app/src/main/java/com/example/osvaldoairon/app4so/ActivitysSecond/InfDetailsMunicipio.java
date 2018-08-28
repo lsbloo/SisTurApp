@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.osvaldoairon.app4so.R;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
 import com.example.osvaldoairon.app4so.Sqlite.HelperSQLMunicipios;
+import com.example.osvaldoairon.app4so.Util.FontesTerceiras;
 
 import java.util.ArrayList;
 
@@ -21,14 +22,14 @@ public class InfDetailsMunicipio extends AppCompatActivity {
     private Municipios municipios;
     private HelperSQLMunicipios helperSQLMunicipios;
     private Municipios primeiroMuncipio;
+    private Municipios secundariosMunicipios;
     private TextView nomeCity;
     private TextView descricaoCity;
     private TextView fonte_inf;
     private TextView inforRelevante;
     private TextView localidade;
-    private TextView site;
     private TextView estado;
-
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,35 +45,45 @@ public class InfDetailsMunicipio extends AppCompatActivity {
         descricaoCity=(TextView)findViewById(R.id.descriptionDetail);
         fonte_inf=(TextView)findViewById(R.id.fonte_details) ;
         inforRelevante=(TextView)findViewById(R.id.infrelevantedetail) ;
-        localidade=(TextView)findViewById(R.id.locate_inf);
-        site=(TextView)findViewById(R.id.site_inf);
-        estado=(TextView)findViewById(R.id.estado_detail);
+     //   localidade=(TextView)findViewById(R.id.locate_inf);
 
-       municipios = (Municipios)getIntent().getSerializableExtra("detailMunicipio");
-       String primeiroPosition = getIntent().getStringExtra("position");
-       if(primeiroPosition.equals("ok") && primeiroPosition != null){
-           primeiroMuncipio = helperSQLMunicipios.getReturnList().get(0);
-           nomeCity.setText(primeiroMuncipio.getNome());
-           descricaoCity.setText(primeiroMuncipio.getDescricao());
-           estado.setText(primeiroMuncipio.getEstado());
-       }else{
-           if(municipios!=null){
-               nomeCity.setText(municipios.getNome());
-               estado.setText(municipios.getEstado());
-               descricaoCity.setText(municipios.getDescricao());
-               inforRelevante.setText(municipios.getInformacoesRelevantes());
-               localidade.setText("Latitude: "+ municipios.getLatitude() + " \n Longitude: " +municipios.getLongitude());
-               site.setText("Site: "+municipios.getSite());
 
-           }
+       String position = getIntent().getStringExtra("detailMunicipio");
+       if(position!=null){
+           index = Integer.parseInt(position);
        }
 
 
+       String primeiroPosition = getIntent().getStringExtra("position");
+       if(primeiroPosition.equals("ok") && primeiroPosition != null){
+           primeiroMuncipio = helperSQLMunicipios.getReturnList().get(0);
+           nomeCity.setText(primeiroMuncipio.getNome()+","+primeiroMuncipio.getEstado());
+           descricaoCity.setText(primeiroMuncipio.getDescricao());
+           descricaoCity.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
+           inforRelevante.setText(primeiroMuncipio.getInformacoesRelevantes());
+           inforRelevante.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
+           fonte_inf.setText("Fonte de Informações: " +primeiroMuncipio.getFontes_informacoes());
+           fonte_inf.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
+       }else{
+           if(index!=0){
+               secundariosMunicipios = helperSQLMunicipios.getReturnList().get(index);
+               nomeCity.setText(secundariosMunicipios.getNome()+","+secundariosMunicipios.getEstado());
+               fonte_inf.setText("Fonte de Informações: " +secundariosMunicipios.getFontes_informacoes());
+               fonte_inf.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
+               descricaoCity.setText(secundariosMunicipios.getDescricao());
+               descricaoCity.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
+               inforRelevante.setText(secundariosMunicipios.getInformacoesRelevantes());
+               inforRelevante.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
 
-    }
+
+           }
+       }
+       }
+
 
     @Override
     protected void onPause() {
+        Log.d("INFDETAILS","InfDetailsPause()");
         super.onPause();
     }
 
@@ -88,6 +99,7 @@ public class InfDetailsMunicipio extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
     }
 }

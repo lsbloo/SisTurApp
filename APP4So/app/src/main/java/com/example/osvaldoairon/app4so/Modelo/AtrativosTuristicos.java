@@ -2,6 +2,7 @@ package com.example.osvaldoairon.app4so.Modelo;
 
 import java.io.Serializable;
 
+import android.graphics.Bitmap;
 public class AtrativosTuristicos implements Serializable{
 
     private long id;
@@ -14,6 +15,12 @@ public class AtrativosTuristicos implements Serializable{
     public Long getId() {
         return id;
     }
+
+    private String imgUrl;
+    private byte[] fotos_byte;
+    private Bitmap fotosBit;
+
+
 
     private String nome; // 0
     private double latitude; // 1
@@ -31,6 +38,10 @@ public class AtrativosTuristicos implements Serializable{
     private String contato_responsavel_atrativo;
     private String email_responsavel_preenchimento;
     private String email_responsavel_atrativo;
+
+
+
+
 
 
     public void setInformacoesRelevantes(String informacoesRelevantes1){

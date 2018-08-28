@@ -68,6 +68,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -180,7 +181,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 errosDeConnexao.printStackTrace();
             }
             helper.recoverDataSQL();
-            salvarDadosRest_city();
+            try {
+                salvarDadosRest_city();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             helper.limparArray();
             return lista_municipios_rest;
         }
@@ -200,7 +205,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
         }
     }
 
-    public void salvarDadosRest_city() {
+    public void salvarDadosRest_city() throws IOException {
         if (lista_municipios_rest != null) {
             for (int i = 0; i < lista_municipios_rest.size(); i++) {
                 Log.v("LOOL", "lool" + lista_municipios_rest.size());
