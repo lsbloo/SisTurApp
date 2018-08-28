@@ -7,6 +7,7 @@
     <string name="Fec">Fechar Navegação</string>
     <string name="title_activity_map">Map</string>
     <string name="title_activity_maps">Map</string>
+    <string name="btn_acessar">Acessar Site</string>
 
 
     <string-array name="secoes">

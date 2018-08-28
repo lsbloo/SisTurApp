@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
             helperSQLAtrativos.limparArray();
 
         }else{
-            Toast.makeText(this, "Não tem dados no banco!", Toast.LENGTH_SHORT).show();
+            Log.d("BANCO VAZIO", "Banco esta vazio!");
         }
 
 
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     //Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
                     Intent at = new Intent(MainActivity.this, ActivityConf.class);
                     startActivity(at);
-                    finish();
+                    // finish();
                 }else if(id == R.id.exibir_inf){
                     /*
                     exibir informações;
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
                 }else if(id == R.id.atrativos){
                     /*
-                    botao rotas;
+                    botao informacoes atrativos;
                      */
                     Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
                 }else{

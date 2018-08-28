@@ -18,7 +18,7 @@ import com.example.osvaldoairon.app4so.R;
 
 public class SplashAct extends AppCompatActivity {
 
-    private static int TEMPO=4000;
+    private static int TEMPO=5000;
     private ProgressBar progressBar;
     private boolean cxtwo;
     @Override
@@ -29,13 +29,14 @@ public class SplashAct extends AppCompatActivity {
 
         progressBar=(ProgressBar)findViewById(R.id.progressSplash);
         exibir_Conexao(verificaConexao());
-
+        Toast.makeText(SplashAct.this, "Bem vindo ao SisTur!", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
 
             @Override
             public void run() {
                 progressBar.setVisibility(View.GONE);
                 Intent i = new Intent(SplashAct.this, MainActivity.class);
+
                 startActivity(i);
 
                 // Fecha esta activity

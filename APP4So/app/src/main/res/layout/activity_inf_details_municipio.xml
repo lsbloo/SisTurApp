@@ -1,9 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivitysSecond.InfDetailsMunicipio">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SisTur"
+                android:textSize="34sp"
+                android:textStyle="bold|italic"
+                android:textColor="#32CD32"
+                android:id="@+id/Logname"
+                android:layout_marginTop="30dp"
+                >
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informações Detalhadas"
+                android:textStyle="bold|italic">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nomecitydetail"
+                android:textSize="14sp"
+                android:textStyle="bold|italic"
+                >
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/estado_detail"
+                android:textSize="14sp"
+                android:textStyle="bold|italic"
+
+                />
+
+        </LinearLayout>
+
+
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@mipmap/iconedois" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:id="@+id/relativeLayoutx"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/descriptionDetail"
+                android:layout_marginTop="16dp"
+                />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relativeLayoutx"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:id="@+id/infrelevantedetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:typeface="normal"
+            app:fontFamily="cursive" />
+
+        <TextView
+            android:id="@+id/fonte_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/infrelevantedetail"
+
+            />
+
+        <TextView
+            android:id="@+id/locate_inf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fonte_details" />
+
+        <TextView
+            android:id="@+id/site_inf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/locate_inf"
+            android:layout_marginTop="12dp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/btn_acessar"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="27dp"
+            app:cardBackgroundColor="#32CD32"
+            app:cardCornerRadius="19dp"
+            android:elevation="4dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_acessar"
+                android:layout_centerInParent="true"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                />
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
