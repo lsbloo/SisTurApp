@@ -5,65 +5,87 @@
     build-mode="COLD"
     density="xhdpi"
     format="10"
-    ir-eligibility="COMPATIBLE"
     plugin-version="3.1.4"
-    timestamp="1535570449923"
+    timestamp="1535584653188"
     token="-5751719407952577923"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="R_CLASS_CHANGE" >
 
     <task
         name="javac"
-        duration="1726" />
+        duration="1873" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="265" />
+        duration="115" />
     <task
         name="verifier"
-        duration="11" />
+        duration="31" />
 
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        type="SPLIT" />
     <artifact
         location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
         type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        type="SPLIT" />
+    <artifact
+        location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
+        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1535566466998"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
+        timestamp="1535582851244"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
@@ -72,42 +94,35 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="R_CLASS_CHANGE"
-        timestamp="1535569025044"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
+        timestamp="1535584653188"
+        verifier="R_CLASS_CHANGE" >
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
         <artifact
+            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
             type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1535570449923"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
     </build>
 
 </instant-run>

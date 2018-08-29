@@ -22,6 +22,7 @@ import com.example.osvaldoairon.app4so.Sqlite.HelperSQLAtrativos;
 public class ActivityInfAt extends AppCompatActivity {
 
     private HelperSQLAtrativos helperSQLAtrativos;
+    private static ListView l1;
 
 
 
@@ -33,12 +34,13 @@ public class ActivityInfAt extends AppCompatActivity {
 
 
         helperSQLAtrativos = new HelperSQLAtrativos(this);
+        helperSQLAtrativos.limparArray();
         helperSQLAtrativos.recoverDataSQLAtrativos();
 
 
         Toast.makeText(this, "Quantidade de Atrativos Turisticos: " + helperSQLAtrativos.getReturnList().size(), Toast.LENGTH_SHORT).show();
 
-        ListView l1 = new ListView(ActivityInfAt.this);
+        l1 = new ListView(ActivityInfAt.this);
         AtrativosAdapter atrativosAdapter = new AtrativosAdapter(this, helperSQLAtrativos.getReturnList());
         if (l1 != null) {
             l1.setAdapter(atrativosAdapter);
@@ -69,7 +71,6 @@ public class ActivityInfAt extends AppCompatActivity {
                 }
             });
         }
-
     }
 
 
@@ -85,12 +86,15 @@ public class ActivityInfAt extends AppCompatActivity {
             at.putExtra("position","ok");
             Log.d("POSITION_At","POSITION_at"+position);
             startActivity(at);
+            finish();
         }else{
             Log.d("POSITION","POSITION"+position);
             Intent et = new Intent(ActivityInfAt.this, InfDetailsAt.class);
             et.putExtra("position","nao_ok");
             et.putExtra("detailAtrativo", String.valueOf(position));
+
             startActivity(et);
+            finish();
 
         }
 
@@ -105,20 +109,25 @@ public class ActivityInfAt extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        l1=null;
+
         super.onResume();
+
+
     }
 
     @Override
     protected void onPause() {
         Log.d("Verific At","VERIFIC AT");
+        l1=null;
         helperSQLAtrativos.limparArray();
-        finish();
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
         Log.v("ZUERA POW", "kapsapsk");
+        helperSQLAtrativos.limparArray();
         super.onDestroy();
     }
     }

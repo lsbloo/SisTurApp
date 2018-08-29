@@ -60,7 +60,7 @@ public class InfContactAtrativo extends AppCompatActivity {
                 nomeResponsavelAt.setText("Nome do responsavel pelo atrativo não informado!");
             }else{
 
-                nomeResponsavelAt.setText("Nome do responsavel pelo atrativo: " +primeiro.getNome_responsavel_atrativo());
+                nomeResponsavelAt.setText("Nome: " +primeiro.getNome_responsavel_atrativo());
             }
 
             if(primeiro.getEmail_responsavel_atrativo().equals("")){
@@ -68,7 +68,7 @@ public class InfContactAtrativo extends AppCompatActivity {
                 emailAtrativoC.setText("Email não informado!");
             }else{
                 emailAtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                emailAtrativoC.setText("Email Responsavel: " + primeiro.getEmail_responsavel_atrativo());
+                emailAtrativoC.setText("Email: " + primeiro.getEmail_responsavel_atrativo());
             }
 
             if(primeiro.getInfoContato().equals("")){
@@ -76,29 +76,29 @@ public class InfContactAtrativo extends AppCompatActivity {
                 contatoAtrativoC.setText("Contato não informado");
             }else{
                 contatoAtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                contatoAtrativoC.setText("Contato do Atrativo: "+ primeiro.getInfoContato());
+                contatoAtrativoC.setText("Contato: "+ primeiro.getInfoContato());
             }
 
             if(primeiro.getNome_responsavel_preenchimento().equals("")){
                 nome_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nome_preenchimento_AtrativoC.setText("Nome do responsavel pelo preenchimento, não informado!");
+                nome_preenchimento_AtrativoC.setText("Nome não informado!");
             }else{
                 nome_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nome_preenchimento_AtrativoC.setText("Responsavel pelo preenchimento: "+primeiro.getNome_responsavel_preenchimento());
+                nome_preenchimento_AtrativoC.setText("Nome: "+primeiro.getNome_responsavel_preenchimento());
             }
             if(primeiro.getEmail_responsavel_preenchimento().equals("")){
                 email_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
                 email_preenchimento_AtrativoC.setText("Email do responsavel pelo preenchimento, não informado!");
             }else{
                 email_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                email_preenchimento_AtrativoC.setText("Email do responsavel pelo preenchimento" +primeiro.getEmail_responsavel_preenchimento());
+                email_preenchimento_AtrativoC.setText("Email:" +primeiro.getEmail_responsavel_preenchimento());
             }
             if(primeiro.getContato_responsavel_preenchimento().equals("")){
                 contato_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
                 contato_preenchimento_AtrativoC.setText("Contato do responsavel pelo preenchimento não informado");
             }else{
                 contato_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                contato_preenchimento_AtrativoC.setText("Contato do responsavel pelo preenchimento: " + primeiro.getContato_responsavel_preenchimento());
+                contato_preenchimento_AtrativoC.setText("Contato: " + primeiro.getContato_responsavel_preenchimento());
             }
 
 
@@ -111,10 +111,10 @@ public class InfContactAtrativo extends AppCompatActivity {
 
             if(secundarios.getNome_responsavel_atrativo().equals("")){
                 nomeResponsavelAt.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nomeResponsavelAt.setText("Nome do responsavel pelo atrativo não informado!");
+                nomeResponsavelAt.setText("Responsavel pelo atrativo não informado!");
             }else{
                 nomeResponsavelAt.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nomeResponsavelAt.setText("Nome do responsavel pelo atrativo: " +secundarios.getNome_responsavel_atrativo());
+                nomeResponsavelAt.setText("Nome: " +secundarios.getNome_responsavel_atrativo());
             }
 
             if(secundarios.getEmail_responsavel_atrativo().equals("")){
@@ -122,7 +122,7 @@ public class InfContactAtrativo extends AppCompatActivity {
                 emailAtrativoC.setText("Email não informado!");
             }else{
                 emailAtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                emailAtrativoC.setText("Email Responsavel: " + secundarios.getEmail_responsavel_atrativo());
+                emailAtrativoC.setText("Email: " + secundarios.getEmail_responsavel_atrativo());
             }
 
             if(secundarios.getInfoContato().equals("")){
@@ -130,29 +130,29 @@ public class InfContactAtrativo extends AppCompatActivity {
                 contatoAtrativoC.setText("Contato não informado");
             }else{
                 contatoAtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                contatoAtrativoC.setText("Contato do Atrativo: "+ secundarios.getInfoContato());
+                contatoAtrativoC.setText("Contato: "+ secundarios.getInfoContato());
             }
 
             if(secundarios.getNome_responsavel_preenchimento().equals("")){
                 nome_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nome_preenchimento_AtrativoC.setText("Nome do responsavel pelo preenchimento, não informado!");
+                nome_preenchimento_AtrativoC.setText("Responsavel pelo preenchimento, não informado!");
             }else{
                 nome_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                nome_preenchimento_AtrativoC.setText("Responsavel pelo preenchimento: "+secundarios.getNome_responsavel_preenchimento());
+                nome_preenchimento_AtrativoC.setText("Nome: "+secundarios.getNome_responsavel_preenchimento());
             }
             if(secundarios.getEmail_responsavel_preenchimento().equals("")){
                 email_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                email_preenchimento_AtrativoC.setText("Email do responsavel pelo preenchimento, não informado!");
+                email_preenchimento_AtrativoC.setText("Email responsavel pelo preenchimento, não informado!");
             }else{
                 email_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                email_preenchimento_AtrativoC.setText("Email do responsavel pelo preenchimento" +secundarios.getEmail_responsavel_preenchimento());
+                email_preenchimento_AtrativoC.setText("Email:" +secundarios.getEmail_responsavel_preenchimento());
             }
             if(secundarios.getContato_responsavel_preenchimento().equals("")){
                 contato_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                contato_preenchimento_AtrativoC.setText("Contato do responsavel pelo preenchimento não informado");
+                contato_preenchimento_AtrativoC.setText("Responsavel pelo preenchimento não informado");
             }else{
                 contato_preenchimento_AtrativoC.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
-                contato_preenchimento_AtrativoC.setText("Contato do responsavel pelo preenchimento: " + secundarios.getContato_responsavel_preenchimento());
+                contato_preenchimento_AtrativoC.setText("Contato:" + secundarios.getContato_responsavel_preenchimento());
             }
 
         }

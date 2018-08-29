@@ -21,6 +21,7 @@
             android:orientation="vertical"
             >
 
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,61 +63,128 @@
         android:id="@+id/relativeLayoutx"
         >
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Responsavel pelo Atrativo"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:id="@+id/infessencialLinear">
+            android:layout_below="@+id/textView3"
+            android:id="@+id/infessencialLinear"
+            android:layout_marginTop="16dp"
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:id="@+id/contato_atrativo"
-                />
+            >
 
-            <TextView
-                android:layout_width="wrap_content"
+
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@drawable/contato"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:id="@+id/nomeResponsavelAtrativo"
-                />
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_below="@+id/infessencialLinear"
-            android:layout_height="wrap_content"
-            android:id="@+id/email_atrativo"
-            />
+                android:orientation="vertical"
+                android:layout_below="@+id/textView3"
+                android:layout_marginLeft="95dp"
+                android:layout_marginTop="16dp"
+                >
+                <TextView
+                    android:id="@+id/email_atrativo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contato_atrativo"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nomeResponsavelAtrativo"
+                    />
+
+            </LinearLayout>
+
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayoutx"
         android:orientation="horizontal"
+        android:layout_marginTop="30dp"
         >
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nome_preenchimento"
-            />
+            android:textSize="14sp"
+            android:textStyle="bold|italic"
+            android:text="Responsavel pelo preenchimento do atrativo" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nome_preenchimento"
-            android:id="@+id/contato_preenchimento"
-            />
+            android:orientation="horizontal"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="16dp"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:src="@drawable/contato"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/contato_preenchimento"
-            android:id="@+id/email_preenchimento"
-            />
+            android:orientation="vertical"
+            android:layout_marginLeft="95dp"
+            android:layout_below="@id/textView4"
+            android:layout_marginTop="16dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nome_preenchimento"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nome_preenchimento"
+                android:id="@+id/contato_preenchimento"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/contato_preenchimento"
+                android:id="@+id/email_preenchimento"
+                />
+        </LinearLayout>
+
+
 
 
     </RelativeLayout>

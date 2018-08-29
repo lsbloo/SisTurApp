@@ -138,7 +138,9 @@ public class ActivityInf extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
         super.onResume();
+
     }
 
     @Override

@@ -45,7 +45,7 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
 
     @Override
     public long getItemId(int position) {
-        return list.get(position).getId_sql();
+        return 0;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
     public Bitmap convertImgDBtoBitmap(byte[] img){
         Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
         if(bitmap!=null){
-            Log.d("BITMAP","O bitmap ta ok!");
+            Log.d("BITMAP","O bitmap ta ok! Atrativo");
         }
         return bitmap;
     }

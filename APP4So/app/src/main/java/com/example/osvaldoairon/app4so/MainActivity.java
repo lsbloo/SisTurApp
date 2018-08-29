@@ -162,7 +162,10 @@ public class MainActivity extends AppCompatActivity implements Serializable
 
                     startActivity(at);
 
+                }else if(id==R.id.inf_project){
+                    Toast.makeText(MainActivity.this, "Site Project APPS4SOCIETY", Toast.LENGTH_SHORT).show();
                 }else{
+
                     /*
                     Pesquisas SAlvas;
                      */
