@@ -74,20 +74,17 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
 
         View view = LayoutInflater.from(ctx).inflate(R.layout.activity_inf,parent,false);
 
-         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
-         //TextView populacaoCidade = (TextView)view.findViewById(R.id.populacao);
-         //TextView infRelevante = (TextView)view.findViewById(R.id.informacoesRelevante);
+        TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
+
          CardView card = (CardView)view.findViewById(R.id.card);
-         //TextView areaTerritorial = (TextView)view.findViewById(R.id.areaTerritorial);
+
 
 
         final ImageView imgCidade=(ImageView)view.findViewById(R.id.fotocidade);
         Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(municipios.getFotos()),200,87);
 
         nomeCidade.setText(municipios.getNome());
-        //populacaoCidade.setText("População: " + municipios.getPopulacao() +" "+"Habitantes");
-     //   areaTerritorial.setText("Área Territorial: " + municipios.getAreaTerritorial()+ " "+"quilômetros quadrados");
-       // infRelevante.setText(municipios.getInformacoesRelevantes());
+
 
         imgCidade.setImageBitmap(foto);
 

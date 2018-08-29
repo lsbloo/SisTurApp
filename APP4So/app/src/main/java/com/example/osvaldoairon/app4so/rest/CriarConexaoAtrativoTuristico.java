@@ -58,10 +58,15 @@ public class CriarConexaoAtrativoTuristico {
                 String email_r_atrativo = objArray.getString("email_reponsavel_atrativo");
                 String email_responsavel_preenchimento = objArray.getString("email_responsavel");
 
+                String imgUrl = objArray.getString("imgURL");
+
+
+
                 //Atribui os objetos que estão nas camadas mais baixas
 
                 AtrativosTuristicos atrativos = new AtrativosTuristicos();
 
+                atrativos.setImgUrl(imgUrl);
                 atrativos.setNome(nome);
                 atrativos.setId(id);
                 atrativos.setLatitude(latitude);

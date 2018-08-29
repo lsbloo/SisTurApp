@@ -156,7 +156,11 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
                 errosDeConnexao.printStackTrace();
             }
             helperAtratativos.recoverDataSQLAtrativos();
-            salvarDadosRest_atrativos();
+            try {
+                salvarDadosRest_atrativos();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             helperAtratativos.limparArray();
             return lista_atrativos_rest;
 
@@ -197,7 +201,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
     }
 
 
-    public void salvarDadosRest_atrativos() {
+    public void salvarDadosRest_atrativos() throws IOException {
         if (lista_atrativos_rest != null) {
             for (int i = 0; i < lista_atrativos_rest.size(); i++) {
                 helperAtratativos.inserirAtrativo(lista_atrativos_rest.get(i));

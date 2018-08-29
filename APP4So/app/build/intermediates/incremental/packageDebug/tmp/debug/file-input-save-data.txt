@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Aug 28 19:38:30 BRT 2018
+#Tue Aug 28 21:23:13 BRT 2018
 2.base=/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/transforms/dexMerger/debug/96
 0.path=classes.dex
 2.baseType=DIRECTORY

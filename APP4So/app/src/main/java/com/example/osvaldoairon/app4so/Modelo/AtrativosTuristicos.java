@@ -21,7 +21,6 @@ public class AtrativosTuristicos implements Serializable{
     private Bitmap fotosBit;
 
 
-
     private String nome; // 0
     private double latitude; // 1
     private double longitude; // 2
@@ -42,6 +41,27 @@ public class AtrativosTuristicos implements Serializable{
 
 
 
+    public void setImgUrl(String imgUrl){
+        this.imgUrl=imgUrl;
+    }
+    public String getImgUrl(){
+        return imgUrl;
+    }
+    public void setFotos_byte(Bitmap ft_bitmap){
+        this.fotosBit=ft_bitmap;
+    }
+
+    public Bitmap getFotosBit() {
+        return fotosBit;
+    }
+
+    public void setFotos_byte(byte[] fotos_byte) {
+        this.fotos_byte = fotos_byte;
+    }
+
+    public byte[] getFotos_byte() {
+        return fotos_byte;
+    }
 
 
     public void setInformacoesRelevantes(String informacoesRelevantes1){

@@ -115,6 +115,12 @@
         <activity
             android:name="com.example.osvaldoairon.app4so.ActivitysSecond.InfDetailsMunicipio"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInfAt"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.example.osvaldoairon.app4so.ActivitysSecond.InfDetailsAt"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.support.VERSION"

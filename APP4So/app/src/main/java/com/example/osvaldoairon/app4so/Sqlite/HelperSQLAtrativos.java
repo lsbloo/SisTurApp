@@ -4,16 +4,21 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.osvaldoairon.app4so.Modelo.AtrativosTuristicos;
 import com.example.osvaldoairon.app4so.Modelo.Municipios;
+import com.example.osvaldoairon.app4so.Util.TransformadorImg;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class HelperSQLAtrativos {
 
     private SqlAtrativosTuristicos sqlAtrativosTuristicos;
+    private TransformadorImg transformadorImg;
 
     private static ArrayList<AtrativosTuristicos> list_atrativos = new ArrayList<AtrativosTuristicos>();
 
@@ -34,7 +39,42 @@ public class HelperSQLAtrativos {
         }
         return false;
     }
-    public void inserirAtrativo(AtrativosTuristicos atrativosTuristicos){
+    public byte[] transformBityMap(String url) throws IOException {
+        /*
+        Reponsavel por pegar uma imagem Bitmap gerada na classe Transformador
+        e transformar ela em um byte[] array;
+        é necessario para o armazenamento no sqlite;
+        tipo de dado da imagem {blob};
+        é interessante recuperar essas imagens do bd uma vez que se o dado
+        do municipio ja tiver sido inserido, nao fazer uma nova requisição de imagem;
+
+         */
+
+        try{
+            transformadorImg = new TransformadorImg();
+
+            Bitmap img = transformadorImg.doInBackground(url);
+
+
+            ByteArrayOutputStream s = new ByteArrayOutputStream();
+
+            img.compress(Bitmap.CompressFormat.JPEG,100,s);
+
+            byte[] imagemByte = s.toByteArray();
+
+            return imagemByte;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.d("Problema na conexao IMG","Problema conexao IMG ATRATIVO");
+        }
+
+        return null;
+
+
+
+    }
+    public void inserirAtrativo(AtrativosTuristicos atrativosTuristicos) throws IOException {
 
         if(verificaDado(atrativosTuristicos)){
             Log.v("JA INSERIDOS-ATRATIVOS", "Dados REST JA INSERIDO MUNICIPIO");
@@ -42,6 +82,10 @@ public class HelperSQLAtrativos {
             SQLiteDatabase db = sqlAtrativosTuristicos.getWritableDatabase();
 
             ContentValues cv = new ContentValues();
+
+
+            byte[] fotos = transformBityMap(atrativosTuristicos.getImgUrl());
+
 
             cv.put(sqlAtrativosTuristicos.NOME_ATRATIVOS, atrativosTuristicos.getNome());
             cv.put(sqlAtrativosTuristicos.INFO_CONTATO, atrativosTuristicos.getInfoContato());
@@ -58,6 +102,7 @@ public class HelperSQLAtrativos {
             cv.put(sqlAtrativosTuristicos.CONTATO_RESPONSAVEL_ATRATIVO,atrativosTuristicos.getContato_responsavel_atrativo());
             cv.put(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_PREENCHIMENTO,atrativosTuristicos.getEmail_responsavel_preenchimento());
             cv.put(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_ATRATIVO,atrativosTuristicos.getEmail_responsavel_atrativo());
+            cv.put(sqlAtrativosTuristicos.IMAGEM_AT,fotos);
 
 
             long id = db.insert(sqlAtrativosTuristicos.NOME_TABELA,null,cv);
@@ -99,6 +144,7 @@ public class HelperSQLAtrativos {
             int indexColunaContatoResponsavelAtrativo = cursor.getColumnIndex(sqlAtrativosTuristicos.CONTATO_RESPONSAVEL_ATRATIVO);
             int indexColunaEmailResponsavelPreenchimento = cursor.getColumnIndex(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_PREENCHIMENTO);
             int indexColunaEmailResponsavelAtrativo = cursor.getColumnIndex(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_ATRATIVO);
+            int indexColunaFoto = cursor.getColumnIndex(sqlAtrativosTuristicos.IMAGEM_AT);
 
 
 
@@ -117,13 +163,14 @@ public class HelperSQLAtrativos {
             String contato_responsavel_atrativo = cursor.getString(indexColunaContatoResponsavelAtrativo);
             String email_responsavel_preenchimento = cursor.getString(indexColunaEmailResponsavelPreenchimento);
             String email_responsavel_atrativo = cursor.getString(indexColunaEmailResponsavelAtrativo);
-
+            byte[] fotos = cursor.getBlob(indexColunaFoto);
 
 
             long municipiosid = cursor.getLong(indexID);
 
             AtrativosTuristicos atdb = new AtrativosTuristicos();
 
+            atdb.setFotos_byte(fotos);
             atdb.setLatitude(latitude);
             atdb.setLongitude(longitude);
             atdb.setNome(nome);

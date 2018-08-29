@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityConf;
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInf;
+import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityInfAt;
 import com.example.osvaldoairon.app4so.ActivitysSecond.ActivityPesquisa;
 import com.example.osvaldoairon.app4so.EventBus.MessageEvent;
 import com.example.osvaldoairon.app4so.Fragments.MapGoogleActivity;
@@ -157,7 +158,10 @@ public class MainActivity extends AppCompatActivity implements Serializable
                     /*
                     botao informacoes atrativos;
                      */
-                    Toast.makeText(MainActivity.this, "não implementado", Toast.LENGTH_SHORT).show();
+                    Intent at = new Intent(MainActivity.this,ActivityInfAt.class);
+
+                    startActivity(at);
+
                 }else{
                     /*
                     Pesquisas SAlvas;

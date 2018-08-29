@@ -1,11 +1,16 @@
 package com.example.osvaldoairon.app4so.BaseAdapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -48,37 +53,29 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
 
         AtrativosTuristicos at = list.get(position);
 
-       // View view = LayoutInflater.from(ctx).inflate(R.layout.activity_fragment_inf_turismo,parent,false);
+        View view = LayoutInflater.from(ctx).inflate(R.layout.activity_inf_at,parent,false);
 
-    /*
-    TextView nomePonto = (TextView)view.findViewById(R.id.nomePonto);
-        TextView descricaoPonto = (TextView)view.findViewById(R.id.descricaoPonto);
-        TextView comochegar = (TextView)view.findViewById(R.id.comoChegar);
-        TextView info = (TextView)view.findViewById(R.id.infocontato);
-        TextView site = (TextView)view.findViewById(R.id.site);
-        TextView informacoesRelevante = (TextView)view.findViewById(R.id.inf_relevante);
-        TextView nome_responsavel_at = (TextView)view.findViewById(R.id.nome_responsavel_atrativo);
-        TextView email_responsavel_atrativo = (TextView)view.findViewById(R.id.email_responsavel_atrativo);
-        TextView contato_responsavel_atrativo = (TextView)view.findViewById(R.id.contato_responsavel_atrativo);
-        TextView fonte_inf = (TextView)view.findViewById(R.id.fonte_inf);
 
-        nomePonto.setText(at.getNome());
-        descricaoPonto.setText(at.getDescricao());
-        comochegar.setText("Como chegar?: " +at.getComoChegar());
-        info.setText("Informação contato: " +at.getInfoContato());
-        site.setText("Site: " +at.getSite());
-        informacoesRelevante.setText("Informações Relevantes: "+at.getInformacoesRelevantes());
-        nome_responsavel_at.setText("Responsavel Atrativo: "+at.getNome_responsavel_atrativo());
-        email_responsavel_atrativo.setText("Email Responsavel do Atrativo: "+at.getEmail_responsavel_atrativo());
-        contato_responsavel_atrativo.setText("Contato Responsavel Atrativo: "+at.getContato_responsavel_atrativo());
-        fonte_inf.setText("Fonte de Informações: "+at.getFonteInformacoes());
+        TextView nomeAtrativo = (TextView)view.findViewById(R.id.nomeAtrativo);
+        CardView card = (CardView)view.findViewById(R.id.cardAt);
+
+         /*
+        Widgets
+         */
+
+
+        final ImageView imgAtrativo=(ImageView)view.findViewById(R.id.fotoatrativo);
+        Bitmap foto = resizeImgBitmap(ctx,convertImgDBtoBitmap(at.getFotos_byte()),200,87);
+
+        nomeAtrativo.setText(at.getNome());
+
+
+        imgAtrativo.setImageBitmap(foto);
 
 
         return view;
-     */
-    return null;
-
     }
+
 
     @Override
     public void onStart(BaseSliderView target) {
@@ -93,5 +90,28 @@ public class AtrativosAdapter extends BaseAdapter implements BaseSliderView.OnSl
     @Override
     public void onSliderClick(BaseSliderView slider) {
 
+    }
+
+    public Bitmap convertImgDBtoBitmap(byte[] img){
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img,0,img.length);
+        if(bitmap!=null){
+            Log.d("BITMAP","O bitmap ta ok!");
+        }
+        return bitmap;
+    }
+
+    public static Bitmap resizeImgBitmap(Context ctx,Bitmap original_bit ,float newWidth,float newHeight){
+        Bitmap novo=null;
+        int w = original_bit.getWidth();
+        int h = original_bit.getHeight();
+        float densityFactor = ctx.getResources().getDisplayMetrics().density;
+        float novoW = newWidth * densityFactor;
+        float novoH = newHeight * densityFactor;
+        float scalaW = novoW / w;
+        float scalaH = novoH / h;
+        Matrix matrix = new Matrix();
+        matrix.postScale(scalaW, scalaH);
+        novo = Bitmap.createBitmap(original_bit, 0, 0, w, h, matrix, true);
+        return novo;
     }
 }
