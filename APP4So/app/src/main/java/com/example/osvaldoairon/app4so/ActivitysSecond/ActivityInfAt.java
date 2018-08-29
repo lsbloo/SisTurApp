@@ -6,13 +6,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.ImageButton;
 
 import com.example.osvaldoairon.app4so.BaseAdapter.AtrativosAdapter;
 import com.example.osvaldoairon.app4so.R;
@@ -21,6 +22,9 @@ import com.example.osvaldoairon.app4so.Sqlite.HelperSQLAtrativos;
 public class ActivityInfAt extends AppCompatActivity {
 
     private HelperSQLAtrativos helperSQLAtrativos;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class ActivityInfAt extends AppCompatActivity {
         Toast.makeText(this, "Quantidade de Atrativos Turisticos: " + helperSQLAtrativos.getReturnList().size(), Toast.LENGTH_SHORT).show();
 
         ListView l1 = new ListView(ActivityInfAt.this);
-        AtrativosAdapter atrativosAdapter = new AtrativosAdapter(this,helperSQLAtrativos.getReturnList());
+        AtrativosAdapter atrativosAdapter = new AtrativosAdapter(this, helperSQLAtrativos.getReturnList());
         if (l1 != null) {
             l1.setAdapter(atrativosAdapter);
             setContentView(l1);
@@ -66,8 +70,9 @@ public class ActivityInfAt extends AppCompatActivity {
             });
         }
 
-
     }
+
+
 
     public void listenEvent(int position){
         /*
@@ -78,6 +83,7 @@ public class ActivityInfAt extends AppCompatActivity {
         if(position==0){
             Intent at = new Intent(ActivityInfAt.this, InfDetailsAt.class);
             at.putExtra("position","ok");
+            Log.d("POSITION_At","POSITION_at"+position);
             startActivity(at);
         }else{
             Log.d("POSITION","POSITION"+position);
@@ -90,6 +96,11 @@ public class ActivityInfAt extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -23,4 +23,8 @@
 
     </string-array>
 
+    <string name="title_activity_inf_contact_at">InfContactAt</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 </resources>

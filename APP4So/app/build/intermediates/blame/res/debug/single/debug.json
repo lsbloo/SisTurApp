@@ -4,6 +4,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/7b7f63501235b1004229b27057a71793/res/layout/notification_template_big_media.xml"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-mdpi/ic_contacts_black_24dp.png"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-xxhdpi-v4/abc_ic_star_black_48dp.png"
     },
@@ -64,16 +68,16 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/2f16367191be15784e45b55ab5e99cbe/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
-        "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
+        "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/c1836cb083cc9ee0ba75c8f10e48c480/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-mdpi-v4/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
-        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/c1836cb083cc9ee0ba75c8f10e48c480/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
+        "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_icon.xml.flat",
@@ -508,6 +512,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/anim/tooltip_enter.xml"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-ldpi/ic_contacts_black_24dp.png"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-xxhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png"
     },
@@ -574,6 +582,10 @@
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/layout_activity_inf_contact_atrativo.xml.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/src/main/res/layout/activity_inf_contact_atrativo.xml"
     },
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -1244,6 +1256,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/c1836cb083cc9ee0ba75c8f10e48c480/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_contacts_black_24dp.xml.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_contacts_black_24dp.xml"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/color_abc_tint_seek_thumb.xml.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/color/abc_tint_seek_thumb.xml"
     },
@@ -1588,6 +1604,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-mdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_contacts_black_24dp.png"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable_abc_ic_voice_search_api_material.xml.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable/abc_ic_voice_search_api_material.xml"
     },
@@ -1784,6 +1804,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_contacts_black_24dp.png"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable-hdpi-v4/abc_menu_hardkey_panel_mtrl_mult.9.png"
     },
@@ -1904,6 +1928,10 @@
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-hdpi/ic_contacts_black_24dp.png"
+    },
+    {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable_abc_item_background_holo_light.xml.flat",
         "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/drawable/abc_item_background_holo_light.xml"
     },
@@ -2022,6 +2050,10 @@
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_settings_black_24dp.png.flat",
         "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-mdpi/ic_settings_black_24dp.png"
+    },
+    {
+        "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_contacts_black_24dp.png.flat",
+        "source": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_contacts_black_24dp.png"
     },
     {
         "merged": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_map_black_24dp.xml.flat",

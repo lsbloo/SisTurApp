@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/linearCabecalho"
+        android:id="@+id/linearCabecalhoAt"
         android:layout_height="110dp"
         android:orientation="horizontal"
         android:background="@drawable/gradiente_layout_border"
@@ -35,13 +35,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/nomecitydetail"
+                android:id="@+id/nomedetailAt"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp"
                 android:textStyle="bold|italic"
                 >
 
             </TextView>
+
+            <ImageButton
+                android:id="@+id/btnat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_contacts_black_24dp" />
 
 
         </LinearLayout>
@@ -60,12 +66,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearCabecalho"
+        android:layout_below="@+id/linearCabecalhoAt"
         android:id="@+id/relativeLayoutx"
         >
 
         <TextView
-            android:id="@+id/descriptionDetail"
+            android:id="@+id/descriptionDetailAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -99,7 +105,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/infrelevantedetail"
+                    android:id="@+id/infrelevantedetailAt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -112,7 +118,7 @@
         </ScrollView>
 
         <TextView
-            android:id="@+id/fonte_details"
+            android:id="@+id/fonte_detailsAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/scroll_viewInformacoes"

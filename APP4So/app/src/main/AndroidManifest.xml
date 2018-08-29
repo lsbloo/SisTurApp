@@ -90,11 +90,17 @@
         <activity
             android:name=".ActivitysSecond.InfDetailsMunicipio"
             android:screenOrientation="portrait" />
-        <activity android:name=".ActivitysSecond.ActivityInfAt"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ActivitysSecond.InfDetailsAt"
+        <activity
+            android:name=".ActivitysSecond.ActivityInfAt"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivitysSecond.InfDetailsAt"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ActivitysSecond.InfContactAtrativo"
             android:screenOrientation="portrait"
-            ></activity>
+            >
+
+        </activity>
     </application>
 
 </manifest>
