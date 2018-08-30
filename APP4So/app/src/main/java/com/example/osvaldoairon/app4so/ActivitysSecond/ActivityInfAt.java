@@ -109,7 +109,6 @@ public class ActivityInfAt extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        l1=null;
 
         super.onResume();
 
@@ -119,15 +118,14 @@ public class ActivityInfAt extends AppCompatActivity {
     @Override
     protected void onPause() {
         Log.d("Verific At","VERIFIC AT");
-        l1=null;
-        helperSQLAtrativos.limparArray();
+
         super.onPause();
     }
 
     @Override
     protected void onDestroy() {
         Log.v("ZUERA POW", "kapsapsk");
-        helperSQLAtrativos.limparArray();
+        
         super.onDestroy();
     }
     }
