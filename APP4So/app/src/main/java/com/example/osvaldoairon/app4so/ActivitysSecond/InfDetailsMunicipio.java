@@ -30,6 +30,7 @@ public class InfDetailsMunicipio extends AppCompatActivity {
     private TextView localidade;
     private TextView estado;
     private int index;
+    private TextView populacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class InfDetailsMunicipio extends AppCompatActivity {
         descricaoCity=(TextView)findViewById(R.id.descriptionDetail);
         fonte_inf=(TextView)findViewById(R.id.fonte_details) ;
         inforRelevante=(TextView)findViewById(R.id.infrelevantedetail) ;
+        populacao =(TextView)findViewById(R.id.populacaoCidade);
      //   localidade=(TextView)findViewById(R.id.locate_inf);
 
 
@@ -59,6 +61,8 @@ public class InfDetailsMunicipio extends AppCompatActivity {
            primeiroMuncipio = helperSQLMunicipios.getReturnList().get(0);
            nomeCity.setText(primeiroMuncipio.getNome()+","+primeiroMuncipio.getEstado());
            descricaoCity.setText(primeiroMuncipio.getDescricao());
+           populacao.setText(String.valueOf(primeiroMuncipio.getPopulacao()) +" "+"Habitantes");
+
            descricaoCity.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
            inforRelevante.setText(primeiroMuncipio.getInformacoesRelevantes());
            inforRelevante.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
@@ -68,6 +72,8 @@ public class InfDetailsMunicipio extends AppCompatActivity {
            if(index!=0){
                secundariosMunicipios = helperSQLMunicipios.getReturnList().get(index);
                nomeCity.setText(secundariosMunicipios.getNome()+","+secundariosMunicipios.getEstado());
+               populacao.setText(String.valueOf(secundariosMunicipios.getPopulacao()) +" "+"Habitantes");
+
                fonte_inf.setText("Fonte de Informações: " +secundariosMunicipios.getFontes_informacoes());
                fonte_inf.setTypeface(FontesTerceiras.setRobotoRegular(getBaseContext()));
                descricaoCity.setText(secundariosMunicipios.getDescricao());

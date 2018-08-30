@@ -76,6 +76,7 @@ public class CoordenadasAdapterCidades extends BaseAdapter implements BaseSlider
 
         TextView nomeCidade = (TextView)view.findViewById(R.id.nomeCidade);
 
+
          CardView card = (CardView)view.findViewById(R.id.card);
 
 
