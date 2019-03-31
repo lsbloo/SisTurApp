@@ -151,7 +151,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
             CriarConexaoAtrativoTuristico utilat = new CriarConexaoAtrativoTuristico();
 
             try {
-                lista_atrativos_rest = utilat.getInformacao("https://apps4society.herokuapp.com/rest_atrativosTuristicos");
+                lista_atrativos_rest = utilat.getInformacao("http://192.168.0.106:8080/sisturinfo/endpoints/atrativo/list");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }
@@ -180,7 +180,7 @@ public class MapGoogleActivity extends SupportMapFragment implements GoogleApiCl
 
 
             try {
-                lista_municipios_rest = util.getInformacao("https://apps4society.herokuapp.com/rest_municipios");
+                lista_municipios_rest = util.getInformacao("http://192.168.0.106:8080/sisturinfo/endpoints/municipios/list");
             } catch (ErrosDeConnexao errosDeConnexao) {
                 errosDeConnexao.printStackTrace();
             }

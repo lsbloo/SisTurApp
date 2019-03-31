@@ -116,7 +116,7 @@ public class HelperSQLMunicipios {
             if (id != -1) {
                 municipios.setId_sql(id);
             }
-            db.close();
+
             Log.v("INSERINDO--MUNICIPIOS", "INSERINDO--MUNICIPIOS");
             return id;
         }
@@ -197,9 +197,6 @@ public class HelperSQLMunicipios {
 
         }
         cursor.close();
-        db.close();
-
-
     }
 
 

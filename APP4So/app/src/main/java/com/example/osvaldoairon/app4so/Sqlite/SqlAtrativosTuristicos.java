@@ -5,8 +5,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 public class SqlAtrativosTuristicos extends SQLiteOpenHelper{
 
-    public static final String NOME_BANCO = "SisTurATuristicos";
-    public static final int VERSAO_BANCO = 15;
+    public static final String NOME_BANCO = "SisTurATuristicoss";
+    public static final int VERSAO_BANCO = 16;
     public static final String ID_ = "_id";
     public static final String NOME_TABELA = "atrativosTuristicos1";
     public static final String IMAGEM_AT = "imagens_atrativo";

@@ -81,6 +81,7 @@ public class HelperSQLAtrativos {
         }else{
             SQLiteDatabase db = sqlAtrativosTuristicos.getWritableDatabase();
 
+
             ContentValues cv = new ContentValues();
 
 
@@ -103,15 +104,14 @@ public class HelperSQLAtrativos {
             cv.put(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_PREENCHIMENTO,atrativosTuristicos.getEmail_responsavel_preenchimento());
             cv.put(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_ATRATIVO,atrativosTuristicos.getEmail_responsavel_atrativo());
             cv.put(sqlAtrativosTuristicos.IMAGEM_AT,fotos);
-
-
             long id = db.insert(sqlAtrativosTuristicos.NOME_TABELA,null,cv);
 
             if(id != -1){
                 atrativosTuristicos.setId_sql(id);
             }
-            db.close();
+
             Log.v("INSERINDO--Atrativos", "INSERINDO--ATRATIVOS");
+
         }
 
 
@@ -145,8 +145,6 @@ public class HelperSQLAtrativos {
             int indexColunaEmailResponsavelPreenchimento = cursor.getColumnIndex(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_PREENCHIMENTO);
             int indexColunaEmailResponsavelAtrativo = cursor.getColumnIndex(sqlAtrativosTuristicos.EMAIL_RESPONSAVEL_ATRATIVO);
             int indexColunaFoto = cursor.getColumnIndex(sqlAtrativosTuristicos.IMAGEM_AT);
-
-
 
             Double latitude = cursor.getDouble(indexColunaLatitude);
             Double longitude = cursor.getDouble(indexColunaLongitude);
@@ -192,9 +190,6 @@ public class HelperSQLAtrativos {
 
         }
         cursor.close();
-        db.close();
-
-
     }
 
     public ArrayList<AtrativosTuristicos> getReturnList(){

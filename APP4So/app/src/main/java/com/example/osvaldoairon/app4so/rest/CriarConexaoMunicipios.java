@@ -50,8 +50,8 @@ public class CriarConexaoMunicipios {
                 String estado = objArray.getString("estado");
                 String site = objArray.getString("site");
                 int populacao = objArray.getInt("populacao");
-                double latitude = objArray.getDouble("latitude");
-                double longitude = objArray.getDouble("longitude");
+                double latitude = checkLatAndLong(objArray.getString("latitude"));
+                double longitude = checkLatAndLong(objArray.getString("longitude"));
                 String informacoes_relevantes = objArray.getString("informacoesRelevantes");
                 String email_responsavel = objArray.getString("email_responsavel");
                 String nome_responsavel = objArray.getString("nome_responsavel");
@@ -96,7 +96,12 @@ public class CriarConexaoMunicipios {
 
     }
 
-
+    public Double checkLatAndLong(String param){
+        if(param.equals("campo nao informado")){
+            return 0.0;
+        }
+        return Double.parseDouble(param);
+    }
 
 
 }

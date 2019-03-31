@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "D:\\SisTurApp\\APP4So\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/cardview-v7-26.1.0.aar/ba8f25878193bc8f893f622755b003c9/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\cardview-v7-26.1.0.aar\\457fc4ca6fd38c9effcb0fb16457fa44\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\536625c41dde2f3777c32068af0a092d\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",

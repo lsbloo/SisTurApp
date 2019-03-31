@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v17/values-v17.xml",
+            "outputFile": "D:\\SisTurApp\\APP4So\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/values-v17/values-v17.xml",
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\536625c41dde2f3777c32068af0a092d\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,26,29,32,35,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

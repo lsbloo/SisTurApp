@@ -33,6 +33,7 @@ public class CriarConexaoAtrativoTuristico {
 
     private ArrayList<AtrativosTuristicos> modificaJson(String json){
 
+        Log.d("serio?", "sim");
 
         try {
 
@@ -47,8 +48,8 @@ public class CriarConexaoAtrativoTuristico {
                 String descricao = objArray.getString("descricao");
                 String infoContato = objArray.getString("infoContato");
                 String site = objArray.getString("site");
-                double latitude = objArray.getDouble("latitude");
-                double longitude = objArray.getDouble("longitude");
+                double latitude = checkLatAndLong(objArray.getString("latitude"));
+                double longitude = checkLatAndLong(objArray.getString("longitude"));
                 String nome_responsavel_preenchimento=objArray.getString("nome_responsavel_preenchimento");
                 String inf_relevante = objArray.getString("informacoes_relevantes");
                 String contato_r_preenchimento = objArray.getString("contato_responsavel_preenchimento");
@@ -98,5 +99,12 @@ public class CriarConexaoAtrativoTuristico {
         }
         return null;
 
+    }
+
+    public Double checkLatAndLong(String param){
+        if(param.equals("campo nao informado")){
+            return 0.0;
+        }
+        return Double.parseDouble(param);
     }
 }

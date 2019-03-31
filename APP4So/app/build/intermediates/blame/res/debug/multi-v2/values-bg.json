@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "/home/osvaldoairon/Apps4Society-GPS-TEST/APP4So/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bg/values-bg.xml",
+            "outputFile": "D:\\SisTurApp\\APP4So\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bg\\values-bg.xml",
             "map": [
                 {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/c1836cb083cc9ee0ba75c8f10e48c480/res/values-bg/values.xml",
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.8.0.aar\\ee8bb43daec70cbbb010e4c3782c68f5\\res\\values-bg\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "283",
+                        "endColumns": "196",
+                        "endOffsets": "479"
+                    },
+                    "to": {
+                        "startLines": "29",
+                        "startColumns": "4",
+                        "startOffsets": "3304",
+                        "endColumns": "196",
+                        "endOffsets": "3496"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.8.0.aar\\1498067ff84bc3aad5314807f1ef5d23\\res\\values-bg\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -21,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/6fa7ecd215b09c4311c704d7d926ca09/res/values-bg/values-bg.xml",
+                    "source": "C:\\Users\\osvaldoairon\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\536625c41dde2f3777c32068af0a092d\\res\\values-bg\\values-bg.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -35,23 +52,6 @@
                         "startOffsets": "105,220,331,459,566,671,757,862,983,1062,1140,1223,1337,1446,1546,1660,1766,1874,1997,4892,4975",
                         "endColumns": "114,110,127,106,104,85,104,120,78,77,82,113,108,99,113,105,107,122,98,82,100",
                         "endOffsets": "215,326,454,561,666,752,857,978,1057,1135,1218,1332,1441,1541,1655,1761,1869,1992,2091,4970,5071"
-                    }
-                },
-                {
-                    "source": "/home/osvaldoairon/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/c89cc1fdf55b342fc4a4471b5a309b39/res/values-bg/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "283",
-                        "endColumns": "196",
-                        "endOffsets": "479"
-                    },
-                    "to": {
-                        "startLines": "29",
-                        "startColumns": "4",
-                        "startOffsets": "3304",
-                        "endColumns": "196",
-                        "endOffsets": "3496"
                     }
                 }
             ]
